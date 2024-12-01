@@ -18449,7 +18449,7 @@ a.ui-button:active,
   text-align: center;
   width: 100%;
   padding: 30px;
-  padding-bottom: 50px;
+  padding-bottom: 5px;
 }
 
 @media (max-width: 991px) {
