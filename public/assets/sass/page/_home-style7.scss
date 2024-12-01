@@ -1,0 +1,383 @@
+/*======================================
+10. Home-style-7
+ =======================================*/
+
+/* 10.1 wpo-couple-section-s5 */
+
+.wpo-couple-section-s5,
+.wpo-couple-section-s6 {
+
+	.wpo-couple-wrap {
+		max-width: 1410px;
+		margin: 0 auto;
+	}
+
+	.text-grid {
+		text-align: right;
+		margin-right: -50px;
+		z-index: 11;
+		position: relative;
+
+		@media(max-width:1399px) {
+			margin-right: 0px;
+		}
+
+		@media(max-width:991px) {
+			text-align: center;
+			margin-bottom: 30px;
+		}
+
+
+		.couple-text {
+			h3 {
+				font-family: $base-font;
+				font-size: 35px;
+				font-style: normal;
+				font-weight: 600;
+				line-height: normal;
+				margin: 30px 0 0.5em;
+
+				@media(max-width:1199px) {
+					font-size: 36px;
+				}
+
+				@media(max-width:991px) {
+					font-size: 25px;
+					margin-bottom: 10px;
+				}
+
+				@media(max-width:350px) {
+					margin: 10px 0 0.2em;
+				}
+			}
+
+			p {
+				margin-bottom: 0;
+
+				@include media-query(1199px) {
+					font-size: 16px;
+				}
+
+
+				@media(max-width:991px) {
+					font-size: 16px;
+					max-width: 355px;
+					margin: 0 auto;
+					margin-bottom: 20px;
+				}
+
+			}
+
+			ul {
+				list-style: none;
+				overflow: hidden;
+				padding-top: 15px;
+				display: flex;
+				justify-content: flex-end;
+				margin-top: 10px;
+
+				@include media-query(991px) {
+					padding-top: 10px;
+					display: flex;
+					justify-content: center;
+				}
+
+				>li+li {
+					margin-left: 35px;
+				}
+
+				li a {
+					display: block;
+					text-align: center;
+					font-size: 14px;
+					color: $text-color;
+
+					&:hover {
+						color: $theme-primary-color;
+					}
+				}
+			}
+		}
+
+		&.groom {
+			text-align: left;
+			margin-right: 0;
+			margin-left: -50px;
+
+			@media(max-width:1399px) {
+				margin-left: 0px;
+			}
+
+			@media(max-width:991px) {
+				text-align: center;
+				margin-top: 30px;
+			}
+
+
+			ul {
+				justify-content: flex-start;
+
+				@media(max-width:991px) {
+					justify-content: center;
+				}
+			}
+		}
+
+	}
+
+	.middle-couple-pic {
+		text-align: center;
+		max-width: 500px;
+		margin: 0 auto;
+		padding: 30px;
+		border-radius: 250px;
+		background: #FFF;
+		box-shadow: 0px 2px 12px 2px rgba(4, 0, 52, 0.10);
+
+		@media(max-width:991px) {
+			padding: 15px;
+		}
+
+		img {
+			border-radius: 250px;
+			width: 100%;
+		}
+	}
+}
+
+/* 10.2 wpo-story-section-s6 */
+
+.wpo-story-section-s6 {
+	overflow: hidden;
+
+	.wpo-story-item {
+		.wpo-story-img-wrap {
+			.wpo-img-shape {
+				left: -110px;
+				bottom: -115px;
+
+				@media(max-width:1399px) {
+					bottom: -110px;
+				}
+
+				@media(max-width:575px) {
+					left: -30px;
+					bottom: -40px;
+				}
+			}
+		}
+
+		.wpo-story-content .wpo-story-content-inner .inner-shape {
+			position: absolute;
+			right: -140px;
+			top: 0;
+			transform: unset;
+		}
+
+
+		&:nth-child(even) {
+			.wpo-story-img-wrap {
+				.wpo-img-shape {
+					left: auto;
+					right: -110px;
+
+					@media(max-width:575px) {
+						right: -50px;
+						bottom: -60px;
+					}
+				}
+			}
+
+			.wpo-story-content {
+				.wpo-story-content-inner {
+					.inner-shape {
+						right: auto;
+						left: -120px;
+						top: 0;
+						transform: unset;
+					}
+				}
+			}
+		}
+	}
+}
+
+/* 10.3 wpo-contact-section-s7 */
+
+.wpo-contact-section-s7 {
+	padding-bottom: 50px;
+
+	@include media-query(991px) {
+		padding-top: 20px;
+		padding-bottom: 90px;
+	}
+	@include media-query(767px) {
+		padding-bottom: 70px;
+	}
+
+	.video-wrap {
+		position: relative;
+		padding: 150px 0;
+
+		@include media-query(991px) {
+			padding: 0;
+		}
+	}
+
+	.contact-video {
+		padding: 20px;
+		background: #FFF;
+		box-shadow: 0px 2px 12px 2px rgba(4, 0, 52, 0.10);
+		margin-left: 150px;
+		position: relative;
+
+		@include media-query(991px) {
+			margin-left: 0;
+			padding: 15px;
+		}
+
+		.video-btn {
+			position: absolute;
+			left: 60%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			width: 120px;
+			height: 120px;
+			border: 1px solid $white;
+			text-align: center;
+			border-radius: 50%;
+			line-height: 120px;
+			background: rgba(158, 153, 214, 0.40);
+			z-index: 11;
+
+			@include media-query(1399px) {
+				left: 65%;
+			}
+
+			@include media-query(991px) {
+				width: 100px;
+				height: 100px;
+				line-height: 100px;
+				left: 50%;
+			}
+
+			@include media-query(767px) {
+				width: 80px;
+				height: 80px;
+				line-height: 80px;
+			}
+
+			.fi {
+				position: relative;
+				right: -3px;
+
+				@include media-query(575px) {
+					right: 0;
+				}
+
+				&:before {
+					font-size: 40px;
+					color: $white;
+
+					@include media-query(991px) {
+						font-size: 30px;
+					}
+				}
+			}
+
+			&:before, &:after {
+				content: "";
+				position: absolute;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				background-color: transparent;
+				z-index: -1;
+				border-radius: 50%;
+				transition: all ease 5s;
+				background: rgba(158, 153, 214, 0.50);
+				animation-duration: 3s;
+				animation-timing-function: ease-in-out;
+				animation-iteration-count: infinite;
+				animation-name: ripple;
+			  }
+			  &:after {
+				animation-delay: 2s;
+			  }
+			  @keyframes ripple {
+				0% {
+				  transform: scale(1);
+				  opacity: 0;
+				}
+				30% {
+				  opacity: 1;
+				}
+				100% {
+				  transform: scale(2.1);
+				  opacity: 0;
+				}
+			}
+		}
+	}
+
+	.contact-wrap {
+		position: absolute;
+		left: -80px;
+		top: 50%;
+		padding-top: 150px;
+		padding-bottom: 150px;
+		transform: translateY(-50%);
+
+		@include media-query(1500px) {
+			left: -20px;
+		}
+
+		@include media-query(991px) {
+			position: relative;
+			top: 0;
+			left: 0;
+			transform: unset;
+			padding: 0;
+		}
+
+		.shape-1 {
+			left: 75px;
+			top: 45px;
+			bottom: auto;
+		}
+
+		.shape-2 {
+			left: 75px;
+			bottom: 15px;
+			right: auto;
+		}
+	}
+
+	.wpo-contact-section-wrapper {
+		padding: 20px;
+		background: $white;
+		border-radius: 350px;
+		margin: 0;
+
+		@include media-query(991px) {
+			margin: 0 auto;
+			margin-top: 30px;
+		}
+
+		@media(max-width:575px) {
+			padding: 10px;
+		}
+
+		.wpo-contact-form-area {
+			background: #7E78B2;
+			border-radius: 350px;
+			padding: 100px 40px 50px;
+
+			@media(max-width:575px) {
+				padding: 30px;
+                padding-top: 60px;
+			}
+		}
+	}
+}
