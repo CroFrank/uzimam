@@ -1,33 +1,342 @@
 ---
 import Layout from "../layouts/Layout.astro"
-import Hero from "../components/Hero.astro"
-import Features from "../components/Features.astro"
-import Dizajn from "../components/Dizajn.astro"
-import Pozivnica from "../components/Pozivnica.astro"
+import Citati from "../components/Citati.astro"
 ---
 
 <Layout>
-  <Hero />
-  <Features />
-  <Dizajn />
-  <Pozivnica />
-
-  <!-- start wpo-partners-section -->
-  <section class="wpo-partners-section section-padding">
-    <h2 class="hidden">Mladenci</h2>
-    <div class="container">
-      <div class="row">
-        <div class="col col-xs-12">
-          <div class="partner-grids partners-slider owl-carousel">
-            <div class="grid">
-              <a class="mladenci" href="https://maja-ivan.uzimam.com/"
-                >Maja & Ivan</a
+  <!-- start of hero -->
+  <section class="static-hero-s2">
+    <div class="static-main-box">
+      <div class="container-fluid">
+        <div class="static-inner-box">
+          <div class="row align-items-center">
+            <div
+              class="col col-xl-3 col-sm-6 col-lg-3 col-12 order-lg-1 order-1"
+            >
+              <div
+                class="static-hero-img wow fadeInLeftSlow"
+                data-wow-duration="1500ms"
               >
+                <img src="assets/images/slider/maja.jpg" />
+              </div>
             </div>
-            <div class="grid">
-              <a class="mladenci" href="https://matea-stipe.uzimam.com/"
-                >Matea & Stipe</a
+            <div
+              class="col col-xl-6 col-lg-6 col-md-8 col-12 order-lg-2 order-3"
+            >
+              <div class="wpo-static-hero-text-wrap">
+                <div class="wpo-static-hero-text-box">
+                  <div class="slide-title">
+                    <h2 class="poort-text poort-in-up">Maja & Ivan</h2>
+                  </div>
+                  <div
+                    class="slide-text wow fadeInUp"
+                    data-wow-duration="1600ms"
+                  >
+                    <p>Dan našeg vjenčanja</p>
+                  </div>
+                  <div
+                    class="slide-date wow fadeInUp"
+                    data-wow-duration="1700ms"
+                  >
+                    <p>19 . 10 . 2025</p>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+                <div
+                  class="shape wow fadeInLeftSlow"
+                  data-wow-duration="2500ms"
+                >
+                  <img src="assets/images/slider/left-shape-1.png" />
+                </div>
+                <div
+                  class="shape2 wow fadeInRightSlow"
+                  data-wow-duration="2500ms"
+                >
+                  <img src="assets/images/slider/left-shape-2.png" />
+                </div>
+              </div>
+            </div>
+            <div
+              class="col col-xl-3 col-lg-3 col-sm-6 col-12 order-lg-3 order-2"
+            >
+              <div
+                class="static-hero-img wow fadeInRightSlow"
+                data-wow-duration="1500ms"
               >
+                <img src="assets/images/slider/ivan.jpg" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end of hero slider -->
+  <!-- start wpo-wedding-date -->
+  <section class="wpo-wedding-date section-padding">
+    <h2 class="d-none">hidden</h2>
+    <div class="container">
+      <div class="wedding-date-wrap">
+        <div class="clock-grids">
+          <div id="clock"></div>
+        </div>
+      </div>
+    </div>
+    <!-- end container -->
+  </section>
+  <!-- end wpo-wedding-date-s3-->
+  <!--start video section -->
+  <section class="wpo-video-section">
+    <h2 class="hidden">some</h2>
+    <div class="container-fluid">
+      <div class="video-wrap">
+        <img src="assets/images/video-img.jpg" alt="" />
+        <a
+          href="https://www.youtube.com/embed/P3M6j0o04LY"
+          class="video-btn"
+          data-type="iframe"><i class="fi flaticon-play"></i></a
+        >
+      </div>
+    </div>
+  </section>
+
+  <!--end video section -->
+
+  <!-- start wpo-story-section -->
+  <section class="wpo-story-section-s2 section-padding pb-0" id="story">
+    <div class="container">
+      <div class="wpo-section-title">
+        <h4 class="poort-text poort-in-right">Naša priča</h4>
+        <h2 class="poort-text poort-in-right">
+          Naša romantična ljubavna priča
+        </h2>
+      </div>
+      <div class="wpo-story-wrap">
+        <div class="wpo-story-item">
+          <div class="row">
+            <div class="col col-lg-6 col-12">
+              <div class="wpo-story-img">
+                <img src="assets/images/story/meet.jpg" />
+              </div>
+            </div>
+            <div class="col col-lg-6 col-12">
+              <div class="wpo-story-content">
+                <i><img src="assets/images/story/f-shape-1.png" /></i>
+                <h2>Prvo upoznavanje</h2>
+                <span>10 Prosinac 2019</span>
+                <p>
+                  Maja i Ivan upoznali su se kad su istovremeno posegnuli za
+                  istom knjigom u knjižari. Pogledi su im se sreli, nasmiješili
+                  su se, i Ivan je rekao: "Izgleda da imamo sličan ukus." Maja
+                  je uzvratila: "Ili je sudbina." Otišli su zajedno na kavu, a
+                  knjiga je ostala na polici. Ljubavna priča je upravo počela.
+                  ❤️
+                </p>
+                <i><img src="assets/images/story/f-shape-2.png" /></i>
+                <div class="top-shape">
+                  <img src="assets/images/story/tassel.png" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="wpo-story-item">
+          <div class="row">
+            <div class="col col-lg-6 col-12">
+              <div class="wpo-story-img">
+                <img src="assets/images/story/date.jpg" />
+              </div>
+            </div>
+            <div class="col col-lg-6 col-12">
+              <div class="wpo-story-content">
+                <i><img src="assets/images/story/f-shape-1.png" /></i>
+                <h2>Prvi spoj</h2>
+                <span>25 Prosinac 2019</span>
+                <p>
+                  Maja i Ivan našli su se u malom kafiću uz rijeku. Naručili su
+                  kavu i ubrzo se izgubili u razgovoru o glazbi, snovima i
+                  putovanjima. Smijeh je ispunio svaki trenutak. Na kraju
+                  večeri, dok su se opraštali, Ivan je rekao: "Ovo moramo
+                  ponoviti." Maja se nasmijala i odgovorila: "Slažem se." Njihov
+                  osmijeh rekao je sve – bio je to početak nečeg posebnog. ☕❤️
+                </p>
+                <i><img src="assets/images/story/f-shape-2.png" /></i>
+                <div class="top-shape">
+                  <img src="assets/images/story/tassel.png" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="wpo-story-item">
+          <div class="row">
+            <div class="col col-lg-6 col-12">
+              <div class="wpo-story-img">
+                <img src="assets/images/story/yes.jpg" />
+              </div>
+            </div>
+            <div class="col col-lg-6 col-12">
+              <div class="wpo-story-content">
+                <i><img src="assets/images/story/f-shape-1.png" /></i>
+                <h2>She Said Yes!</h2>
+                <span>18 Siječanj 2024</span>
+                <p>
+                  Ivan je kleknuo na pijesak dok je zalazak sunca obasjavao
+                  plažu zlatnim nijansama. U ruci je držao prsten i rekao:
+                  "Maja, hoćeš li provesti ostatak života sa mnom?" Maja je
+                  prekrila usta rukama, oči su joj zasjale od suza, i tiho je
+                  odgovorila: "Da, sto puta da!" More je zapljeskalo njihovom
+                  trenutku, a svijet je nakratko stao, samo za njih dvoje.
+                  🌅💍❤️
+                </p>
+                <i><img src="assets/images/story/f-shape-2.png" /></i>
+                <div class="top-shape">
+                  <img src="assets/images/story/tassel.png" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end container -->
+    <div class="flower-shape-1">
+      <div class="flower-sticky">
+        <img src="assets/images/story/shape3.png" />
+      </div>
+    </div>
+    <div class="flower-shape-2">
+      <div class="flower-sticky">
+        <img src="assets/images/story/shape4.png" />
+      </div>
+    </div>
+  </section>
+  <!-- end story-section -->
+
+  <!-- start wpo-portfolio-section -->
+  <section class="wpo-portfolio-section-s2 section-padding pt-0" id="gallery">
+    <div class="container-fluid">
+      <div class="wpo-section-title">
+        <h4 class="poort-text poort-in-right">Slatki trenutci</h4>
+        <h2 class="poort-text poort-in-right">Naše najdraže slike</h2>
+      </div>
+      <div class="gallery-main-wrap">
+        <div class="sortable-gallery">
+          <div class="portfolio-top">
+            <div class="line">
+              <svg
+                height="127"
+                viewBox="0 0 1920 127"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M-6 1C173.333 95 814 226.6 1942 1"
+                  stroke="#CAA6C7"
+                  stroke-width="2"></path>
+              </svg>
+            </div>
+            <div class="portfolio-grids clearfix">
+              <div class="grid">
+                <div class="img-holder">
+                  <a
+                    href="assets/images/portfolio/naj1.jpg"
+                    class="fancybox"
+                    data-fancybox-group="gall-1"
+                  >
+                    <img
+                      src="assets/images/portfolio/naj1.jpg"
+                      class="img img-responsive"
+                    />
+                    <div class="hover-content">
+                      <i class="ti-plus"></i>
+                    </div>
+                  </a>
+                </div>
+                <div class="clothespin">
+                  <img src="assets/images/portfolio/clothespin.png" />
+                </div>
+              </div>
+              <div class="grid">
+                <div class="img-holder">
+                  <a
+                    href="assets/images/portfolio/naj2.jpg"
+                    class="fancybox"
+                    data-fancybox-group="gall-1"
+                  >
+                    <img
+                      src="assets/images/portfolio/naj2.jpg"
+                      class="img img-responsive"
+                    />
+                    <div class="hover-content">
+                      <i class="ti-plus"></i>
+                    </div>
+                  </a>
+                </div>
+                <div class="clothespin">
+                  <img src="assets/images/portfolio/clothespin.png" />
+                </div>
+              </div>
+              <div class="grid">
+                <div class="img-holder">
+                  <a
+                    href="assets/images/portfolio/naj3.jpg"
+                    class="fancybox"
+                    data-fancybox-group="gall-1"
+                  >
+                    <img
+                      src="assets/images/portfolio/naj3.jpg"
+                      class="img img-responsive"
+                    />
+                    <div class="hover-content">
+                      <i class="ti-plus"></i>
+                    </div>
+                  </a>
+                </div>
+                <div class="clothespin">
+                  <img src="assets/images/portfolio/clothespin.png" />
+                </div>
+              </div>
+              <div class="grid">
+                <div class="img-holder">
+                  <a
+                    href="assets/images/portfolio/naj4.jpg"
+                    class="fancybox"
+                    data-fancybox-group="gall-1"
+                  >
+                    <img
+                      src="assets/images/portfolio/naj4.jpg"
+                      class="img img-responsive"
+                    />
+                    <div class="hover-content">
+                      <i class="ti-plus"></i>
+                    </div>
+                  </a>
+                </div>
+                <div class="clothespin">
+                  <img src="assets/images/portfolio/clothespin.png" />
+                </div>
+              </div>
+              <div class="grid">
+                <div class="img-holder">
+                  <a
+                    href="assets/images/portfolio/naj5.jpg"
+                    class="fancybox"
+                    data-fancybox-group="gall-1"
+                  >
+                    <img
+                      src="assets/images/portfolio/naj5.jpg"
+                      class="img img-responsive"
+                    />
+                    <div class="hover-content">
+                      <i class="ti-plus"></i>
+                    </div>
+                  </a>
+                </div>
+                <div class="clothespin">
+                  <img src="assets/images/portfolio/clothespin.png" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -35,12 +344,106 @@ import Pozivnica from "../components/Pozivnica.astro"
     </div>
     <!-- end container -->
   </section>
-  <!-- end wpo-partners-section-->
-</Layout>
+  <!-- end wpo-portfolio-section -->
 
-<style>
-  .mladenci {
-    font-family: "monallesia", "Mulish", sans-serif;
-    color: #777777;
-  }
-</style>
+  <!-- start of wpo-contact-section -->
+  <section class="wpo-contact-section-s2 section-padding pt-0" id="rsvp">
+    <div class="bottom-text marquee2">
+      <h2>"Veselimo se vašem dolasku na naš poseban dan!"</h2>
+    </div>
+  </section>
+  <!-- end of wpo-contact-section -->
+
+  <!-- start wpo-event-section -->
+  <section
+    class="wpo-event-section-s2 section-padding pt-0 background-pink"
+    id="event"
+  >
+    <div class="container-fluid">
+      <div class="wpo-section-title">
+        <h4 class="poort-text poort-in-right">Gdje & Kada</h4>
+        <h2 class="poort-text poort-in-right">Kratke informacije</h2>
+      </div>
+      <div class="wpo-event-main">
+        <div class="event-description">
+          <p>Ponedjeljak, 19 Listopada 2025, 14:00 – 04:00</p>
+          <p>Restoran Inela, Varaždinska 18, 10363 Belovar</p>
+        </div>
+        <div class="wpo-event-wrap">
+          <div class="wpo-event-inner">
+            <div class="wpo-event-item">
+              <div class="wpo-event-text">
+                <i><img src="assets/images/icon/1.svg" /></i>
+                <span
+                  >Okupljanje kod mlade, <br /> Osiječka ulica 31, 10410 Velika Gorica</span
+                >
+              </div>
+              <div class="wpo-event-time">
+                <h4>14:00</h4>
+              </div>
+            </div>
+            <div class="wpo-event-item">
+              <div class="wpo-event-text">
+                <i><img src="assets/images/icon/2.svg" /></i>
+                <span>Crkvena ceremonija,<br /> crkva Ščitarjevo</span>
+              </div>
+              <div class="wpo-event-time">
+                <h4>17:00</h4>
+              </div>
+            </div>
+            <div class="wpo-event-item">
+              <div class="wpo-event-text">
+                <i><img src="assets/images/icon/3.svg" /></i>
+                <span>Slikanje</span>
+              </div>
+              <div class="wpo-event-time">
+                <h4>18:15</h4>
+              </div>
+            </div>
+            <div class="wpo-event-item">
+              <div class="wpo-event-text">
+                <i><img src="assets/images/icon/4.svg" /></i>
+                <span>Dolazak u salu, <br /> Restoran Inela, 10363 Belovar</span
+                >
+              </div>
+              <div class="wpo-event-time">
+                <h4>20:00</h4>
+              </div>
+            </div>
+            <div class="wpo-event-item">
+              <div class="wpo-event-text">
+                <i><img src="assets/images/icon/6.svg" /></i>
+                <span>Prvi ples</span>
+              </div>
+              <div class="wpo-event-time">
+                <h4>21:00</h4>
+              </div>
+            </div>
+            <div class="wpo-event-item">
+              <div class="wpo-event-text">
+                <i><img src="assets/images/icon/5.svg" /></i>
+                <span>Rezanje torte</span>
+              </div>
+              <div class="wpo-event-time">
+                <h4>00:00</h4>
+              </div>
+            </div>
+            <div class="wpo-event-item">
+              <div class="wpo-event-text">
+                <i><img src="assets/images/icon/7.svg" /></i>
+                <span>Kraj svadbe, <br /> ali početak ljubavne priče</span>
+              </div>
+              <div class="wpo-event-time">
+                <h4>04:00</h4>
+              </div>
+            </div>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end container -->
+  </section>
+  <!-- end wpo-event-section -->
+  <Citati />
+</Layout>
