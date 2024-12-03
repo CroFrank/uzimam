@@ -2,6 +2,11 @@
 import Footer from "../components/Footer.astro"
 import Nav from "../components/Nav.astro"
 import Preloader from "../components/Preloader.astro"
+
+const {
+  title = "Uzimam - web pozivnice i uspomene s vjenčanja",
+  description = "Stvorite moderne online pozivnice sa svim detaljima i informacijama vezanih uz Vaše vjenčanje u obliku vlastite web stranice. Sačuvajte uspomene u galeriji fotografija. Savršeno za dijeljenje s obitelji i prijateljima, uvijek i svugdje",
+} = Astro.props
 ---
 
 <!doctype html>
@@ -10,15 +15,9 @@ import Preloader from "../components/Preloader.astro"
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Stvorite moderne online pozivnice sa svim detaljima i
-                informacijama vezanih uz Vaše vjenčanje u obliku vlastite web
-                stranice. Sačuvajte uspomene u galeriji fotografija. Savršeno za
-                dijeljenje s obitelji i prijateljima, uvijek i svugdje."
-    />
+    <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
-    <title>Uzimam - web pozivnice i uspomene s vjenčanja</title>
+    <title>{title}</title>
     <link href="assets/css/themify-icons.css" rel="stylesheet" />
     <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
     <link href="assets/css/flaticon.css" rel="stylesheet" />

@@ -145,6 +145,19 @@ import Layout from "../layouts/Layout.astro"
                   minlength="4"
                   maxlength="450"></textarea>
               </div>
+              <div class="fullwidth">
+                <label for="my-checkbox" class="label">
+                  <input
+                    type="checkbox"
+                    id="my-checkbox"
+                    name="my-checkbox"
+                    required
+                  />
+                  Razumijem da će se osobni podaci koristiti isključivo za kontakt
+                  i da se neće koristiti u druge svrhe kako je definirano u polici
+                  privatnosti.
+                </label>
+              </div>
               <div class="submit-area">
                 <button type="submit" class="theme-btn-s4">Pošalji</button>
               </div>
@@ -166,5 +179,14 @@ import Layout from "../layouts/Layout.astro"
 <style>
   .kontakt-area {
     min-height: 300px;
+  }
+
+  .label {
+    display: inline-flex;
+    align-items: center;
+  }
+  #my-checkbox {
+    width: 30px;
+    margin-right: 30px;
   }
 </style>
