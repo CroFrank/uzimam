@@ -1,5 +1,7 @@
 ---
+import Newsletter from "../components/Newsletter.astro"
 import Layout from "../layouts/Layout.astro"
+const sparky = import.meta.env.PUBLIC_KONTAKT
 ---
 
 <Layout>
@@ -85,6 +87,8 @@ import Layout from "../layouts/Layout.astro"
               </div>
             </div>
           </div>
+          <Newsletter />
+
           <div class="wpo-contact-title">
             <h2>Imate pitanja?</h2>
             <p>
@@ -93,7 +97,7 @@ import Layout from "../layouts/Layout.astro"
             </p>
           </div>
           <div class="wpo-contact-form-area">
-            <form action="https://submit-form.com/mDFJcZHHN">
+            <form action={`https://submit-form.com/${sparky}`}>
               <input type="hidden" name="_feedback.whitelabel" value="true" />
               <input
                 type="hidden"
@@ -174,6 +178,7 @@ import Layout from "../layouts/Layout.astro"
   <section class="kontakt-area">
     <p></p>
   </section>
+
   <!-- end wpo-contact-map -->
 </Layout>
 <style>
