@@ -9,8 +9,7 @@ const { sticker } = Astro.props
       <ul>
         <li></li>
         <li>
-          <a href="assets/images/stickers/wedding1.pdf" download="wedding1.pdf"
-            >Preuzmi</a
+          <a href={sticker.data.download} download={sticker.data.pdf}>Preuzmi</a
           >
         </li>
       </ul>

@@ -5,6 +5,8 @@ const stickers = defineCollection({
   schema: z.object({
     naziv: z.string(),
     slika: z.string(),
+    download: z.string(),
+    pdf: z.string(),
   }),
 })
 
