@@ -17,10 +17,10 @@ export const prerender = false
   </form>
   <p class="privacy">Poštujemo vašu privatnost. Unsubscribe bilo kada.</p>
 </div>
+
 <style>
   .newsletter-container {
     text-align: center;
-    min-width: max-content;
     margin-bottom: 100px;
     text-align: center;
     width: 100%;
@@ -104,6 +104,11 @@ export const prerender = false
   @media (max-width: 800px) {
     .newsletter-container input[type="email"] {
       width: 400px;
+    }
+  }
+  @media (max-width: 500px) {
+    .newsletter-container input[type="email"] {
+      width: 300px;
     }
   }
 </style>

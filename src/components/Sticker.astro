@@ -1,0 +1,24 @@
+---
+const { sticker } = Astro.props
+---
+
+<div class="col col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12">
+  <div class="wpo-product-item wow fadeInUp" data-wow-duration="1000ms">
+    <div class="wpo-product-img">
+      <img src={sticker.data.slika} />
+      <ul>
+        <li></li>
+        <li>
+          <a href="assets/images/stickers/wedding1.pdf" download="wedding1.pdf"
+            >Preuzmi</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="wpo-product-text">
+      <h3>
+        <a href="shop-single.html"> {sticker.data.naziv}</a>
+      </h3>
+    </div>
+  </div>
+</div>

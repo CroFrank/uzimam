@@ -1,0 +1,214 @@
+---
+import { getCollection } from "astro:content"
+import Sticker from "../components/Sticker.astro"
+import Layout from "../layouts/Layout.astro"
+const sparky = import.meta.env.PUBLIC_KONTAKT
+
+const data = await getCollection("stickers")
+---
+
+<Layout>
+  <!-- start wpo-page-title -->
+  <section class="wpo-page-title">
+    <div class="container">
+      <div class="row">
+        <div class="col col-xs-12">
+          <div class="wpo-breadcumb-wrap">
+            <h2>Stickers</h2>
+            <p>besplatno za osobnu upotrebu</p>
+          </div>
+        </div>
+      </div>
+      <!-- end row -->
+    </div>
+    <!-- end container -->
+    <div class="frame-shape-1 wow fadeInLeftSlow" data-wow-duration="1200ms">
+      <img src="assets/images/slider/invitation-shape-1.png" alt="" />
+    </div>
+    <div class="frame-shape-2 wow fadeInRightSlow" data-wow-duration="1200ms">
+      <img src="assets/images/slider/invitation-shape-2.png" alt="" />
+    </div>
+  </section>
+  <!-- end page-title -->
+
+  <!-- start wpo-shop-page -->
+  <section class="wpo-shop-page section-padding">
+    <h2 class="hidden">some</h2>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9 order-lg-2">
+          <!-- start wpo-product-section -->
+          <div class="wpo-product-section">
+            <div class="sorting-section">
+              <ul>
+                <li class="novi">Svaki tjedan novi stickeri</li>
+                <li><a class="button">Naruči rezanje</a></li>
+              </ul>
+            </div>
+            <div class="wpo-product-wrap">
+              <div class="row">
+                {data.map((sticker) => <Sticker sticker={sticker} />)}
+              </div>
+            </div>
+          </div>
+          <!-- end wpo-product-section -->
+        </div>
+        <div class="col-lg-3 col-md-8 order-lg-1">
+          <div class="wpo-shop-sidebar">
+            <div class="widget woocommerce widget_product_categories">
+              <h3>Upute</h3>
+              <ul class="product-categories">
+                <li class="cat-item cat-parent">
+                  <span>Izaberite motive</span>
+                </li>
+                <li class="cat-item cat-parent">
+                  <span>Preuzmite besplatno u PDF-u</span>
+                </li>
+                <li class="cat-item cat-parent">
+                  <span>Isprintajte na samoljepljivom papiru</span>
+                </li>
+                <li class="cat-item cat-parent">
+                  <span>Izrežite škarama</span>
+                </li>
+                <li class="cat-item cat-parent">
+                  <span>Pišite nam svoje želje</span>
+                </li>
+                <li class="cat-item cat-parent">
+                  <span>Samo za osobnu upotrebu</span>
+                </li>
+              </ul>
+            </div>
+            <div class="widget woocommerce widget_product_categories">
+              <h3>Naručite strojno rezanje</h3>
+              <ul class="product-categories">
+                <li class="cat-item cat-parent">
+                  <span>Izrada i rezanje po narudžbi</span>
+                  <a class="link" href="">Obrt Bonani</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="wpo-contact-pg-section section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col col-lg-10 offset-lg-1">
+          <div class="wpo-contact-title">
+            <h2>Pišite nam</h2>
+            <p>
+              Pišite nam kakve stickere, motive, dimenzije, oblike biste htjeli
+              da napravimo
+            </p>
+          </div>
+          <div class="wpo-contact-form-area">
+            <form action={`https://submit-form.com/${sparky}`}>
+              <input type="hidden" name="_feedback.whitelabel" value="true" />
+              <input
+                type="hidden"
+                name="_feedback.success.title"
+                value="Primili smo Vašu poruku, javljamo se brzo, hvala!"
+              />
+              <input
+                type="hidden"
+                name="_feedback.success.message"
+                value="Povratak:"
+              />
+              <div>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="name"
+                  id="name"
+                  placeholder="Ime*"
+                  required
+                  minlength="1"
+                  maxlength="16"
+                />
+              </div>
+              <div>
+                <input
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  id="email"
+                  placeholder="Vaš Email*"
+                  required
+                />
+              </div>
+
+              <div class="fullwidth">
+                <textarea
+                  class="form-control"
+                  name="note"
+                  id="note"
+                  placeholder="Poruka...*"
+                  required
+                  minlength="4"
+                  maxlength="450"></textarea>
+              </div>
+              <div class="fullwidth">
+                <label for="my-checkbox" class="label">
+                  <input
+                    type="checkbox"
+                    id="my-checkbox"
+                    name="my-checkbox"
+                    required
+                  />
+                  Razumijem da će se osobni podaci koristiti isključivo za kontakt
+                  i da se neće koristiti u druge svrhe kako je definirano u polici
+                  privatnosti.
+                </label>
+              </div>
+              <div class="submit-area">
+                <button type="submit" class="theme-btn-s4">Pošalji</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end wpo-shop-page -->
+</Layout>
+<style>
+  .button {
+    padding: 10px 20px;
+    background-color: #b5a2bd;
+    color: #ffffff;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .button:hover {
+    background-color: #a28aac;
+  }
+
+  .novi {
+    color: #a28aac;
+  }
+  .link {
+    display: block;
+    color: blue !important;
+    padding-top: 5px;
+  }
+  .wpo-contact-pg-section {
+    margin-bottom: 200px;
+  }
+  #my-checkbox {
+    width: 30px;
+    margin-right: 31px;
+  }
+  .kontakt-area {
+    min-height: 300px;
+  }
+
+  .label {
+    display: inline-flex;
+    align-items: center;
+  }
+</style>
