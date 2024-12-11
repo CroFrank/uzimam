@@ -5,9 +5,15 @@ import Layout from "../layouts/Layout.astro"
 const sparky = import.meta.env.PUBLIC_KONTAKT
 
 const data = await getCollection("stickers")
+
+const SEO = {
+  title: "Uzimam | Wedding stickers",
+  description:
+    "Besplatni wedding stickeri za vaše posebne trenutke! Preuzmite kolekciju jedinstvenih i elegantnih stickera za planiranje vjenčanja, dekoracije, pozivnice i još mnogo toga. Dodajte personalizirani dodir vašem velikom danu – preuzimanje je jednostavno i potpuno besplatno!",
+}
 ---
 
-<Layout>
+<Layout title={SEO.title} description={SEO.description}>
   <!-- start wpo-page-title -->
   <section class="wpo-page-title">
     <div class="container">
@@ -33,7 +39,7 @@ const data = await getCollection("stickers")
 
   <!-- start wpo-shop-page -->
   <section class="wpo-shop-page section-padding">
-    <h2 class="hidden">some</h2>
+    <h2 class="hidden">Weeding stickers</h2>
     <div class="container">
       <div class="row">
         <div class="col-lg-9 order-lg-2">
@@ -46,7 +52,8 @@ const data = await getCollection("stickers")
                   <a
                     href="https://www.bonani.hr/"
                     target="_blank"
-                    class="button">Naruči rezanje</a>
+                    class="button">Naruči rezanje</a
+                  >
                 </li>
               </ul>
             </div>
