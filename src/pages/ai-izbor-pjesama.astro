@@ -1,0 +1,14 @@
+---
+export const prerender = false
+import Layout from "../layouts/Layout.astro"
+import AiIzborPjesama from "../components/AiIzborPjesama.tsx"
+import Header from "../components/ui/Header.astro"
+---
+
+<Layout>
+  <Header
+    title="Izbor Pjesama"
+    subtitle="Umjetna inteligencija će vam pomoći pronaći pjesme koje volite"
+  />
+  <AiIzborPjesama client:load />
+</Layout>

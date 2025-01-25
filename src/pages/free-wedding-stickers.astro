@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content"
 import Sticker from "../components/Sticker.astro"
 import Layout from "../layouts/Layout.astro"
+import Header from "../components/ui/Header.astro"
 const sparky = import.meta.env.PUBLIC_KONTAKT
 
 const data = await getCollection("stickers")
@@ -14,28 +15,7 @@ const SEO = {
 ---
 
 <Layout title={SEO.title} description={SEO.description}>
-  <!-- start wpo-page-title -->
-  <section class="wpo-page-title">
-    <div class="container">
-      <div class="row">
-        <div class="col col-xs-12">
-          <div class="wpo-breadcumb-wrap">
-            <h2>Stickers</h2>
-            <p>besplatno za osobnu upotrebu</p>
-          </div>
-        </div>
-      </div>
-      <!-- end row -->
-    </div>
-    <!-- end container -->
-    <div class="frame-shape-1 wow fadeInLeftSlow" data-wow-duration="1200ms">
-      <img src="assets/images/slider/invitation-shape-1.png" alt="" />
-    </div>
-    <div class="frame-shape-2 wow fadeInRightSlow" data-wow-duration="1200ms">
-      <img src="assets/images/slider/invitation-shape-2.png" alt="" />
-    </div>
-  </section>
-  <!-- end page-title -->
+  <Header title="Stickers" subtitle="Besplatno za osobnu upotrebu" />
 
   <!-- start wpo-shop-page -->
   <section class="wpo-shop-page section-padding">
@@ -59,7 +39,7 @@ const SEO = {
             </div>
             <div class="wpo-product-wrap">
               <div class="row">
-                {data.map((sticker) => <Sticker sticker={sticker} />)}
+                {data.map((sticker: any) => <Sticker sticker={sticker} />)}
               </div>
             </div>
           </div>
@@ -90,6 +70,7 @@ const SEO = {
                 </li>
               </ul>
             </div>
+
             <div class="widget woocommerce widget_product_categories">
               <h3>Naručite strojno rezanje</h3>
               <ul class="product-categories">
@@ -98,6 +79,14 @@ const SEO = {
                   <a class="link" href="https://www.bonani.hr/" target="_blank"
                     >Obrt Bonani</a
                   >
+                </li>
+              </ul>
+            </div>
+            <div class="widget woocommerce widget_product_categories">
+              <h3>Što još?!</h3>
+              <ul class="product-categories">
+                <li class="cat-item cat-parent">
+                  <span>USKORO! free wedding planners</span>
                 </li>
               </ul>
             </div>

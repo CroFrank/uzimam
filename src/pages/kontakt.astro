@@ -1,31 +1,12 @@
 ---
 import Newsletter from "../components/Newsletter.astro"
+import Header from "../components/ui/Header.astro"
 import Layout from "../layouts/Layout.astro"
 const sparky = import.meta.env.PUBLIC_KONTAKT
 ---
 
 <Layout>
-  <!-- start wpo-page-title -->
-  <section class="wpo-page-title">
-    <div class="container">
-      <div class="row">
-        <div class="col col-xs-12">
-          <div class="wpo-breadcumb-wrap">
-            <h2>Kontakt</h2>
-          </div>
-        </div>
-      </div>
-      <!-- end row -->
-    </div>
-    <!-- end container -->
-    <div class="frame-shape-1 wow fadeInLeftSlow" data-wow-duration="1200ms">
-      <img src="assets/images/slider/invitation-shape-1.png" alt="" />
-    </div>
-    <div class="frame-shape-2 wow fadeInRightSlow" data-wow-duration="1200ms">
-      <img src="assets/images/slider/invitation-shape-2.png" alt="" />
-    </div>
-  </section>
-  <!-- end page-title -->
+  <Header title="Kontakt" />
 
   <!-- start wpo-contact-pg-section -->
   <section class="wpo-contact-pg-section section-padding">

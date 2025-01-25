@@ -1,0 +1,29 @@
+---
+type Props = {
+  title: string
+  subtitle?: string
+}
+
+const { title = "Uzimam", subtitle } = Astro.props
+---
+
+<section class="wpo-page-title">
+  <div class="container">
+    <div class="row">
+      <div class="col col-xs-12">
+        <div class="wpo-breadcumb-wrap">
+          <h2>{title}</h2>
+          <p>{subtitle}</p>
+        </div>
+      </div>
+    </div>
+    <!-- end row -->
+  </div>
+  <!-- end container -->
+  <div class="frame-shape-1 wow fadeInLeftSlow" data-wow-duration="1200ms">
+    <img src="assets/images/slider/invitation-shape-1.png" alt="" />
+  </div>
+  <div class="frame-shape-2 wow fadeInRightSlow" data-wow-duration="1200ms">
+    <img src="assets/images/slider/invitation-shape-2.png" alt="" />
+  </div>
+</section>

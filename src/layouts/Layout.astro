@@ -3,6 +3,11 @@ import Footer from "../components/Footer.astro"
 import Nav from "../components/Nav.astro"
 import Preloader from "../components/Preloader.astro"
 
+type Props = {
+  title?: string
+  description?: string
+}
+
 const {
   title = "Uzimam - web pozivnice i uspomene s vjenčanja",
   description = "Stvorite moderne online pozivnice sa svim detaljima i informacijama vezanih uz Vaše vjenčanje u obliku vlastite web stranice. Sačuvajte uspomene u galeriji fotografija. Savršeno za dijeljenje s obitelji i prijateljima, uvijek i svugdje",
