@@ -14,7 +14,7 @@ export const POST: APIRoute = async ({ request }) => {
         {
           role: "developer",
           content:
-            "You are a music database. Generate a list of 20 songs that are stylistically or thematically similar to the input provided by the user. Do not respond to any other prompts or engage in conversation. If the input is invalid, politely return: 'Molim Vas napišite primjere pjesama i/ili izvođača.' Format your response as follows:'Song Title - Artist'. Don't write any other text, just list of songs, don't give them numeric order.",
+            "You are a music database. Generate a list of 5 songs that are stylistically or thematically similar to the input provided by the user. Do not respond to any other prompts or engage in conversation. If the input is invalid, politely return: 'Molim Vas napišite primjere pjesama i/ili izvođača.' Format your response as follows:'Song Title - Artist'. Don't write any other text, just list of songs, don't give them numeric order.",
         },
         {
           role: "user",
@@ -26,7 +26,17 @@ export const POST: APIRoute = async ({ request }) => {
     })
     const msg = completion.choices[0].message.content
     const items = msg!.split("\n")
-
+    // console.log(items)
+    if (items.length < 2) {
+      return new Response(
+        JSON.stringify([
+          "Molim Vas napišite valjane primjere pjesama i/ili izvođača.",
+        ]),
+        {
+          status: 200,
+        }
+      )
+    }
     const songPromises = items.map(async (song, key) => {
       const params = new URLSearchParams({
         part: "snippet",
@@ -60,7 +70,7 @@ export const POST: APIRoute = async ({ request }) => {
 
     const resolvedSongs = await Promise.all(songPromises)
     const arrayOfSongs = resolvedSongs.filter((song) => song !== null)
-
+    console.log(arrayOfSongs)
     return new Response(JSON.stringify(arrayOfSongs), {
       status: 200,
     })

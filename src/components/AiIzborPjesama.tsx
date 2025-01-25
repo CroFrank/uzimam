@@ -34,72 +34,79 @@ const AiIzborPjesama: React.FC = () => {
   }
 
   return (
-    <>
-      <section className="wpo-blog-pg-section section-padding">
-        <div className="container">
-          <div className="row">
-            <div className="col col-lg-10 offset-lg-1">
-              <div className="wpo-blog-content">
-                <div className="post format-standard-image">
-                  <div className="entry-details">
-                    <h3>Stvaranje liste pjesama</h3>
-                    <p>
-                      U polje ispod upišite nekoliko pjesama po vašem izboru, a
-                      umjetna inteligencija će pronaći još pjesama u stilu koji
-                      volite. Što više pjesama ili izvođača upišete, preciznije
-                      rezultate ćete dobiti.
-                    </p>
-                    <textarea
-                      className="form-control"
-                      name="pjesmeInput"
-                      id="pjesmeInput"
-                      placeholder="Oliver Dragojevič - Cesarica, Željko Bebek - Laku noć svirači ... "
-                      required
-                      minLength={2}
-                      maxLength={450}
-                      value={prompt}
-                      onChange={handleInputChange}
-                    />
-                    <br />
-                    <button
-                      className="theme-btn"
-                      type="submit"
-                      id="submitButton"
-                      onClick={handleButtonClick}
-                    >
-                      {loading ? "Generiram..." : "Generiraj"}{" "}
-                    </button>
-                  </div>
+    <section className="wpo-blog-pg-section section-padding">
+      <div className="container">
+        <div className="row">
+          <div className="col col-lg-10 offset-lg-1">
+            <div className="wpo-blog-content">
+              <div className="post format-standard-image">
+                <div className="entry-details">
+                  <h3>Stvaranje liste pjesama</h3>
+                  <p>
+                    U polje ispod upišite nekoliko pjesama po vašem izboru, a
+                    umjetna inteligencija će pronaći još pjesama u stilu koji
+                    volite. Što više pjesama ili izvođača upišete, preciznije
+                    rezultate ćete dobiti.
+                  </p>
+                  <textarea
+                    autoComplete="true"
+                    className="form-control"
+                    name="pjesmeInput"
+                    id="pjesmeInput"
+                    placeholder="Oliver Dragojevič - Cesarica, Željko Bebek - Laku noć svirači ... "
+                    required
+                    minLength={2}
+                    maxLength={450}
+                    value={prompt}
+                    onChange={handleInputChange}
+                  />
+                  <br />
+                  <button
+                    className="theme-btn"
+                    type="submit"
+                    id="submitButton"
+                    onClick={handleButtonClick}
+                  >
+                    {loading ? "Generiram..." : "Generiraj"}{" "}
+                  </button>
                 </div>
               </div>
-              <div>
-                <ul id="returnFromApi" className="container">
-                  {loading
-                    ? "Ovo može potrajati nekoliko trenutaka..."
-                    : apiResponse.map((song: string) => {
-                        const httpIndex = song.indexOf("http")
-                        if (httpIndex !== -1) {
-                          const songText = song.substring(0, httpIndex).trim()
-                          const songLink = song.substring(httpIndex).trim()
+            </div>
+            <div>
+              <ul id="returnFromApi" className="container">
+                {loading
+                  ? "Ovo može potrajati nekoliko trenutaka..."
+                  : apiResponse.map((song: string) => {
+                      if (song === null || undefined) {
+                        return (
+                          <li>
+                            Postignut je dnevni limit, pokušajte ponovno
+                            kasnije.
+                          </li>
+                        )
+                      }
+                      const httpIndex = song.indexOf("http")
+                      if (httpIndex !== -1) {
+                        const songText = song.substring(0, httpIndex).trim()
+                        const songLink = song.substring(httpIndex).trim()
 
-                          return (
-                            <li>
-                              <a href={songLink} target="_blank">
-                                {songText}
-                              </a>
-                            </li>
-                          )
-                        } else {
-                          return <li>{song}</li>
-                        }
-                      })}
-                </ul>
-              </div>
+                        return (
+                          <li>
+                            <a href={songLink} target="_blank">
+                              {songText}
+                            </a>
+                          </li>
+                        )
+                      } else {
+                        return <li>{song}</li>
+                      }
+                    })}
+              </ul>
             </div>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   )
 }
 
