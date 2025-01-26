@@ -48,6 +48,14 @@ const AiIzborPjesama: React.FC = () => {
                     volite. Što više pjesama ili izvođača upišete, preciznije
                     rezultate ćete dobiti.
                   </p>
+                  <p>
+                    <small>
+                      Funkcionalnosti su u beta fazi, moguće su nepravilnosti u
+                      radu. Usluga ima dnevni limit zbog API ograničenja, molimo
+                      koristite umjereno. Zahvaljujemo na razumijevanju i
+                      strpljenju dok radimo na unapređenju usluge!
+                    </small>
+                  </p>
                   <textarea
                     autoComplete="true"
                     className="form-control"
