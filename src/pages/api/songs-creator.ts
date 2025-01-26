@@ -22,6 +22,7 @@ export const POST: APIRoute = async ({ request }) => {
     const items = completion.choices[0].message.content.split("\n")
 
     if (items.length < 2) {
+      console.log("neispravan unos")
       return new Response(
         JSON.stringify([
           "Molim Vas napišite valjane primjere pjesama i/ili izvođača.",
