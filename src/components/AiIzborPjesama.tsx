@@ -53,7 +53,7 @@ const AiIzborPjesama: React.FC = () => {
                     className="form-control"
                     name="pjesmeInput"
                     id="pjesmeInput"
-                    placeholder="Oliver Dragojevič - Cesarica, Željko Bebek - Laku noć svirači ... "
+                    placeholder="Oliver Dragojević - Cesarica, Željko Bebek - Laku noć svirači ... "
                     required
                     minLength={2}
                     maxLength={450}
