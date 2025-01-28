@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content"
-import Sticker from "../components/Sticker.astro"
-import Layout from "../layouts/Layout.astro"
-import Header from "../components/ui/Header.astro"
+import Sticker from "../../components/Sticker.astro"
+import Layout from "../../layouts/Layout.astro"
+import Header from "../../components/ui/Header.astro"
 const sparky = import.meta.env.PUBLIC_KONTAKT
 
 const data = await getCollection("stickers")

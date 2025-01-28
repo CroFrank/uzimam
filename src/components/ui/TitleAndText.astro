@@ -1,0 +1,27 @@
+---
+type Props = {
+  title: string
+  text: string
+}
+
+const { title, text } = Astro.props
+---
+
+<section class="wpo-blog-pg-section section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col col-lg-10 offset-lg-1">
+        <div class="wpo-blog-content">
+          <div class="post format-standard-image">
+            <div class="entry-details">
+              <h3>{title}</h3>
+              <p>
+                {text}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
