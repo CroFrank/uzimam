@@ -1,13 +1,14 @@
 ---
 import FashionTitle from "../../components/ui/FashionTitle.astro"
 import Header from "../../components/ui/Header.astro"
+import PriceList from "../../components/ui/PriceList.astro"
 import TitleAndText from "../../components/ui/TitleAndText.astro"
 import Layout from "../../layouts/Layout.astro"
 
 const SEO = {
   title: "Uzimam | izrada web stranice za mladence",
   description:
-    "Izradite magičnu web stranicu za vaše vjenčanje! Slike sa vjenčanja, izbor dizajna, informacije za goste, online RSVP i sve što trebate za vaš poseban dan na jednom mjestu.",
+    "Izradite magičnu web stranicu za vaše vjenčanje! Slike sa vjenčanja, izbor dizajna, informacije za goste, online RSVP, odbrojavanje i sve što trebate za vaš poseban dan na jednom mjestu.",
 }
 ---
 
@@ -17,7 +18,7 @@ const SEO = {
     subtitle="Stranica koju ćete uvijek i svugdje pokazivati svima"
   />
   <TitleAndText
-    title="Pozivnica, uspomene i trajni zapis..."
+    title="Uspomene i trajni zapis na jednom mjestu"
     text=" Prije vjenčanja, stranica služi kao pozivnica i izvor svih informacija za vaše goste. Nakon vjenčanja, stranica postaje trajni zapis vaših uspomena, uvijek dostupna za dijeljenje s obitelji i prijateljima, čuvajući vaše nezaboravne trenutke za buduće generacije."
   />
   <FashionTitle title="Izaberi jedan od 4 dizajna" />
@@ -91,125 +92,5 @@ const SEO = {
       </div>
     </div>
   </section>
-  <!-- 4 dizajna end -->
-  <!-- opis usluge start -->
-  <section class="wpo-story-section-s3 section-padding" id="story">
-    <div class="container-fluid">
-      <div class="wpo-section-title">
-        <h4 class="poort-text poort-in-right">FAQ</h4>
-      </div>
-      <div class="wpo-story-wrap">
-        <div class="wpo-story-item">
-          <div class="wpo-story-img-wrap">
-            <div class="wpo-story-img">
-              <img src="assets/images/story/story-7.jpg" alt="" />
-              <div
-                class="wpo-img-shape wow fadeInLeftSlow"
-                data-wow-duration="1200ms"
-              >
-                <img src="assets/images/story/flower-shape-1.png" alt="" />
-              </div>
-            </div>
-          </div>
-          <div class="wpo-story-content">
-            <div class="wpo-story-content-inner">
-              <h2>Što sve dobivam?</h2>
-              <ul></ul>
-              <li>Brojčanlik koji odbrojava vrijeme do početka svadbe</li>
-              <li>
-                Vaša ljubavna priča, kako ste se upoznali, kako si je
-                zaprosio...
-              </li>
-              <li>
-                Prvi set slika - prije vjenčanja, drugi set slika - sa vjenčanja
-              </li>
-              <li>Informacije o vjenčanju - lokacije, vrijeme</li>
-              <li>
-                Raspored događaja po satima - okupljanje, ceremonija, početak
-                večere...
-              </li>
-              <li>
-                Jednokratna uplata, nema potrebe za plaćanjem održavanja,
-                domene, hostinga...
-              </li>
-
-              <div class="inner-shape">
-                <img src="assets/images/story/flower-shape-2.png" alt="" />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="wpo-story-item">
-          <div class="wpo-story-img-wrap">
-            <div class="wpo-story-img">
-              <img src="assets/images/story/story-8.jpg" alt="" />
-              <div
-                class="wpo-img-shape wow fadeInRightSlow"
-                data-wow-duration="1200ms"
-              >
-                <img src="assets/images/story/flower-shape-1.png" alt="" />
-              </div>
-            </div>
-          </div>
-          <div class="wpo-story-content">
-            <div class="wpo-story-content-inner">
-              <h2>Paket +</h2>
-              <ul>
-                <li>
-                  RSVP odnosno obrazac na web stranici putem kojeg gosti mogu
-                  potvrditi svoj dolazak, napisati vam dodatnu bilješku ili
-                  odgovoriti na neka vaša pitanja
-                </li>
-                <li>
-                  Tri blog objave u kojima možete napisati više informacija o
-                  vašem vjenčanju, opisati kako zamišljate vaše vjenčanje,
-                  navesti dress code i na kraju zahvaliti svima na dolasku
-                </li>
-              </ul>
-              <div class="inner-shape">
-                <img src="assets/images/story/flower-shape-2.png" alt="" />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="wpo-story-item">
-          <div class="wpo-story-img-wrap">
-            <div class="wpo-story-img">
-              <img src="assets/images/story/story-9.jpg" alt="" />
-              <div
-                class="wpo-img-shape wow fadeInLeftSlow"
-                data-wow-duration="1200ms"
-              >
-                <img src="assets/images/story/flower-shape-1.png" alt="" />
-              </div>
-            </div>
-          </div>
-          <div class="wpo-story-content">
-            <div class="wpo-story-content-inner">
-              <h2>Želite nešto zaista posebno?</h2>
-              <ul>
-                <li>
-                  Izrada personaliziranih, posebnih, modernih pozivnica uz AI
-                  asistenciju
-                </li>
-                <li>
-                  Zapis vjenčanih zavjeta na blockchain-u, koji će trajno ostati
-                  upisan kao znak vječne ljubavi
-                </li>
-              </ul>
-              <div class="inner-shape">
-                <img src="assets/images/story/flower-shape-2.png" alt="" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- opis usluge end -->
+  <PriceList />
 </Layout>
-
-<style>
-  .naslov {
-  }
-</style>

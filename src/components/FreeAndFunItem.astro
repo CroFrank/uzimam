@@ -1,0 +1,63 @@
+---
+type Props = {
+  rightOrLeft?: boolean
+  title: string
+  text: string
+  img: string
+  link: string
+}
+
+const {
+  rightOrLeft = true,
+  title,
+  text,
+  link,
+  img = "assets/images/story/story-10.jpg",
+} = Astro.props
+---
+
+<div class="wpo-story-item">
+  <div class="row align-items-center">
+    <div class=`col-lg-6 col-12 ${rightOrLeft ? '' :'order-lg-2 order-1'}`>
+      <div
+        class=`wpo-story-img-wrap wow ${rightOrLeft ? 'fadeInLeftSlow' : 'fadeInRightSlow'}`
+        data-wow-duration="1700ms"
+      >
+        <div class="wpo-story-img">
+          <img src={img} />
+        </div>
+      </div>
+    </div>
+    <div class=`col-lg-6 col-12 ${rightOrLeft ? '' :'order-lg-1 order-2'}`>
+      <div
+        class=`wpo-story-content wow ${rightOrLeft ? 'fadeInLeftSlow' : 'fadeInRightSlow'}`
+        data-wow-duration="1700ms"
+      >
+        <div class="wpo-story-content-inner">
+          <h2>{title}</h2>
+
+          <p>
+            {text}
+          </p>
+          <br />
+          <a href={link} class="button">Posjeti</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .button {
+    padding: 10px 20px;
+    background-color: #b5a2bd;
+    color: #ffffff;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+  }
+  .button:hover {
+    background-color: #a28aac;
+  }
+</style>

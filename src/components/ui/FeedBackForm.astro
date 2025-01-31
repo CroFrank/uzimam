@@ -1,0 +1,107 @@
+---
+const sparky = import.meta.env.PUBLIC_KONTAKT
+type Props = {
+  title: string
+  text: string
+  id?: string
+}
+
+const { title, text, id = "" } = Astro.props
+---
+
+<section id={id} class="wpo-contact-pg-section section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col col-lg-10 offset-lg-1">
+        <div class="wpo-contact-title">
+          <h2>{title}</h2>
+          <p>
+            {text}
+          </p>
+        </div>
+        <div class="wpo-contact-form-area">
+          <form action={`https://submit-form.com/${sparky}`}>
+            <input type="hidden" name="_feedback.whitelabel" value="true" />
+            <input
+              type="hidden"
+              name="_feedback.success.title"
+              value="Primili smo Vašu poruku, javljamo se brzo, hvala!"
+            />
+            <input
+              type="hidden"
+              name="_feedback.success.message"
+              value="Povratak:"
+            />
+            <div>
+              <input
+                type="text"
+                class="form-control"
+                name="name"
+                id="name"
+                placeholder="Ime*"
+                required
+                minlength="1"
+                maxlength="16"
+              />
+            </div>
+            <div>
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                id="email"
+                placeholder="Vaš Email*"
+                required
+              />
+            </div>
+
+            <div class="fullwidth">
+              <textarea
+                class="form-control"
+                name="note"
+                id="note"
+                placeholder="Poruka...*"
+                required
+                minlength="4"
+                maxlength="450"></textarea>
+            </div>
+            <div class="fullwidth">
+              <label for="my-checkbox" class="label">
+                <input
+                  type="checkbox"
+                  id="my-checkbox"
+                  name="my-checkbox"
+                  required
+                />
+                Razumijem da će se osobni podaci koristiti isključivo za kontakt
+                i da se neće koristiti u druge svrhe kako je definirano u polici
+                privatnosti.
+              </label>
+            </div>
+            <div class="submit-area">
+              <button type="submit" class="theme-btn-s4">Pošalji</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .wpo-contact-pg-section {
+    margin-bottom: 200px;
+  }
+  #my-checkbox {
+    width: 30px;
+    margin-right: 31px;
+  }
+  .kontakt-area {
+    min-height: 300px;
+  }
+
+  .label {
+    display: inline-flex;
+    align-items: center;
+  }
+</style>

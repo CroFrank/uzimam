@@ -1,5 +1,5 @@
 ---
-import Newsletter from "../components/Newsletter.astro"
+import NewsletterForm from "../components/NewsletterForm.astro"
 import Header from "../components/ui/Header.astro"
 import Layout from "../layouts/Layout.astro"
 const sparky = import.meta.env.PUBLIC_KONTAKT
@@ -68,7 +68,7 @@ const sparky = import.meta.env.PUBLIC_KONTAKT
               </div>
             </div>
           </div>
-          <Newsletter />
+          <NewsletterForm />
 
           <div class="wpo-contact-title">
             <h2>Imate pitanja?</h2>
@@ -151,16 +151,11 @@ const sparky = import.meta.env.PUBLIC_KONTAKT
         </div>
       </div>
     </div>
-    <!-- end container -->
   </section>
-  <!-- end wpo-contact-pg-section -->
 
-  <!--  start wpo-contact-map -->
   <section class="kontakt-area">
     <p></p>
   </section>
-
-  <!-- end wpo-contact-map -->
 </Layout>
 <style>
   .kontakt-area {

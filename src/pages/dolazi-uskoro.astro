@@ -1,0 +1,53 @@
+---
+import NewsletterForm from "../components/NewsletterForm.astro"
+import Layout from "../layouts/Layout.astro"
+---
+
+<Layout>
+  <!-- start wpo-page-title -->
+  <section class="wpo-page-title">
+    <div class="container">
+      <div class="row">
+        <div class="col col-xs-12">
+          <div class="wpo-breadcumb-wrap">
+            <h2>Stiže uskoro!</h2>
+          </div>
+        </div>
+      </div>
+      <!-- end row -->
+    </div>
+    <!-- end container -->
+    <div class="frame-shape-1 wow fadeInLeftSlow" data-wow-duration="1200ms">
+      <img src="assets/images/slider/invitation-shape-1.png" />
+    </div>
+    <div class="frame-shape-2 wow fadeInRightSlow" data-wow-duration="1200ms">
+      <img src="assets/images/slider/invitation-shape-2.png" />
+    </div>
+  </section>
+  <!-- end page-title -->
+
+  <!-- start error-404-section -->
+  <section class="error-404-section section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col col-xs-12 padding">
+          <div class="error-message">
+            <h3>Nešto potpuno novo...</h3>
+            <p>
+              Vaši zavjeti neizbrisivno zapisani u najmodernijoj tehnologiji
+              web3
+            </p>
+            <p>
+              Prijavite se na naš newsletter i prvi saznajte kada usluga postane
+              dosupna
+            </p>
+          </div>
+        </div>
+        <div class="section-padding"><NewsletterForm /></div>
+      </div>
+    </div>
+    <!-- end row -->
+  </section>
+  <!-- end container -->
+</Layout>
+<!-- end error-404-section -->

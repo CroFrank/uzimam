@@ -1,7 +1,7 @@
 export const prerender = false
 import type { APIRoute } from "astro"
 import { OpenAI } from "openai"
-import { openAiPromptData } from "../../data/ai-songs-generator"
+import { openAiPromptData } from "../../data/ai-songs-generator-data"
 
 export const POST: APIRoute = async ({ request }) => {
   const { prompt } = await request.json()

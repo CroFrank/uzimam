@@ -1,8 +1,9 @@
 ---
 export const prerender = false
 import Layout from "../../layouts/Layout.astro"
-import AiIzborPjesama from "../../components/AiIzborPjesama.tsx"
+import AiIzborPjesamaForm from "../../components/AiIzborPjesamaForm.tsx"
 import Header from "../../components/ui/Header.astro"
+import FeedBackForm from "../../components/ui/FeedBackForm.astro"
 ---
 
 <Layout>
@@ -10,5 +11,9 @@ import Header from "../../components/ui/Header.astro"
     title="Izbor Pjesama"
     subtitle="Umjetna inteligencija će vam pomoći pronaći pjesme koje volite"
   />
-  <AiIzborPjesama client:load />
+  <AiIzborPjesamaForm client:load />
+  <FeedBackForm
+    title="Pišite nam"
+    text="Zanimaju nas vaši prigovori, zahtjevi i pohvale. Pišite nam ako stranica ne radi kako očekujete da bi trebala."
+  />
 </Layout>

@@ -1,0 +1,24 @@
+---
+export const prerender = false
+import Layout from "../layouts/Layout.astro"
+import PozivnicaForm from "../components/PozivnicaForm.tsx"
+import Header from "../components/ui/Header.astro"
+import TitleAndText from "../components/ui/TitleAndText.astro"
+import NewsletterForm from "../components/NewsletterForm.astro"
+---
+
+<Layout>
+  <Header
+    title="AI Pozivnice"
+    subtitle="Stvorite moderne i personalizirane pozivnice"
+  />
+
+  <TitleAndText
+    title="Dolazi uskoro..."
+    text="Prijavite se na naš newsletter i prvi saznajte kada usluga postane dostupna."
+  />
+
+  <NewsletterForm />
+
+  <!-- <PozivnicaForm client:load /> -->
+</Layout>

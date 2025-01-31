@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const AiIzborPjesama: React.FC = () => {
+const AiIzborPjesamaForm: React.FC = () => {
   const [prompt, setPrompt] = useState<string>("")
   const [apiResponse, setApiResponse] = useState<string[]>([])
   const [loading, setLoading] = useState<boolean>(false)
@@ -118,4 +118,4 @@ const AiIzborPjesama: React.FC = () => {
   )
 }
 
-export default AiIzborPjesama
+export default AiIzborPjesamaForm

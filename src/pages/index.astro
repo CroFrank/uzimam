@@ -2,47 +2,43 @@
 import Layout from "../layouts/Layout.astro"
 import Hero from "../components/Hero.astro"
 import Features from "../components/Features.astro"
-import Dizajn from "../components/Dizajn.astro"
-import Pozivnica from "../components/Pozivnica.astro"
 import Usluge from "../components/Usluge.astro"
+import FreeAndFunItem from "../components/FreeAndFunItem.astro"
 ---
 
 <Layout>
   <Hero />
   <Features />
   <Usluge />
-  <Dizajn />
-  <Pozivnica />
-
-  <!-- start wpo-partners-section -->
-  <section class="wpo-partners-section section-padding">
-    <h2 class="hidden">Mladenci</h2>
+  <section class="wpo-story-section-s4 section-padding" id="story">
     <div class="container">
-      <div class="row">
-        <div class="col col-xs-12">
-          <div class="partner-grids partners-slider owl-carousel">
-            <div class="grid">
-              <a class="mladenci" href="https://maja-ivan.uzimam.com/"
-                >Maja & Ivan</a
-              >
-            </div>
-            <div class="grid">
-              <a class="mladenci" href="https://matea-stipe.uzimam.com/"
-                >Matea & Stipe</a
-              >
-            </div>
-          </div>
-        </div>
+      <div class="wpo-section-title">
+        <h4 class="poort-text poort-in-right">Free & Fun Kutak</h4>
+        <h2 class="poort-text poort-in-right">Želimo vam dobu zabavu</h2>
+      </div>
+      <div class="wpo-story-wrap">
+        <FreeAndFunItem
+          link="/free-and-fun/free-wedding-stickers"
+          img="/assets/images/freeandfun/stickers.png"
+          title="Wedding stickers"
+          text="Stickeri na vjenčanju dodaju osobni i zabavni touch! 🎉 Mogu biti prilagođeni imenima mladenaca, datumom i tematikom vjenčanja, savršeni za ukrašavanje pozivnica, zahvalnica, stolova i dekoracija. Gosti ih mogu koristiti za označavanje svojih čaša, poklona ili odjeće, a također mogu poslužiti kao suvenir koji će ih podsjećati na vaš poseban dan. Osim što su povoljni, stickeri doprinose jedinstvenoj atmosferi i olakšavaju snalaženje na proslavi. 💖"
+        />
+        <FreeAndFunItem
+          link="/free-and-fun/ai-izbor-pjesama"
+          img="/assets/images/freeandfun/music.png"
+          rightOrLeft={false}
+          title="AI - izbor pjesama"
+          text="Jeste li ikada sastavljali playlistu za proslavu, ali vam je ponestalo ideja nakon nekoliko pjesama? 🎶 Za vas smo napravili mali AI alat koji vam pomaže upravo u tome! Dovoljno je unijeti nekoliko omiljenih pjesama ili izvođača, a umjetna inteligencija će vam predložiti slične hitove koji će upotpuniti vašu playlistu. 🎧✨"
+        />
+        <FreeAndFunItem
+          link="/free-and-fun/wedding-planner"
+          img="/assets/images/freeandfun/planner.png"
+          title="Wedding planner"
+          text="Uskoro stiže wedding planner – preuzmite, isprintajte i imajte sve važne detalje organizacije vjenčanja na jednom mjestu! 💍✨ Prijavite se na naš newsletter i budite među prvima koji će saznati kada postane dostupan! 🎉"
+        />
       </div>
     </div>
-    <!-- end container -->
   </section>
-  <!-- end wpo-partners-section-->
-</Layout>
 
-<style>
-  .mladenci {
-    font-family: "monallesia", "Mulish", sans-serif;
-    color: #777777;
-  }
-</style>
+  <!-- end container -->
+</Layout>

@@ -786,7 +786,7 @@
         = COUNTDOWN CLOCK
     -------------------------------------------*/
   if ($("#clock").length) {
-    $("#clock").countdown("2025-10-19 20:30:00", function (event) {
+    $("#clock").countdown("2024-10-19 20:30:00", function (event) {
       var $this = $(this).html(
         event.strftime(
           "" +

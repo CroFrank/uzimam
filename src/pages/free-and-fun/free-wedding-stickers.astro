@@ -3,7 +3,7 @@ import { getCollection } from "astro:content"
 import Sticker from "../../components/Sticker.astro"
 import Layout from "../../layouts/Layout.astro"
 import Header from "../../components/ui/Header.astro"
-const sparky = import.meta.env.PUBLIC_KONTAKT
+import FeedBackForm from "../../components/ui/FeedBackForm.astro"
 
 const data = await getCollection("stickers")
 
@@ -15,7 +15,10 @@ const SEO = {
 ---
 
 <Layout title={SEO.title} description={SEO.description}>
-  <Header title="Stickers" subtitle="Besplatno za osobnu upotrebu" />
+  <Header
+    title="Stickers"
+    subtitle="Stickeri na svadbi postaju sve popularniji jer pružaju zabavan, kreativan i personaliziran način za obogatiti proslavu"
+  />
 
   <!-- start wpo-shop-page -->
   <section class="wpo-shop-page section-padding">
@@ -29,11 +32,7 @@ const SEO = {
               <ul>
                 <li class="novi">Svaki tjedan novi stickeri</li>
                 <li>
-                  <a
-                    href="https://www.bonani.hr/"
-                    target="_blank"
-                    class="button">Naruči rezanje</a
-                  >
+                  <a href="#kontakt-stickers" class="button">Naruči rezanje</a>
                 </li>
               </ul>
             </div>
@@ -47,6 +46,7 @@ const SEO = {
         </div>
         <div class="col-lg-3 col-md-8 order-lg-1">
           <div class="wpo-shop-sidebar">
+            <div class="widget woocommerce widget_product_categories"></div>
             <div class="widget woocommerce widget_product_categories">
               <h3>Upute</h3>
               <ul class="product-categories">
@@ -75,9 +75,11 @@ const SEO = {
               <h3>Naručite strojno rezanje</h3>
               <ul class="product-categories">
                 <li class="cat-item cat-parent">
-                  <span>Izrada i rezanje po narudžbi</span>
+                  <span
+                    >Izrada i rezanje stickera i cake-toppera po narudžbi:
+                  </span>
                   <a class="link" href="https://www.bonani.hr/" target="_blank"
-                    >Obrt Bonani</a
+                    >obrt Bonani</a
                   >
                 </li>
               </ul>
@@ -85,6 +87,11 @@ const SEO = {
             <div class="widget woocommerce widget_product_categories">
               <h3>Što još?!</h3>
               <ul class="product-categories">
+                <li class="cat-item cat-parent">
+                  <a class="link" href="/free-and-fun/ai-izbor-pjesama"
+                    >AI - popis pjesama</a
+                  >
+                </li>
                 <li class="cat-item cat-parent">
                   <span>USKORO! free wedding planners</span>
                 </li>
@@ -95,88 +102,17 @@ const SEO = {
       </div>
     </div>
   </section>
-  <section class="wpo-contact-pg-section section-padding">
-    <div class="container">
-      <div class="row">
-        <div class="col col-lg-10 offset-lg-1">
-          <div class="wpo-contact-title">
-            <h2>Pišite nam</h2>
-            <p>
-              Pišite nam kakve stickere, motive, dimenzije, oblike biste htjeli
-              da napravimo
-            </p>
-          </div>
-          <div class="wpo-contact-form-area">
-            <form action={`https://submit-form.com/${sparky}`}>
-              <input type="hidden" name="_feedback.whitelabel" value="true" />
-              <input
-                type="hidden"
-                name="_feedback.success.title"
-                value="Primili smo Vašu poruku, javljamo se brzo, hvala!"
-              />
-              <input
-                type="hidden"
-                name="_feedback.success.message"
-                value="Povratak:"
-              />
-              <div>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="name"
-                  id="name"
-                  placeholder="Ime*"
-                  required
-                  minlength="1"
-                  maxlength="16"
-                />
-              </div>
-              <div>
-                <input
-                  type="email"
-                  class="form-control"
-                  name="email"
-                  id="email"
-                  placeholder="Vaš Email*"
-                  required
-                />
-              </div>
 
-              <div class="fullwidth">
-                <textarea
-                  class="form-control"
-                  name="note"
-                  id="note"
-                  placeholder="Poruka...*"
-                  required
-                  minlength="4"
-                  maxlength="450"></textarea>
-              </div>
-              <div class="fullwidth">
-                <label for="my-checkbox" class="label">
-                  <input
-                    type="checkbox"
-                    id="my-checkbox"
-                    name="my-checkbox"
-                    required
-                  />
-                  Razumijem da će se osobni podaci koristiti isključivo za kontakt
-                  i da se neće koristiti u druge svrhe kako je definirano u polici
-                  privatnosti.
-                </label>
-              </div>
-              <div class="submit-area">
-                <button type="submit" class="theme-btn-s4">Pošalji</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- end wpo-shop-page -->
+  <FeedBackForm
+    id="kontakt-stickers"
+    title="Pišite nam"
+    text="Naručite izradu i strojno rezanje personaliziranih stickera! Također, predložite vrste stickera koje biste željeli da kreiramo za besplatnu upotrebu."
+  />
 </Layout>
 <style>
+  .novi {
+    color: #a28aac;
+  }
   .button {
     padding: 10px 20px;
     background-color: #b5a2bd;
@@ -186,32 +122,12 @@ const SEO = {
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
-
   .button:hover {
     background-color: #a28aac;
-  }
-
-  .novi {
-    color: #a28aac;
   }
   .link {
     display: block;
     color: blue !important;
     padding-top: 5px;
-  }
-  .wpo-contact-pg-section {
-    margin-bottom: 200px;
-  }
-  #my-checkbox {
-    width: 30px;
-    margin-right: 31px;
-  }
-  .kontakt-area {
-    min-height: 300px;
-  }
-
-  .label {
-    display: inline-flex;
-    align-items: center;
   }
 </style>
