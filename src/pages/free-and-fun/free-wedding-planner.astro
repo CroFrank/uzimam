@@ -1,0 +1,116 @@
+---
+import FeedBackForm from "../../components/ui/FeedBackForm.astro"
+import Header from "../../components/ui/Header.astro"
+import Layout from "../../layouts/Layout.astro"
+
+const SEO = {
+  title: "Uzimam | Besplatni wedding planner",
+  description:
+    "Besplatno preuzmite wedding planner u pdf-u i organizirajte svadbu na zabavan način",
+}
+---
+
+<Layout title={SEO.title} description={SEO.description}>
+  <Header
+    title="Wedding Planner"
+    subtitle="Besplatno preuzmite wedding planner i organizirajte svadbu na zabavan način"
+  />
+  <section class="wpo-shop-page section-padding">
+    <h2 class="hidden">Weeding planner</h2>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9 order-lg-2">
+          <!-- start wpo-product-section -->
+          <div class="wpo-product-section">
+            <div class="sorting-section">
+              <ul>
+                <li class="novi"></li>
+                <li>
+                  <a href="/assets/wedding-planner.pdf" download class="button"
+                    >Preuzmi u PDF-u</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="wpo-product-wrap">
+              <div class="row">
+                <iframe
+                  src="/assets/wedding-planner.pdf#zoom=50&toolbar=0&scrollbar=0"
+                  width="100%"
+                  height="600px"></iframe>
+              </div>
+            </div>
+          </div>
+          <!-- end wpo-product-section -->
+        </div>
+        <div class="col-lg-3 col-md-8 order-lg-1">
+          <div class="wpo-shop-sidebar">
+            <div class="widget woocommerce widget_product_categories"></div>
+            <div class="widget woocommerce widget_product_categories">
+              <h3>Upute</h3>
+              <ul class="product-categories">
+                <li class="cat-item cat-parent">
+                  <span>Preuzmite besplatno u PDF-u</span>
+                </li>
+                <li class="cat-item cat-parent">
+                  <span>Isprintajte na papiru 120g</span>
+                </li>
+                <li class="cat-item cat-parent">
+                  <span>Odnesite na uvez u obližnji copy studio</span>
+                </li>
+                <li class="cat-item cat-parent">
+                  <span>Uživajte u planiranju</span>
+                </li>
+                <li class="cat-item cat-parent">
+                  <span>Samo za osobnu upotrebu</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="widget woocommerce widget_product_categories">
+              <h3>Što još?!</h3>
+              <ul class="product-categories">
+                <li class="cat-item cat-parent">
+                  <a class="link" href="/free-and-fun/ai-izbor-pjesama"
+                    >AI - popis pjesama</a
+                  >
+                </li>
+                <li class="cat-item cat-parent">
+                  <a class="link" href="/free-and-fun/free-wedding-stickers"
+                    >Free wedding stickers</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <FeedBackForm
+    title="Pišite nam"
+    text="Zanima nas vaš feedback, pohvale, kritike i želje"
+  />
+</Layout>
+<style>
+  .novi {
+    color: #a28aac;
+  }
+  .button {
+    padding: 10px 20px;
+    background-color: #b5a2bd;
+    color: #ffffff;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .button:hover {
+    background-color: #a28aac;
+  }
+  .link {
+    display: block;
+    color: blue !important;
+    padding-top: 5px;
+  }
+</style>
