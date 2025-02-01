@@ -1,0 +1,70 @@
+---
+import Preloader from "../components/Preloader.astro"
+
+type Props = {
+  title?: string
+  description?: string
+}
+
+const {
+  title = "Uzimam - web stranica za mladence",
+  description = "Stvorite online pozivnice u obliku vlastite web stranice za vaše vjenčanje. Svi detalji, informacije i uspomene na jednom mjestu, uključujući galeriju fotografija. Stranica služi kao pozivnica prije vjenčanja, a nakon toga čuva uspomene i omogućuje dijeljenje s obitelji i prijateljima. Uz opciju online potvrde dolaska gostiju, vaša svadba bit će jedinstvena i nezaboravna.",
+} = Astro.props
+---
+
+<!doctype html>
+<html lang="hr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content="Uzimam - Vaše vjenčanje na webu" />
+    <meta
+      property="og:image"
+      content="https://www.uzimam.com/assets/images/og-img.jpg"
+    />
+    <meta
+      property="og:description"
+      content="Stvorite moderne online pozivnice za Vaše vjenčanje, sačuvajte uspomene u galeriji fotografija. Savršeno za dijeljenje s obitelji i prijateljima, uvijek i svugdje"
+    />
+    <meta property="og:url" content="https://www.uzimam.com/" />
+    <meta property="og:site_name" content="Uzimam.com" />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+    <title>{title}</title>
+    <link href="/assets/css/themify-icons.css" rel="stylesheet" />
+    <link href="/assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/assets/css/flaticon.css" rel="stylesheet" />
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/assets/css/animate.css" rel="stylesheet" />
+    <link href="/assets/css/owl.carousel.css" rel="stylesheet" />
+    <link href="/assets/css/owl.theme.css" rel="stylesheet" />
+    <link href="/assets/css/slick.css" rel="stylesheet" />
+    <link href="/assets/css/slick-theme.css" rel="stylesheet" />
+    <link href="/assets/css/swiper.min.css" rel="stylesheet" />
+    <link href="/assets/css/nice-select.css" rel="stylesheet" />
+    <link href="/assets/css/owl.transitions.css" rel="stylesheet" />
+    <link href="/assets/css/magnific-popup.css" rel="stylesheet" />
+    <link href="/assets/css/jquery.fancybox.css" rel="stylesheet" />
+    <link href="/assets/css/odometer-theme-default.css" rel="stylesheet" />
+    <link href="/assets/css/jquery-ui.css" rel="stylesheet" />
+    <link href="/assets/sass/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="page-wrap">
+      <Preloader />
+      <slot />
+    </div>
+
+    <script src="/assets/js/jquery.min.js" is:inline></script>
+    <script src="/assets/js/bootstrap.bundle.min.js" is:inline></script>
+    <!-- Plugins for this template -->
+    <script src="/assets/js/modernizr.custom.js" is:inline></script>
+    <script src="/assets/js/jquery-plugin-collection.js" is:inline></script>
+    <script src="/assets/js/gsap-active.js" is:inline></script>
+    <!-- Custom script for this template -->
+    <script src="/assets/js/script.js" is:inline></script>
+  </body>
+</html>

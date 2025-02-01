@@ -14,16 +14,28 @@ interface PromptProps {
   oGostima: string
   ton: string
   prisnost: string
+  textLength: string
 }
 
 export const openAiPromptData = (prompt: PromptProps): OpenAIRequest => {
-  const { mladenka, mladozenja, gosti, oGostima, ton, prisnost } = prompt
+  const { mladenka, mladozenja, gosti, oGostima, ton, prisnost, textLength } =
+    prompt
+  let wordsNumMin = 20
+  let wordsNumMax = 50
+  if (textLength === "srednji") {
+    wordsNumMin = 40
+    wordsNumMax = 75
+  } else if (textLength === "opsiran") {
+    wordsNumMin = 60
+    wordsNumMax = 95
+  }
+
   return {
     model: "gpt-4o",
     messages: [
       {
         role: "developer",
-        content: `Kreiraj tekst za pozivnicu na vjenčanje na temelju parametara: ime mladenke ${mladenka}, ime mladoženje ${mladozenja}, imena gostiju ${gosti}, opis gostiju ${oGostima}, razina prisnosti gostiju sa mladencima ${prisnost}, ton u kojem mladenci žele pozvati goste ${ton}.  Do not respond to any other prompts or engage in conversation.Nemoj pisati o lokaciji i vremenu vjenčanja. Svaki tekst završi sa: "Sve informacije o našem vjenčanju možete pronaći na našoj web stranici www.uzimam.com"`,
+        content: `Kreiraj tekst za pozivnicu na vjenčanje na temelju parametara: imena gostiju ${gosti}, opis gostiju ${oGostima}, razina prisnosti gostiju sa mladencima ${prisnost}, ton u kojem mladenci žele pozvati goste ${ton}.Nemoj pisati o lokaciji i vremenu vjenčanja niti spominjati mladence. Neka tekst bude između ${wordsNumMin} i ${wordsNumMax} riječi, nemoj koristiti emotikone.`,
       },
     ],
   }

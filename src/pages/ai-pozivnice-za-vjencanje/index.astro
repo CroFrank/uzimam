@@ -1,0 +1,26 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import PozivnicaForm from "../../components/PozivnicaForm.tsx"
+import Header from "../../components/ui/Header.astro"
+import TitleAndText from "../../components/ui/TitleAndText.astro"
+
+const SEO = {
+  title: "Uzimam | izrada online svadbenih pozivnica",
+  description:
+    "Brzo i jednostavno izradite online svadbene pozivnice uz pomoć umjetne inteligencije! Personalizirajte dizajn, tekst i stil pozivnice prema vlastitim željama i oduševite goste modernim digitalnim rješenjem.",
+}
+---
+
+<Layout title={SEO.title} description={SEO.description}>
+  <Header
+    title="AI Pozivnice"
+    subtitle="Stvorite moderne i personalizirane pozivnice"
+  />
+
+  <TitleAndText
+    title="Online pozivnice koje vode na vašu stranicu vjenčanja"
+    text="Ovdje možete isprobati demo verziju kako izgleda primjer online pozivnice."
+  />
+
+  <PozivnicaForm client:load />
+</Layout>

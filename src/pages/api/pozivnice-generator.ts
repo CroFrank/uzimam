@@ -19,7 +19,6 @@ export const POST: APIRoute = async ({ request }) => {
         ])
       )
     }
-    console.log(completion.choices[0].message)
     const textPozivnice = completion.choices[0].message.content
 
     return new Response(JSON.stringify(textPozivnice), {
