@@ -183,44 +183,48 @@ const PozivnicaForm: React.FC = () => {
             {loading ? "Generiram..." : "Generiraj pozivnicu"}
           </button>
         </form>
-        {loading ? (
-          <section className="wpo-blog-pg-section section-padding">
-            <div className="container">
-              "Ovo može potrajati nekoliko trenutaka..."
-            </div>
-          </section>
-        ) : (
-          <section className="wpo-blog-pg-section section-padding">
-            <div className="container">
-              <div className="row">
-                <div className="col col-lg-10 offset-lg-1">
-                  <div className="wpo-blog-content">
-                    <div className="post format-standard-image">
-                      <div className="entry-details">
-                        <h3>Pozivnica je uspješno generirana</h3>
-                        <a
-                          href={`/ai-pozivnice-za-vjencanje/${randomUrl}?mladenka=${
-                            formData.mladenka
-                          }&mladozenja=${
-                            formData.mladozenja
-                          }&apiResponse=${encodeURIComponent(apiResponse)}`}
-                        >
-                          Pozivnica za vašeg gosta
-                        </a>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button
-                          onClick={handleCopy}
-                          className="theme-btn-s4 razmak"
-                        >
-                          {copied ? "Kopirano!" : "Kopiraj Link"}
-                        </button>
+        {apiResponse ? (
+          loading ? (
+            <section className="wpo-blog-pg-section section-padding">
+              <div className="container">
+                "Ovo može potrajati nekoliko trenutaka..."
+              </div>
+            </section>
+          ) : (
+            <section className="wpo-blog-pg-section section-padding">
+              <div className="container">
+                <div className="row">
+                  <div className="col col-lg-10 offset-lg-1">
+                    <div className="wpo-blog-content">
+                      <div className="post format-standard-image">
+                        <div className="entry-details">
+                          <h3>Pozivnica je uspješno generirana</h3>
+                          <a
+                            href={`/ai-pozivnice-za-vjencanje/${randomUrl}?mladenka=${
+                              formData.mladenka
+                            }&mladozenja=${
+                              formData.mladozenja
+                            }&apiResponse=${encodeURIComponent(apiResponse)}`}
+                          >
+                            Pozivnica za vašeg gosta
+                          </a>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <button
+                            onClick={handleCopy}
+                            className="theme-btn-s4 razmak"
+                          >
+                            {copied ? "Kopirano!" : "Kopiraj Link"}
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
+          )
+        ) : (
+          ""
         )}
       </div>
     </div>
