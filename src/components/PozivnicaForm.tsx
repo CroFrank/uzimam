@@ -8,6 +8,7 @@ const PozivnicaForm: React.FC = () => {
     oGostima: "",
     ton: "",
     prisnost: "",
+    date: "",
     textLength: "srednji",
   })
 
@@ -55,9 +56,9 @@ const PozivnicaForm: React.FC = () => {
       setLink(
         `uzimam.com/ai-pozivnice-za-vjencanje/${randomUrl}?mladenka=${
           formData.mladenka
-        }&mladozenja=${formData.mladozenja}&apiResponse=${encodeURIComponent(
-          apiResponse
-        )}`
+        }&mladozenja=${formData.mladozenja}&date=${
+          formData.date
+        }&apiResponse=${encodeURIComponent(apiResponse)}`
       )
     }
   }, [apiResponse])
@@ -72,11 +73,10 @@ const PozivnicaForm: React.FC = () => {
   }
 
   return (
-    <div className="wpo-checkout-area section-padding">
+    <div className="wpo-checkout-area section-padding" id="forma">
       <div className="container">
         <form onSubmit={handleSubmit}>
           <div className="row">
-            {/* <div className="col-lg-8 col-12"> */}
             <div className="caupon-wrap s2">
               <div className="wpo-section-title">
                 <h2 className="poort-text poort-in-right">Detalji pozivnice</h2>
@@ -104,6 +104,16 @@ const PozivnicaForm: React.FC = () => {
                         type="text"
                         name="mladozenja"
                         placeholder="Ime mladoženje"
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                    <div className="col-lg-6 col-md-12 col-12">
+                      <label htmlFor="date">Datum vjenčanja:</label>
+                      <input
+                        id="date"
+                        type="date"
+                        name="date"
                         onChange={handleChange}
                         required
                       />
@@ -183,46 +193,45 @@ const PozivnicaForm: React.FC = () => {
             {loading ? "Generiram..." : "Generiraj pozivnicu"}
           </button>
         </form>
-        {apiResponse ? (
-          loading ? (
-            <section className="wpo-blog-pg-section section-padding">
-              <div className="container">
-                "Ovo može potrajati nekoliko trenutaka..."
-              </div>
-            </section>
-          ) : (
-            <section className="wpo-blog-pg-section section-padding">
-              <div className="container">
-                <div className="row">
-                  <div className="col col-lg-10 offset-lg-1">
-                    <div className="wpo-blog-content">
-                      <div className="post format-standard-image">
-                        <div className="entry-details">
-                          <h3>Pozivnica je uspješno generirana</h3>
+        {loading ? (
+          <section className="wpo-blog-pg-section section-padding">
+            <div className="container">
+              "Ovo može potrajati nekoliko trenutaka..."
+            </div>
+          </section>
+        ) : apiResponse ? (
+          <section className="wpo-blog-pg-section section-padding">
+            <div className="container">
+              <div className="row">
+                <div className="col col-lg-10 offset-lg-1">
+                  <div className="wpo-blog-content">
+                    <div className="post format-standard-image">
+                      <div className="entry-details">
+                        <h3>Pozivnica je uspješno generirana</h3>
+                        <p>
+                          ovo je{" "}
                           <a
-                            href={`/ai-pozivnice-za-vjencanje/${randomUrl}?mladenka=${
+                            href={`uzimam.com/ai-pozivnice-za-vjencanje/${randomUrl}?mladenka=${
                               formData.mladenka
-                            }&mladozenja=${
-                              formData.mladozenja
+                            }&mladozenja=${formData.mladozenja}&date=${
+                              formData.date
                             }&apiResponse=${encodeURIComponent(apiResponse)}`}
                           >
-                            Pozivnica za vašeg gosta
-                          </a>
-                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          <button
-                            onClick={handleCopy}
-                            className="theme-btn-s4 razmak"
-                          >
-                            {copied ? "Kopirano!" : "Kopiraj Link"}
-                          </button>
-                        </div>
+                            link
+                          </a>{" "}
+                          koji vodi na vašu pozivnicu
+                        </p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button onClick={handleCopy} className="theme-btn-s4">
+                          {copied ? "Kopirano!" : "Kopiraj Link"}
+                        </button>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </section>
-          )
+            </div>
+          </section>
         ) : (
           ""
         )}

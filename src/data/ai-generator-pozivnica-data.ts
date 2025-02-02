@@ -8,8 +8,6 @@ interface Message {
 }
 
 interface PromptProps {
-  mladenka: string
-  mladozenja: string
   gosti: string
   oGostima: string
   ton: string
@@ -18,8 +16,7 @@ interface PromptProps {
 }
 
 export const openAiPromptData = (prompt: PromptProps): OpenAIRequest => {
-  const { mladenka, mladozenja, gosti, oGostima, ton, prisnost, textLength } =
-    prompt
+  const { gosti, oGostima, ton, prisnost, textLength } = prompt
   let wordsNumMin = 20
   let wordsNumMax = 50
   if (textLength === "srednji") {

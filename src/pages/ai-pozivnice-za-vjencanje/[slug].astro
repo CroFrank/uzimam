@@ -1,12 +1,15 @@
 ---
 export const prerender = false
-import TitleAndText from "../../components/ui/TitleAndText.astro"
 import PozivnicaLayout from "../../layouts/PozivnicaLayout.astro"
 
 const urlParams = new URLSearchParams(Astro.request.url.split("?")[1])
 
 const mladenka = urlParams.get("mladenka")
 const mladozenja = urlParams.get("mladozenja")
+const date = urlParams.get("date")
+
+const [year, month, day] = date!.split("-")
+const fixedDate = `${day}.${month}.${year}`
 let apiResponse = urlParams.get("apiResponse")
 if (!apiResponse) {
   apiResponse = ""
@@ -26,7 +29,7 @@ if (!apiResponse) {
               <h2 class="wow fadeInUp" data-wow-duration="1200ms">
                 {mladenka} & {mladozenja}
               </h2>
-              <p class="wow fadeInUp" data-wow-duration="1600ms">12.12.204.</p>
+              <p class="wow fadeInUp" data-wow-duration="1600ms">{fixedDate}</p>
             </div>
             <div
               class="middle-couple-pic wow zoomIn"
