@@ -3,7 +3,6 @@ import { useState } from "react"
 const SigninForm = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [rememberMe, setRememberMe] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [dataFromServer, setDataFromServer] = useState("")
 
@@ -111,7 +110,7 @@ const SigninForm = () => {
                   )}
                   <div className="col-lg-12 col-md-12 col-12">
                     <div className="check-box-wrap">
-                      <div className="input-box">
+                      {/* <div className="input-box">
                         <input
                           type="checkbox"
                           id="fruit4"
@@ -121,9 +120,9 @@ const SigninForm = () => {
                           onChange={() => setRememberMe(!rememberMe)}
                         />
                         <label htmlFor="fruit4">Zapamti prijavu</label>
-                      </div>
+                      </div> */}
                       <div className="forget-btn">
-                        <a href="forgot.html">Zaboravili ste šifru?</a>
+                        <a href="/obnova-lozinke">Zaboravili ste loziknu?</a>
                       </div>
                     </div>
                   </div>

@@ -3,7 +3,6 @@ import SignoutButton from "./SignoutButton"
 const accessToken = Astro.cookies.get("sb-access-token")
 const refreshToken = Astro.cookies.get("sb-refresh-token")
 const { user } = Astro.props
-console.log(user)
 ---
 
 {
@@ -32,7 +31,7 @@ console.log(user)
         <div class="mini-cart-items">
           <div class="mini-cart-item clearfix">
             <span class="mini-checkout-price">
-              Pozdrav, <span>{user.user_metadata.name}</span>
+              Pozdrav, <span>{user ? user.user_metadata.name : ""}</span>
             </span>
             <div class="mini-btn">
               <a href="/dashboard" class="view-cart-btn s1">

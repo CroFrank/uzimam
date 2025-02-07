@@ -14,9 +14,8 @@ const {
   description = "Stvorite online pozivnice u obliku vlastite web stranice za vaše vjenčanje. Svi detalji, informacije i uspomene na jednom mjestu, uključujući galeriju fotografija. Stranica služi kao pozivnica prije vjenčanja, a nakon toga čuva uspomene i omogućuje dijeljenje s obitelji i prijateljima. Uz opciju online potvrde dolaska gostiju, vaša svadba bit će jedinstvena i nezaboravna.",
 } = Astro.props
 
-const {
-  data: { user },
-} = await supabase.auth.getUser()
+const { data } = await supabase.auth.getUser()
+const user = data?.user || null
 ---
 
 <!doctype html>

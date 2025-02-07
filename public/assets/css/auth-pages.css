@@ -170,7 +170,7 @@ input[type="checkbox"]:checked:disabled + label:before {
   color: #b5a2bd;
 }
 .input-box label {
-  position: relative;
+  /* position: relative; */
   color: #676b79;
   font-weight: 500;
   font-size: 16px;
