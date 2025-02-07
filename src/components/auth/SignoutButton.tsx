@@ -19,9 +19,9 @@ const SignoutButton = () => {
     }
   }
   return (
-    <a onClick={handleLogout} className="view-cart-btn" href="">
+    <button onClick={handleLogout} className="view-cart-btn">
       Odjava
-    </a>
+    </button>
   )
 }
 
