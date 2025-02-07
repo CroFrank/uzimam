@@ -82,33 +82,46 @@ const AiIzborPjesamaForm: React.FC = () => {
             </div>
             <div>
               <ul id="returnFromApi" className="container">
-                {loading
-                  ? "Ovo može potrajati nekoliko trenutaka..."
-                  : apiResponse.map((song: string) => {
-                      if (song === null || undefined) {
-                        return (
-                          <li>
-                            Postignut je dnevni limit, pokušajte ponovno
-                            kasnije.
-                          </li>
-                        )
-                      }
-                      const httpIndex = song.indexOf("http")
-                      if (httpIndex !== -1) {
-                        const songText = song.substring(0, httpIndex).trim()
-                        const songLink = song.substring(httpIndex).trim()
+                {loading ? (
+                  <>
+                    <section className="wpo-blog-pg-section section-padding">
+                      <div className="container">
+                        Ovo može potrajati nekoliko trenutaka...
+                      </div>
+                    </section>
+                    <div className="container">
+                      <img
+                        src="/assets/images/fancybox/fancybox_loading@2x.gif"
+                        alt=""
+                      />
+                    </div>
+                  </>
+                ) : (
+                  apiResponse.map((song: string) => {
+                    if (song === null || undefined) {
+                      return (
+                        <li>
+                          Postignut je dnevni limit, pokušajte ponovno kasnije.
+                        </li>
+                      )
+                    }
+                    const httpIndex = song.indexOf("http")
+                    if (httpIndex !== -1) {
+                      const songText = song.substring(0, httpIndex).trim()
+                      const songLink = song.substring(httpIndex).trim()
 
-                        return (
-                          <li>
-                            <a href={songLink} target="_blank">
-                              {songText}
-                            </a>
-                          </li>
-                        )
-                      } else {
-                        return <li>{song}</li>
-                      }
-                    })}
+                      return (
+                        <li>
+                          <a href={songLink} target="_blank">
+                            {songText}
+                          </a>
+                        </li>
+                      )
+                    } else {
+                      return <li>{song}</li>
+                    }
+                  })
+                )}
               </ul>
             </div>
           </div>

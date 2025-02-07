@@ -194,11 +194,19 @@ const PozivnicaForm: React.FC = () => {
           </button>
         </form>
         {loading ? (
-          <section className="wpo-blog-pg-section section-padding">
+          <>
+            <section className="wpo-blog-pg-section section-padding">
+              <div className="container">
+                Ovo može potrajati nekoliko trenutaka...
+              </div>
+            </section>
             <div className="container">
-              "Ovo može potrajati nekoliko trenutaka..."
+              <img
+                src="/assets/images/fancybox/fancybox_loading@2x.gif"
+                alt=""
+              />
             </div>
-          </section>
+          </>
         ) : apiResponse ? (
           <section className="wpo-blog-pg-section section-padding">
             <div className="container">
@@ -211,7 +219,7 @@ const PozivnicaForm: React.FC = () => {
                         <p>
                           ovo je{" "}
                           <a
-                            href={`uzimam.com/ai-pozivnice-za-vjencanje/${randomUrl}?mladenka=${
+                            href={`/ai-pozivnice-za-vjencanje/${randomUrl}?mladenka=${
                               formData.mladenka
                             }&mladozenja=${formData.mladozenja}&date=${
                               formData.date

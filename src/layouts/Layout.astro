@@ -2,6 +2,7 @@
 import Footer from "../components/Footer.astro"
 import Nav from "../components/Nav.astro"
 import Preloader from "../components/Preloader.astro"
+import { supabase } from "../lib/supabase"
 
 type Props = {
   title?: string
@@ -12,6 +13,10 @@ const {
   title = "Uzimam - web stranica za mladence",
   description = "Stvorite online pozivnice u obliku vlastite web stranice za vaše vjenčanje. Svi detalji, informacije i uspomene na jednom mjestu, uključujući galeriju fotografija. Stranica služi kao pozivnica prije vjenčanja, a nakon toga čuva uspomene i omogućuje dijeljenje s obitelji i prijateljima. Uz opciju online potvrde dolaska gostiju, vaša svadba bit će jedinstvena i nezaboravna.",
 } = Astro.props
+
+const {
+  data: { user },
+} = await supabase.auth.getUser()
 ---
 
 <!doctype html>
@@ -51,13 +56,14 @@ const {
     <link href="/assets/css/jquery.fancybox.css" rel="stylesheet" />
     <link href="/assets/css/odometer-theme-default.css" rel="stylesheet" />
     <link href="/assets/css/jquery-ui.css" rel="stylesheet" />
+    <link href="/assets/css/auth-pages.css" rel="stylesheet" />
     <link href="/assets/sass/style.css" rel="stylesheet" />
   </head>
 
   <body>
     <div class="page-wrap">
       <Preloader />
-      <Nav />
+      <Nav user={user} />
       <slot />
       <Footer />
     </div>

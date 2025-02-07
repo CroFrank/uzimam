@@ -1,4 +1,3 @@
-export const prerender = false
 import type { APIRoute } from "astro"
 import { OpenAI } from "openai"
 import { openAiPromptData } from "../../data/ai-generator-pozivnica-data"

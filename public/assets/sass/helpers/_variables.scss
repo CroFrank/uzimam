@@ -1,33 +1,27 @@
 /*---------------------------
 	Fonts
 ----------------------------*/
-@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap");
 @font-face {
-  font-family: 'monallesia';
-  src: url('../fonts/monallesiascript.woff2') format('woff2'),
-       url('../fonts/monallesiascript.woff') format('woff');
+  font-family: "monallesia";
+  src: url("../fonts/monallesiascript.woff2") format("woff2"),
+    url("../fonts/monallesiascript.woff") format("woff");
   font-weight: normal;
   font-style: normal;
-
 }
-
 
 @font-face {
-  font-family: 'monallesia';
-  src: url('../fonts/monallesiascript.woff2') format('woff2'),
-       url('../fonts/monallesiascript.woff') format('woff');
+  font-family: "monallesia";
+  src: url("../fonts/monallesiascript.woff2") format("woff2"),
+    url("../fonts/monallesiascript.woff") format("woff");
   font-weight: normal;
   font-style: normal;
-
 }
-
 
 // fonts
 $base-font-size: 15;
 $base-font: "Mulish", sans-serif;
-$heading-font: 'monallesia';
-
+$heading-font: "Cormorant Garamond", serif;
 
 // color
 $dark-gray: #242424;
@@ -38,22 +32,22 @@ $black: #000;
 $small-black: #333;
 $cyan: #848892;
 
-$theme-primary-color: #B5A2BD;
-$theme-primary-color-s2: #CAA6C7;
-$theme-primary-color-s3: #515A44;
-$theme-primary-color-s4: #767A90;
-$theme-primary-color-s5: #ACBBD4;
-$theme-primary-color-s6: #9DAEBB;
-$theme-primary-color-s7: #D4B0A5;
+$theme-primary-color: #b5a2bd;
+$theme-primary-color-s2: #caa6c7;
+$theme-primary-color-s3: #515a44;
+$theme-primary-color-s4: #767a90;
+$theme-primary-color-s5: #acbbd4;
+$theme-primary-color-s6: #9daebb;
+$theme-primary-color-s7: #d4b0a5;
 $body-bg-color: #fff;
-$section-bg-color: #FCFDFA;
-$section-bg-color-s2: #FAF2EE;
-$section-bg-color-s3: #F1F3EE;
-$section-bg-color-s4: #F5F5F5;
+$section-bg-color: #fcfdfa;
+$section-bg-color-s2: #faf2ee;
+$section-bg-color-s3: #f1f3ee;
+$section-bg-color-s4: #f5f5f5;
 $text-color: #707070;
-$text-color2: #ABABAB;
-$text-light-color: #E8E8E8;
+$text-color2: #ababab;
+$text-light-color: #e8e8e8;
 $heading-color: $dark-gray;
-$heading-color2: #3F3F3F;
-$border-color: #F3ECE9;
+$heading-color2: #3f3f3f;
+$border-color: #f3ece9;
 $border-color-s2: #e4ebf2;

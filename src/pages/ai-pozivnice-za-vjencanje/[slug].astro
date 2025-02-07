@@ -1,16 +1,16 @@
 ---
-export const prerender = false
 import PozivnicaLayout from "../../layouts/PozivnicaLayout.astro"
 
 const urlParams = new URLSearchParams(Astro.request.url.split("?")[1])
 
-const mladenka = urlParams.get("mladenka")
-const mladozenja = urlParams.get("mladozenja")
-const date = urlParams.get("date")
+const mladenka = urlParams.get("mladenka") || ""
+const mladozenja = urlParams.get("mladozenja") || ""
+const date = urlParams.get("date") || ""
 
 const [year, month, day] = date!.split("-")
 const fixedDate = `${day}.${month}.${year}`
-let apiResponse = urlParams.get("apiResponse")
+
+let apiResponse = urlParams.get("apiResponse") || ""
 if (!apiResponse) {
   apiResponse = ""
 }
