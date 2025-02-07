@@ -12,7 +12,8 @@ const RegisterForm = () => {
     confirmPassword: "",
   })
 
-  const strong = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+  const strong = /^(?=.*[A-Z])(?=.*\d)(?=.*\W)[A-Za-z\d\W]{8,}$/
+
   const sanitizeInput = (input: string) => {
     return input.replace(/[<>]/g, "")
   }

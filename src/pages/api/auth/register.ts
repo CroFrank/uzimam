@@ -17,8 +17,7 @@ export const POST: APIRoute = async ({ request }) => {
     })
   }
 
-  const strongPasswordRegex =
-    /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+  const strongPasswordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*\W)[A-Za-z\d\W]{8,}$/
 
   if (!strongPasswordRegex.test(password)) {
     return new Response(
