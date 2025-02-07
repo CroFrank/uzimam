@@ -20,6 +20,9 @@ export const POST: APIRoute = async ({ request }) => {
   const strongPasswordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*\W)[A-Za-z\d\W]{8,}$/
 
   if (!strongPasswordRegex.test(password)) {
+    console.log(
+      "Lozinka mora sadržavati minimalno 8 znakova od kojih barem jedan broj, veliko slovo i poseban znak '!?%...'"
+    )
     return new Response(
       JSON.stringify(
         "Lozinka mora sadržavati minimalno 8 znakova od kojih barem jedan broj, veliko slovo i poseban znak '!?%...'"

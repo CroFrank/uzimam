@@ -16,6 +16,7 @@ export const POST: APIRoute = async ({ request, cookies }) => {
     })
 
     if (error) {
+      console.log(error)
       return new Response(JSON.stringify("Neispravan unos."), { status: 401 })
     }
 
@@ -24,7 +25,7 @@ export const POST: APIRoute = async ({ request, cookies }) => {
       path: "/",
       httpOnly: true,
       // secure: true,
-      sameSite: "strict",
+      sameSite: "lax",
       maxAge: 60 * 60,
     })
 
@@ -32,7 +33,7 @@ export const POST: APIRoute = async ({ request, cookies }) => {
       path: "/",
       httpOnly: true,
       // secure: true,
-      sameSite: "strict",
+      sameSite: "lax",
       maxAge: 60 * 60 * 24 * 90,
     })
     return new Response(
