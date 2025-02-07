@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro"
 
-export const GET: APIRoute = async ({ cookies }) => {
+export const POST: APIRoute = async ({ cookies }) => {
   cookies.delete("sb-access-token", {
     path: "/",
     secure: true,
