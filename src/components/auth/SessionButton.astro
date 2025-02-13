@@ -1,12 +1,11 @@
 ---
 import SignoutButton from "./SignoutButton"
-const accessToken = Astro.cookies.get("sb-access-token")
-const refreshToken = Astro.cookies.get("sb-refresh-token")
-const { user } = Astro.props
+
+const { name } = Astro.locals
 ---
 
 {
-  !accessToken || !refreshToken ? (
+  !name ? (
     <a href="/signin" class="theme-btn-s4">
       <i
         class="fi flaticon-user"
@@ -31,12 +30,17 @@ const { user } = Astro.props
         <div class="mini-cart-items">
           <div class="mini-cart-item clearfix">
             <span class="mini-checkout-price">
-              Pozdrav, <span>{user ? user.user_metadata.name : ""}</span>
+              Pozdrav, <span>{name ? name : "error"}</span>
             </span>
             <div class="mini-btn">
-              <a href="/dashboard" class="view-cart-btn s1">
+              <a
+                href="/dashboard"
+                class="view-cart-btn s1"
+                style="text-align: center;"
+              >
                 Dashboard
               </a>
+
               <SignoutButton client:load />
             </div>
           </div>

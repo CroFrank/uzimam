@@ -26,7 +26,6 @@ export const POST: APIRoute = async ({ request, cookies }) => {
       httpOnly: true,
       // secure: true,
       sameSite: "lax",
-      maxAge: 60 * 60,
     })
 
     cookies.set("sb-refresh-token", refresh_token, {
@@ -34,7 +33,6 @@ export const POST: APIRoute = async ({ request, cookies }) => {
       httpOnly: true,
       // secure: true,
       sameSite: "lax",
-      maxAge: 60 * 60 * 24 * 90,
     })
     return new Response(
       JSON.stringify({ success: true, redirect: "/dashboard" }),

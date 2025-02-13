@@ -1,46 +1,25 @@
 ---
 import SignoutButton from "../components/auth/SignoutButton"
+import Header from "../components/ui/Header.astro"
+import UserInterface from "../components/UserInterface"
 import Layout from "../layouts/Layout.astro"
-import { supabase } from "../lib/supabase"
 
-const accessToken = Astro.cookies.get("sb-access-token")
-const refreshToken = Astro.cookies.get("sb-refresh-token")
+const { name, id } = Astro.locals
 
-if (!accessToken || !refreshToken) {
+if (!name || !id) {
   return Astro.redirect("/signin")
 }
-
-let session
-try {
-  session = await supabase.auth.setSession({
-    refresh_token: refreshToken.value,
-    access_token: accessToken.value,
-  })
-  if (session.error) {
-    Astro.cookies.delete("sb-access-token", {
-      path: "/",
-    })
-    Astro.cookies.delete("sb-refresh-token", {
-      path: "/",
-    })
-    return Astro.redirect("/signin")
-  }
-} catch (error) {
-  Astro.cookies.delete("sb-access-token", {
-    path: "/",
-  })
-  Astro.cookies.delete("sb-refresh-token", {
-    path: "/",
-  })
-  return Astro.redirect("/signin")
-}
-
-const email = session.data.user?.email
 ---
 
-<Layout title="dashboard">
-  <h1>Welcome {email}</h1>
-  <p>We are happy to see you here</p>
-  <SignoutButton client:load />
-  <br />
+<Layout>
+  <Header title={`Dobrodošli ${name}`} />
+  <div class="container section-padding">
+    <UserInterface client:load id={id} />
+
+    <div class="d-flex">
+      <div class="ms-auto">
+        <SignoutButton client:load />
+      </div>
+    </div>
+  </div>
 </Layout>

@@ -74,24 +74,6 @@ const RegisterForm = () => {
         <div className="row">
           <div className="col-lg-12">
             <form className="wpo-accountWrapper" onSubmit={handleSubmit}>
-              <div className="wpo-accountInfo">
-                <div className="wpo-accountInfoHeader">
-                  <a href="#">
-                    <img src="assets/images/logo/logo-bijeli.svg" alt="" />
-                  </a>
-                  <a className="wpo-accountBtn" href="/signin">
-                    <span className="">Prijava</span>
-                  </a>
-                </div>
-                <div className="image">
-                  <img src="assets/images/login.svg" alt="" />
-                </div>
-                <div className="back-home">
-                  <a className="wpo-accountBtn" href="/">
-                    <span className="">Naslovnica</span>
-                  </a>
-                </div>
-              </div>
               <div className="wpo-accountForm form-style">
                 <div className="fromTitle">
                   <h2>Registracija</h2>

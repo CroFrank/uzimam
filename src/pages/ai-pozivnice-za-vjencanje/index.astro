@@ -1,8 +1,8 @@
 ---
+export const prerender = true
 import Layout from "../../layouts/Layout.astro"
 import PozivnicaForm from "../../components/PozivnicaForm.tsx"
 import Header from "../../components/ui/Header.astro"
-const sparky = import.meta.env.PUBLIC_KONTAKT
 
 const SEO = {
   title: "Uzimam | izrada online svadbenih pozivnica",
@@ -22,7 +22,7 @@ const SEO = {
       <div class="row">
         <div class="col col-lg-10 offset-lg-1">
           <div class="wpo-faq-section">
-            <h4>Isprobajte demo verziju pozivnica</h4>
+            <h4>FAQ</h4>
             <div class="row">
               <div class="col-lg-12 col-md-12 col-12">
                 <div class="accordion" id="accordionExample">
@@ -36,7 +36,7 @@ const SEO = {
                         aria-expanded="true"
                         aria-controls="collapseOne"
                       >
-                        Kako mogu isprobati demo verziju?
+                        Što su ai pozivnice?
                       </button>
                     </h3>
                     <div
@@ -47,10 +47,16 @@ const SEO = {
                     >
                       <div class="accordion-body">
                         <p>
-                          Popunite <a href="/ai-pozivnice-za-vjencanje#forma"
-                            >formu - "Detalji pozivnice"</a
-                          > i kroz nekoliko trenutaka generirat će se link koji vodi
-                          na vašu personaliziranu pozivnicu.
+                          AI pozivnice su digitalne pozivnice koje možete slati
+                          gostima putem e-maila, WhatsAppa ili drugih platformi
+                          jednostavnim dijeljenjem linka. Svaka pozivnica otvara
+                          personaliziranu web stranicu s tekstom generiranim
+                          pomoću umjetne inteligencije, prilagođenim vašim
+                          gostima i tonu koji želite postići. Uz to, svaka
+                          pozivnica sadrži link koji vodi do vaše stranice
+                          vjenčanja, gdje gosti mogu saznati više informacija o
+                          vjenčanju te pratiti novosti vezane uz vaš poseban
+                          dan.
                         </p>
                       </div>
                     </div>
@@ -65,8 +71,7 @@ const SEO = {
                         aria-expanded="false"
                         aria-controls="collapseTwo"
                       >
-                        Mogu li urediti tekst pozivnice ako želim napraviti neke
-                        izmjene?
+                        Kako to funkcionira?
                       </button>
                     </h3>
                     <div
@@ -77,13 +82,13 @@ const SEO = {
                     >
                       <div class="accordion-body">
                         <p>
-                          Naravno, ali za to ćete trebati pristup kompletnoj
-                          demo verziji. Javite nam se putem <a
-                            href="/ai-pozivnice-za-vjencanje#obrazac
-                          "
-                            >obrasca</a
-                          > na dnu ove stranice, a mi ćemo vam dati privremene pristupne
-                          podatke.
+                          Jednostavno popunite obrazac s podacima o gostima, a
+                          umjetna inteligencija će generirati prijedlog teksta
+                          pozivnice, koji možete dodatno prilagoditi prema
+                          vlastitim željama. Nakon toga birate dizajn pozivnice
+                          koji vam se najviše sviđa, a sustav vam generira
+                          jedinstveni link. Taj link možete podijeliti s gostima
+                          putem e-maila, WhatsAppa ili društvenih mreža.
                         </p>
                       </div>
                     </div>
@@ -98,7 +103,7 @@ const SEO = {
                         aria-expanded="false"
                         aria-controls="collapseThree"
                       >
-                        Što sve mogu u kompletnoj demo verziji?
+                        Što još dobivam uz ai pozivnice?
                       </button>
                     </h3>
                     <div
@@ -109,10 +114,17 @@ const SEO = {
                     >
                       <div class="accordion-body">
                         <p>
-                          Osim što možete upravljati tekstom pozivnice, možete
-                          voditi popis svih uzvanika, označiti kome ste već
-                          uputili pozivnice, tko je potvrdio dolazak, otkazao
-                          ili još nije odgovorio te razne druge opcije.
+                          AI pozivnice su dio našeg Diamond paketa, koji također
+                          uključuje korisničko sučelje u kojem ćete moći:
+                          <br />
+                          - Voditi popis svih gostiju.
+                          <br />
+                          - Pratiti status tko je potvrdio dolazak.
+                          <br />
+                          - Pratiti kome ste poslali pozivnice i druge informacije.
+                          <br />
+                          Sve ove funkcionalnosti omogućuju vam da jednostavno upravljate
+                          pozivnicama i pratite sve relevantne detalje za vaše vjenčanje.
                         </p>
                       </div>
                     </div>
@@ -127,7 +139,7 @@ const SEO = {
                         aria-expanded="false"
                         aria-controls="collapseFour"
                       >
-                        Je li kompletna demo verzija besplatna?
+                        Mogu li prvo isprobati uslugu?
                       </button>
                     </h3>
                     <div
@@ -138,11 +150,10 @@ const SEO = {
                     >
                       <div class="accordion-body">
                         <p>
-                          Je, potpuno je besplatna 24 sata nakon što zaprimite
-                          privremene pristupne podatke. Nakon toga možete preći
-                          na punu plaćenu verziju, a cjenik se nalazi <a
-                            href="/cjenik">ovdje</a
-                          >.
+                          Naravno, možete isprobati besplatnu verziju, a sve što
+                          vam je potrebno za to je jednostavna registracija na
+                          našu platformu putem gumba u gornjem desnom kutu ili
+                          ovog <a href="/register">linka</a>.
                         </p>
                       </div>
                     </div>
@@ -154,104 +165,9 @@ const SEO = {
           <!-- end wpo-faq-section -->
         </div>
 
-        <PozivnicaForm client:load />
+        <PozivnicaForm client:only="react" />
       </div>
     </div>
-
-    <section id="obrazac" class="wpo-contact-pg-section section-padding">
-      <div class="container">
-        <div class="row">
-          <div class="col col-lg-10 offset-lg-1">
-            <div class="wpo-contact-title">
-              <h2>Pristupni podatci</h2>
-              <p>
-                Na mail će vam stići pristupni podatci za pristup kompletnoj
-                demo verziji
-              </p>
-            </div>
-            <div class="wpo-contact-form-area">
-              <form action={`https://submit-form.com/${sparky}`}>
-                <input type="hidden" name="_feedback.whitelabel" value="true" />
-                <input
-                  type="hidden"
-                  name="_feedback.success.title"
-                  value="Primili smo Vašu poruku, javljamo se brzo, hvala!"
-                />
-                <input
-                  type="hidden"
-                  name="_feedback.success.message"
-                  value="Povratak:"
-                />
-                <div>
-                  <input
-                    type="text"
-                    class="form-control"
-                    name="name"
-                    id="name"
-                    placeholder="Ime*"
-                    required
-                    minlength="1"
-                    maxlength="16"
-                  />
-                </div>
-                <div>
-                  <input
-                    type="email"
-                    class="form-control"
-                    name="email"
-                    id="email"
-                    placeholder="Vaš Email*"
-                    required
-                  />
-                </div>
-
-                <div class="fullwidth">
-                  <input
-                    type="text"
-                    class="form-control"
-                    name="kako-sam-saznao-za-uzimam"
-                    id="kako-sam-saznao-za-uzimam"
-                    placeholder="Kako ste saznali za uzimam.com?"
-                    required
-                    minlength="3"
-                    maxlength="226"
-                  />
-                </div>
-                <div class="fullwidth">
-                  <label for="my-checkbox1" class="label">
-                    <input
-                      type="checkbox"
-                      id="my-checkbox1"
-                      name="my-checkbox"
-                      class="my-checkbox"
-                      required
-                    />
-                    Želim privremene pristupne podatke
-                  </label>
-                </div>
-                <div class="fullwidth">
-                  <label for="my-checkbox" class="label">
-                    <input
-                      type="checkbox"
-                      id="my-checkbox"
-                      name="my-checkbox"
-                      class="my-checkbox"
-                      required
-                    />
-                    Razumijem da će se osobni podaci koristiti isključivo za kontakt
-                    i da se neće koristiti u druge svrhe kako je definirano u polici
-                    privatnosti.
-                  </label>
-                </div>
-                <div class="submit-area">
-                  <button type="submit" class="theme-btn-s4">Pošalji</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
   </section>
 </Layout>
 

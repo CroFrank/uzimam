@@ -126,7 +126,7 @@ const PozivnicaForm: React.FC = () => {
                         id="gosti"
                         type="text"
                         name="gosti"
-                        placeholder="npr. Ana, Luka i sin Tin"
+                        placeholder="npr. Ana i Luka"
                         onChange={handleChange}
                         required
                       />
@@ -139,7 +139,7 @@ const PozivnicaForm: React.FC = () => {
                         id="prisnost"
                         type="text"
                         name="prisnost"
-                        placeholder="npr. bliski prijatelji, daleka rodbina - slab kontakt"
+                        placeholder="npr. bliski prijatelji, samo poznanici..."
                         onChange={handleChange}
                         required
                       />
@@ -152,7 +152,7 @@ const PozivnicaForm: React.FC = () => {
                         id="oGostima"
                         type="text"
                         name="oGostima"
-                        placeholder="Ana je profesorica i pomalo stroga, Luka voli nogomet, Tin je naučio hodati"
+                        placeholder="Ana je teta u vrtiću, Luka voli nogomet"
                         onChange={handleChange}
                         required
                       />
@@ -165,7 +165,7 @@ const PozivnicaForm: React.FC = () => {
                         id="ton"
                         type="text"
                         name="ton"
-                        placeholder="Ton pozivnice (npr. šaljiv, formalan...)"
+                        placeholder="npr šaljiv, formalan..."
                         onChange={handleChange}
                         required
                       />

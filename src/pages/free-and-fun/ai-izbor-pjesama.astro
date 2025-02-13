@@ -2,17 +2,12 @@
 import Layout from "../../layouts/Layout.astro"
 import AiIzborPjesamaForm from "../../components/AiIzborPjesamaForm.tsx"
 import Header from "../../components/ui/Header.astro"
-import FeedBackForm from "../../components/ui/FeedBackForm.astro"
 ---
 
 <Layout>
   <Header
     title="Izbor Pjesama"
-    subtitle="Umjetna inteligencija će vam pomoći pronaći pjesme koje volite"
+    subtitle="Umjetna inteligencija pomoći će vam pronaći pjesme koje volite"
   />
   <AiIzborPjesamaForm client:load />
-  <FeedBackForm
-    title="Pišite nam"
-    text="Zanimaju nas vaši prigovori, zahtjevi i pohvale. Pišite nam ako stranica ne radi kako očekujete da bi trebala."
-  />
 </Layout>

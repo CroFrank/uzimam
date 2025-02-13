@@ -1,4 +1,5 @@
 ---
+export const prerender = true
 import FeedBackForm from "../../components/ui/FeedBackForm.astro"
 import Header from "../../components/ui/Header.astro"
 import Layout from "../../layouts/Layout.astro"
@@ -6,14 +7,14 @@ import Layout from "../../layouts/Layout.astro"
 const SEO = {
   title: "Uzimam | Besplatni wedding planner",
   description:
-    "Besplatno preuzmite wedding planner u pdf-u i organizirajte svadbu na zabavan način",
+    "Besplatno preuzmite wedding planner u pdf-u i organizirajte vjenčanje na zabavan način",
 }
 ---
 
 <Layout title={SEO.title} description={SEO.description}>
   <Header
     title="Wedding Planner"
-    subtitle="Besplatno preuzmite wedding planner i organizirajte svadbu na zabavan način"
+    subtitle="Besplatno preuzmite wedding planner i organizirajte vjenčanje na zabavan način"
   />
   <section class="wpo-shop-page section-padding">
     <h2 class="hidden">Weeding planner</h2>

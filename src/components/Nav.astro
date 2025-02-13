@@ -1,6 +1,5 @@
 ---
 import SessionButton from "./auth/SessionButton.astro"
-const { user } = Astro.props
 ---
 
 <header id="header">
@@ -56,35 +55,10 @@ const { user } = Astro.props
                 <li class="menu-item-has-children">
                   <a>Usluge</a>
                   <ul class="sub-menu">
-                    <li class="menu-item-has-children">
-                      <a>Web stranica</a>
-                      <ul class="sub-menu">
-                        <li>
-                          <a href="/izrada-web-stranica-za-mladence"
-                            >Izrada stranice</a
-                          >
-                        </li>
-                        <li>
-                          <a href="/izrada-web-stranica-za-mladence/dizajn-1"
-                            >Dizajn Flora</a
-                          >
-                        </li>
-                        <li>
-                          <a href="/izrada-web-stranica-za-mladence/dizajn-2"
-                            >Dizajn Bella</a
-                          >
-                        </li>
-                        <li>
-                          <a href="/izrada-web-stranica-za-mladence/dizajn-3"
-                            >Dizajn Clara</a
-                          >
-                        </li>
-                        <li>
-                          <a href="/izrada-web-stranica-za-mladence/dizajn-4"
-                            >Dizajn Aurea</a
-                          >
-                        </li>
-                      </ul>
+                    <li>
+                      <a href="/izrada-web-stranica-za-mladence"
+                        >Izrada stranice</a
+                      >
                     </li>
                     <li>
                       <a href="/ai-pozivnice-za-vjencanje">AI pozivnice</a>
@@ -102,7 +76,7 @@ const { user } = Astro.props
             <!-- end of nav-collapse -->
           </div>
           <div class="col-1">
-            <SessionButton user={user} />
+            <SessionButton />
             <!-- <a href="/login"><i class="ti-user"></i></a> -->
           </div>
         </div>
