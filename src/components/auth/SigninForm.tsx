@@ -93,7 +93,7 @@ const SigninForm = () => {
                   <div className="col-lg-12 col-md-12 col-12">
                     <div className="check-box-wrap">
                       <div className="forget-btn">
-                        <a href="/obnova-lozinke">Zaboravili ste loziknu?</a>
+                        <a href="/obnova-lozinke">Zaboravili ste lozinku?</a>
                       </div>
                     </div>
                   </div>

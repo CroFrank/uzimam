@@ -8,6 +8,13 @@ interface Guest {
   confirmed: boolean
 }
 
+interface Client {
+  id: string
+  herName: string
+  hisName: string
+  date: string
+}
+
 const UserInterface = ({ id }: any) => {
   const [formDataGuest, setFormDataGuest] = useState({
     id,
@@ -17,12 +24,15 @@ const UserInterface = ({ id }: any) => {
     confirmed: false,
   })
   const [formDataClient, setFormDataClient] = useState({
+    id,
     herName: "",
     hisName: "",
     date: "",
   })
   const [guests, setGuests] = useState<Guest[]>([])
-  const [loading, setLoading] = useState(false)
+  const [client, setClient] = useState(false)
+  const [loadingGuest, setLoadingGuest] = useState(false)
+  const [loadingClient, setLoadingClient] = useState(false)
   const [message, setMessage] = useState("")
 
   const handleChangeGuest = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,9 +48,9 @@ const UserInterface = ({ id }: any) => {
     setFormDataClient({ ...formDataClient, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmitGuest = async (e: React.FormEvent) => {
     e.preventDefault()
-    setLoading(true)
+    setLoadingGuest(true)
     try {
       const response = await fetch("/api/supabase/saveGuest", {
         method: "POST",
@@ -58,15 +68,42 @@ const UserInterface = ({ id }: any) => {
       console.error("Greška:", error)
       setMessage("Greška pri slanju podataka")
     }
-    fetchData()
-    setLoading(false)
+    fetchDataGuests()
+    setLoadingGuest(false)
+  }
+
+  const handleSubmitClient = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoadingClient(true)
+    try {
+      const response = await fetch("/api/supabase/saveClient", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formDataClient),
+      })
+      if (!response.ok) {
+        setMessage("Greška pri slanju podataka")
+      }
+      const data = await response.json()
+      setMessage(data)
+    } catch (error) {
+      console.error("Greška:", error)
+      setMessage("Greška pri slanju podataka")
+    }
+    fetchDataGuests()
+    setLoadingClient(false)
+    fetchDataClient()
   }
 
   useEffect(() => {
-    fetchData()
+    console.log(client)
+    fetchDataGuests()
+    fetchDataClient()
   }, [])
 
-  const fetchData = async () => {
+  const fetchDataGuests = async () => {
     try {
       const response = await fetch("/api/supabase/getAllGuests", {
         method: "POST",
@@ -89,6 +126,37 @@ const UserInterface = ({ id }: any) => {
     }
   }
 
+  const fetchDataClient = async () => {
+    try {
+      const response = await fetch("/api/supabase/getClient", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id }),
+      })
+      if (!response.ok) {
+        setMessage("Greška pri dohvaćanju podataka")
+        return
+      }
+      const { success, data } = await response.json()
+
+      if (success && data) {
+        setClient({
+          id: data.id,
+          hisName: data.hisname,
+          herName: data.hername,
+          date: data.date,
+        })
+      } else {
+        setClient(null)
+      }
+    } catch (error) {
+      setMessage("Error, pokušajte ponovno kasnije.")
+      setClient(null)
+    }
+  }
+
   const deleteGuest = async (id: string) => {
     try {
       const response = await fetch("/api/supabase/deleteGuest", {
@@ -105,20 +173,41 @@ const UserInterface = ({ id }: any) => {
     } catch (error) {
       setMessage("Došlo je do pogreške, pokušajte ponovno kasnije.")
     }
-    fetchData()
+    fetchDataGuests()
+  }
+
+  const deleteClient = async (id: string) => {
+    try {
+      const response = await fetch("/api/supabase/deleteClient", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id }),
+      })
+
+      if (!response.ok) {
+        setMessage("Greška pri brisanju klijenta")
+      }
+    } catch (error) {
+      setMessage("Došlo je do pogreške, pokušajte ponovno kasnije.")
+    }
+    setClient(null)
   }
 
   return (
     <div>
       <div className="mb-5">
         <h2 className="mb-5 text-center">O vama</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmitClient}>
           <table className="container text-center">
             <thead>
               <tr className="bg-gray-200">
                 <th className="p-2 border">Ime mladenke</th>
                 <th className="p-2 border">Ime mladoženje</th>
                 <th className="p-2 border">Datum vjenčanja</th>
+                <th className="p-2 border">Spremi</th>
+                <th className="p-2 border">Obriši</th>
               </tr>
             </thead>
             <tbody>
@@ -133,9 +222,10 @@ const UserInterface = ({ id }: any) => {
                       outline: "none",
                       border: "none",
                     }}
-                    value={formDataClient.herName}
+                    value={client ? client.herName : formDataClient.herName}
                     onChange={(e) => handleChangeClient(e)}
                     placeholder="Ime"
+                    readOnly={client ? true : false}
                   />
                 </td>
                 <td className="p-0 border">
@@ -148,9 +238,10 @@ const UserInterface = ({ id }: any) => {
                       outline: "none",
                       border: "none",
                     }}
-                    value={formDataClient.hisName}
+                    value={client ? client.hisName : formDataClient.hisName}
                     onChange={(e) => handleChangeClient(e)}
                     placeholder="Ime"
+                    readOnly={client ? true : false}
                   />
                 </td>
                 <td className="p-2 border">
@@ -158,9 +249,31 @@ const UserInterface = ({ id }: any) => {
                     type="date"
                     name="date"
                     className="d-inline text-center align-middle"
-                    value={formDataClient.date}
+                    value={client ? client.date : formDataClient.date}
                     onChange={(e) => handleChangeClient(e)}
+                    readOnly={client ? true : false}
                   />
+                </td>
+                <td className="p-2 border">
+                  <button
+                    className="bg-success text-white px-2 py-1 rounded"
+                    type="submit"
+                  >
+                    {" "}
+                    {loadingClient ? (
+                      <img src="/assets/images/fancybox/fancybox_loading.gif" />
+                    ) : (
+                      <i className="fi flaticon-heart "></i>
+                    )}{" "}
+                  </button>
+                </td>
+                <td className="p-2 border">
+                  <button
+                    className="bg-danger text-black px-2 py-1 rounded"
+                    onClick={() => deleteClient(client.id)}
+                  >
+                    <i className="fi flaticon-heart "></i>{" "}
+                  </button>
                 </td>
               </tr>
             </tbody>
@@ -168,7 +281,7 @@ const UserInterface = ({ id }: any) => {
         </form>
       </div>
       <h2 className="mb-5 text-center">Dodaj gosta</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmitGuest}>
         <table className="container text-center">
           <thead>
             <tr className="bg-gray-200">
@@ -231,7 +344,7 @@ const UserInterface = ({ id }: any) => {
         </table>
         {message ? <p>{message}</p> : ""}
         <button className="view-cart-btn s1" type="submit">
-          {loading ? "Šaljem..." : " Dodaj gosta"}
+          {loadingGuest ? "Šaljem..." : " Dodaj gosta"}
         </button>
       </form>
       <h2 className="mb-5 text-center">Popis uzvanika</h2>
