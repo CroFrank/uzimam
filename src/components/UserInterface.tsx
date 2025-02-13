@@ -88,6 +88,7 @@ const UserInterface = ({ id }: any) => {
       setMessage("Error, pokušajte ponovno kasnije.")
     }
   }
+
   const deleteGuest = async (id: string) => {
     try {
       const response = await fetch("/api/supabase/deleteGuest", {
@@ -104,6 +105,7 @@ const UserInterface = ({ id }: any) => {
     } catch (error) {
       setMessage("Došlo je do pogreške, pokušajte ponovno kasnije.")
     }
+    fetchData()
   }
 
   return (
