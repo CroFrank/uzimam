@@ -3,6 +3,9 @@ export const prerender = true
 import Layout from "../../layouts/Layout.astro"
 import PozivnicaForm from "../../components/PozivnicaForm.tsx"
 import Header from "../../components/ui/Header.astro"
+import FaqItem from "../../components/ui/FaqItem.astro"
+import FashionTitle from "../../components/ui/FashionTitle.astro"
+const { id } = Astro.locals
 
 const SEO = {
   title: "Uzimam | izrada online svadbenih pozivnica",
@@ -21,156 +24,144 @@ const SEO = {
     <div class="container">
       <div class="row">
         <div class="col col-lg-10 offset-lg-1">
-          <div class="wpo-faq-section">
+          <div class="wpo-faq-section section-padding">
             <h4>FAQ</h4>
             <div class="row">
               <div class="col-lg-12 col-md-12 col-12">
                 <div class="accordion" id="accordionExample">
-                  <div class="accordion-item">
-                    <h3 class="accordion-header" id="headingOne">
-                      <button
-                        class="accordion-button"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseOne"
-                        aria-expanded="true"
-                        aria-controls="collapseOne"
-                      >
-                        Što su ai pozivnice?
-                      </button>
-                    </h3>
-                    <div
-                      id="collapseOne"
-                      class="accordion-collapse collapse show"
-                      aria-labelledby="headingOne"
-                      data-bs-parent="#accordionExample"
-                    >
-                      <div class="accordion-body">
-                        <p>
-                          AI pozivnice su digitalne pozivnice koje možete slati
-                          gostima putem e-maila, WhatsAppa ili drugih platformi
-                          jednostavnim dijeljenjem linka. Svaka pozivnica otvara
-                          personaliziranu web stranicu s tekstom generiranim
-                          pomoću umjetne inteligencije, prilagođenim vašim
-                          gostima i tonu koji želite postići. Uz to, svaka
-                          pozivnica sadrži link koji vodi do vaše stranice
-                          vjenčanja, gdje gosti mogu saznati više informacija o
-                          vjenčanju te pratiti novosti vezane uz vaš poseban
-                          dan.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h3 class="accordion-header" id="headingTwo">
-                      <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseTwo"
-                        aria-expanded="false"
-                        aria-controls="collapseTwo"
-                      >
-                        Kako to funkcionira?
-                      </button>
-                    </h3>
-                    <div
-                      id="collapseTwo"
-                      class="accordion-collapse collapse"
-                      aria-labelledby="headingTwo"
-                      data-bs-parent="#accordionExample"
-                    >
-                      <div class="accordion-body">
-                        <p>
-                          Jednostavno popunite obrazac s podacima o gostima, a
+                  <FaqItem
+                    collapseId="#collapseOne"
+                    question="Što su AI pozivnice?"
+                    answer=`AI pozivnice su digitalne pozivnice koje možete slati gostima
+                      putem e-maila, WhatsAppa ili drugih platformi jednostavnim dijeljenjem linka.
+                      Svaka pozivnica otvara personaliziranu web stranicu s tekstom generiranim 
+                      pomoću umjetne inteligencije, prilagođenim vašim gostima i tonu koji želite postići.
+                      Uz to, svaka pozivnica sadrži link koji vodi do vaše stranice vjenčanja, gdje gosti 
+                      mogu saznati više informacija o vjenčanju te pratiti novosti vezane uz vaš poseban dan.`
+                    expended
+                  />
+                  <FaqItem
+                    collapseId="#collapseTwo"
+                    question="Kako to funkcionira?"
+                    answer=`Jednostavno popunite obrazac s podacima o gostima, a
                           umjetna inteligencija će generirati prijedlog teksta
                           pozivnice, koji možete dodatno prilagoditi prema
                           vlastitim željama. Nakon toga birate dizajn pozivnice
                           koji vam se najviše sviđa, a sustav vam generira
                           jedinstveni link. Taj link možete podijeliti s gostima
-                          putem e-maila, WhatsAppa ili društvenih mreža.
-                        </p>
+                          putem e-maila, WhatsAppa ili društvenih mreža.`
+                  />
+                  <FaqItem
+                    collapseId="#collapseThree"
+                    question="Što još dobivam uz ai pozivnice?"
+                    answer=`AI pozivnice su dio našeg Diamond paketa, koji također
+                    uključuje korisničko sučelje u kojem ćete moći:`
+                    list={[
+                      "popis svih gostiju",
+                      "označiti kome je pozivnica poslana",
+                      "označiti tko je potvrdio dolazak",
+                    ]}
+                  />
+                  <FaqItem
+                    collapseId="#collapseFour"
+                    question="Mogu li prvo isprobati uslugu?"
+                    answer=` Naravno, možete isprobati besplatnu verziju, a sve što vam
+                    je potrebno za to je jednostavna registracija na našu
+                    platformu.`
+                    link
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- end wpo-faq-section -->
+        <FashionTitle title="Izaberi dizajn pozivnice" />
+
+        <section class="wpo-category-section-s3 section-padding">
+          <h2 class="hidden">Category</h2>
+          <div class="container">
+            <div class="wpo-category-wrap">
+              <div class="row">
+                <div class="col-xl-3 col-lg-6 col-md-6 col-12">
+                  <div
+                    class="wpo-category-item wow fadeInUp"
+                    data-wow-duration="1000ms"
+                  >
+                    <div class="wpo-category-img">
+                      <div class="wpo-category-img-inner">
+                        <a href="/izrada-web-stranica-za-mladence/flora">
+                          <img src="assets/images/dizajn/flora.png" alt="" /></a
+                        >
                       </div>
                     </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h3 class="accordion-header" id="headingThree">
-                      <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseThree"
-                        aria-expanded="false"
-                        aria-controls="collapseThree"
-                      >
-                        Što još dobivam uz ai pozivnice?
-                      </button>
-                    </h3>
-                    <div
-                      id="collapseThree"
-                      class="accordion-collapse collapse"
-                      aria-labelledby="headingThree"
-                      data-bs-parent="#accordionExample"
-                    >
-                      <div class="accordion-body">
-                        <p>
-                          AI pozivnice su dio našeg Diamond paketa, koji također
-                          uključuje korisničko sučelje u kojem ćete moći:
-                          <br />
-                          - Voditi popis svih gostiju.
-                          <br />
-                          - Pratiti status tko je potvrdio dolazak.
-                          <br />
-                          - Pratiti kome ste poslali pozivnice i druge informacije.
-                          <br />
-                          Sve ove funkcionalnosti omogućuju vam da jednostavno upravljate
-                          pozivnicama i pratite sve relevantne detalje za vaše vjenčanje.
-                        </p>
-                      </div>
+                    <div class="wpo-category-text">
+                      <a href="/izrada-web-stranica-za-mladence/flora">FLORA</a>
                     </div>
                   </div>
-                  <div class="accordion-item">
-                    <h3 class="accordion-header" id="headingFour">
-                      <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseFour"
-                        aria-expanded="false"
-                        aria-controls="collapseFour"
-                      >
-                        Mogu li prvo isprobati uslugu?
-                      </button>
-                    </h3>
-                    <div
-                      id="collapseFour"
-                      class="accordion-collapse collapse"
-                      aria-labelledby="headingFour"
-                      data-bs-parent="#accordionExample"
-                    >
-                      <div class="accordion-body">
-                        <p>
-                          Naravno, možete isprobati besplatnu verziju, a sve što
-                          vam je potrebno za to je jednostavna registracija na
-                          našu platformu putem gumba u gornjem desnom kutu ili
-                          ovog <a href="/register">linka</a>.
-                        </p>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6 col-12">
+                  <div
+                    class="wpo-category-item wow fadeInUp"
+                    data-wow-duration="1200ms"
+                  >
+                    <div class="wpo-category-img">
+                      <div class="wpo-category-img-inner">
+                        <a href="/izrada-web-stranica-za-mladence/bella">
+                          <img src="assets/images/dizajn/bella.png" alt="" /></a
+                        >
                       </div>
+                    </div>
+                    <div class="wpo-category-text">
+                      <a href="/izrada-web-stranica-za-mladence/bella">BELLA</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6 col-12">
+                  <div
+                    class="wpo-category-item wow fadeInUp"
+                    data-wow-duration="1400ms"
+                  >
+                    <div class="wpo-category-img">
+                      <div class="wpo-category-img-inner">
+                        <a href="/izrada-web-stranica-za-mladence/clara">
+                          <img src="assets/images/dizajn/clara.png" alt="" /></a
+                        >
+                      </div>
+                    </div>
+                    <div class="wpo-category-text">
+                      <a href="/izrada-web-stranica-za-mladence/clara">CLARA</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6 col-12">
+                  <div
+                    class="wpo-category-item wow fadeInUp"
+                    data-wow-duration="1600ms"
+                  >
+                    <div class="wpo-category-img">
+                      <div class="wpo-category-img-inner">
+                        <a href="/izrada-web-stranica-za-mladence/aurea">
+                          <img src="assets/images/dizajn/aurea.png" alt="" />
+                        </a>
+                      </div>
+                    </div>
+                    <div class="wpo-category-text">
+                      <a href="/izrada-web-stranica-za-mladence/aurea">AUREA</a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <!-- end wpo-faq-section -->
-        </div>
-
-        <PozivnicaForm client:only="react" />
+        </section>
       </div>
+
+      <PozivnicaForm id={id} client:only="react" />
     </div>
   </section>
 </Layout>
-
 <style>
   .wpo-contact-pg-section {
     margin-bottom: 200px;

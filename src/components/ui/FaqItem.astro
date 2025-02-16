@@ -1,0 +1,52 @@
+---
+type Props = {
+  question: string
+  answer: string
+  collapseId: string
+  list?: string[]
+  link?: boolean
+  expended?: boolean
+}
+
+const {
+  question,
+  answer,
+  collapseId,
+  list = [],
+  link,
+  expended = false,
+} = Astro.props
+---
+
+<div class="accordion-item">
+  <h3 class="accordion-header" id="headingOne">
+    <button
+      class="accordion-button"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target={collapseId}
+      aria-expanded="true"
+      aria-controls="collapseOne"
+    >
+      {question}
+    </button>
+  </h3>
+  <div
+    id={collapseId.substring(1)}
+    class=`accordion-collapse collapse ${expended ? 'show' : ''}`
+    aria-labelledby="headingOne"
+    data-bs-parent="#accordionExample"
+  >
+    <div class="accordion-body">
+      <p>
+        {answer}
+        {
+          list &&
+            list.map((li) => {
+              return <span style="display: block;">-{li}</span>
+            })
+        }{link && <a href="/register">Registracija</a>}
+      </p>
+    </div>
+  </div>
+</div>

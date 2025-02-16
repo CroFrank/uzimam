@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-const PozivnicaForm: React.FC = () => {
+const PozivnicaForm: React.FC<PozivnicaFormProps> = ({ id }) => {
   const [formData, setFormData] = useState({
     mladenka: "",
     mladozenja: "",
@@ -10,6 +10,9 @@ const PozivnicaForm: React.FC = () => {
     prisnost: "",
     date: "",
     textLength: "srednji",
+  })
+  const [formDataText, setFormDataText] = useState({
+    text: "",
   })
 
   const [link, setLink] = useState<string>("")
@@ -24,10 +27,13 @@ const PozivnicaForm: React.FC = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
+  const handleChangeText = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setFormDataText({ ...formDataText, [e.target.name]: e.target.value })
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-
     try {
       const response = await fetch("/api/pozivnice-generator", {
         method: "POST",
@@ -36,22 +42,53 @@ const PozivnicaForm: React.FC = () => {
         },
         body: JSON.stringify(formData),
       })
-
       if (!response.ok) {
         throw new Error("Greška pri slanju podataka")
       }
-
       const data = await response.json()
       setApiResponse(data)
       setRandomUrl(Math.random().toString(36).slice(2, 12))
     } catch (error) {
-      console.error("Greška:", error)
       setApiResponse("Došlo je do greške pri generiranju pozivnice.")
     }
     setLoading(false)
   }
 
+  const fetchDataClient = async () => {
+    try {
+      const response = await fetch("/api/supabase/getClient", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id }),
+      })
+
+      const { success, data } = await response.json()
+      if (success && data) {
+        console.log(data.hername)
+        setFormData({
+          mladenka: data.hername,
+          mladozenja: data.hisname,
+          gosti: "sdfs",
+          oGostima: "",
+          ton: "",
+          prisnost: "",
+          date: data.date,
+          textLength: "srednji",
+        })
+      } else {
+        // setClient(null)
+      }
+    } catch (error) {
+      // showError("Pokušajte ponovno kasnije.")
+      // setClient(null)
+    }
+  }
+
   useEffect(() => {
+    fetchDataClient()
+
     if (apiResponse && randomUrl) {
       setLink(
         `uzimam.com/ai-pozivnice-za-vjencanje/${randomUrl}?mladenka=${
@@ -91,6 +128,7 @@ const PozivnicaForm: React.FC = () => {
                         type="text"
                         name="mladenka"
                         placeholder="Ime mladenke"
+                        value={formData.mladenka}
                         onChange={handleChange}
                         required
                       />
@@ -104,6 +142,7 @@ const PozivnicaForm: React.FC = () => {
                         type="text"
                         name="mladozenja"
                         placeholder="Ime mladoženje"
+                        value={formData.mladozenja}
                         onChange={handleChange}
                         required
                       />
@@ -115,6 +154,7 @@ const PozivnicaForm: React.FC = () => {
                         type="date"
                         name="date"
                         onChange={handleChange}
+                        value={formData.date}
                         required
                       />
                     </div>
@@ -207,7 +247,7 @@ const PozivnicaForm: React.FC = () => {
               />
             </div>
           </>
-        ) : apiResponse ? (
+        ) : !apiResponse ? (
           <section className="wpo-blog-pg-section section-padding">
             <div className="container">
               <div className="row">
@@ -216,6 +256,13 @@ const PozivnicaForm: React.FC = () => {
                     <div className="post format-standard-image">
                       <div className="entry-details">
                         <h3>Pozivnica je uspješno generirana</h3>
+                        <textarea
+                          name="text"
+                          value={apiResponse}
+                          onChange={handleChangeText}
+                        >
+                          nešta
+                        </textarea>
                         <p>
                           ovo je{" "}
                           <a
