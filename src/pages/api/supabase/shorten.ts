@@ -3,18 +3,21 @@ import { supabase } from "../../../lib/supabase"
 
 export const POST: APIRoute = async ({ request }) => {
   try {
-    const { link } = await request.json()
-
-    if (!link) {
+    const { longLink, id } = await request.json()
+    if (!longLink || !id) {
       return new Response(JSON.stringify("link is required"), {
         status: 400,
       })
     }
-    const slug = Math.random().toString(36).substring(2, 8)
+
+    const randomStr = Math.random().toString(36).substring(2, 8)
+    const slug = `https://www.uzimam.com/${randomStr}`
 
     const { data, error } = await supabase
       .from("short_links")
-      .insert([{ slug, original_url: link }])
+      .insert({ slug, original_url: longLink, user_id: id })
+      .select()
+      .single()
 
     if (error) {
       console.error("Database Error:", error.message)
@@ -23,7 +26,7 @@ export const POST: APIRoute = async ({ request }) => {
       })
     }
 
-    return new Response(JSON.stringify({ success: true, data }), {
+    return new Response(JSON.stringify({ success: true, data: data.slug }), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     })

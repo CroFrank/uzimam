@@ -85,14 +85,29 @@ const PozivnicaForm: React.FC<PozivnicaFormProps> = ({ id }) => {
       formData.date.length > 1 &&
       formData.designe.length > 1
     ) {
-      setLink(
-        `uzimam.com/ai-pozivnice-za-vjencanje/${formData.designe}?mladenka=${
-          formData.mladenka
-        }&mladozenja=${formData.mladozenja}&date=${
-          formData.date
-        }&apiResponse=${encodeURIComponent(formData.message)}`
-      )
-      showSuccess("Pozivnica generirana")
+      const longLink = `/ai-pozivnice-za-vjencanje/${formData.designe}?mladenka=${formData.mladenka}&mladozenja=${formData.mladozenja}&date=${formData.date}&apiResponse=${formData.message}`
+      try {
+        const response = await fetch("/api/supabase/shorten", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ longLink, id }),
+        })
+        if (!response.ok) {
+          showError("Response Error")
+        } else {
+          const data = await response.json()
+          console.log(data.data)
+          setLink(data.data)
+          console.log("kratki link")
+          console.log(link)
+        }
+      } catch (error) {
+        showError("Pokušajte ponovno kasnije")
+      } finally {
+        showSuccess("Pozivnica generirana")
+      }
     } else {
       showError("Nisu popunjena sva polja")
     }
@@ -145,7 +160,7 @@ const PozivnicaForm: React.FC<PozivnicaFormProps> = ({ id }) => {
   return (
     <div className="container mt-4">
       <form onSubmit={handleSubmit} className="p-4 shadow-sm bg-white rounded">
-        <h2 className="text-center mb-4">Detalji pozivnice</h2>
+        <h2 className="text-center mb-5">Detalji pozivnice</h2>
 
         <div className="row g-3">
           <div className="col-md-6">
@@ -278,7 +293,7 @@ const PozivnicaForm: React.FC<PozivnicaFormProps> = ({ id }) => {
         </button>
       </form>
 
-      {formData.message && (
+      {formData.message.length >= 0 && (
         <div className="my-5">
           <div className="mb-3">
             <label htmlFor="message" className="form-label">
