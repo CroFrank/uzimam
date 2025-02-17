@@ -3,32 +3,54 @@ import { OpenAI } from "openai"
 import { openAiPromptData } from "../../data/ai-generator-pozivnica-data"
 
 export const POST: APIRoute = async ({ request }) => {
-  const prompt = await request.json()
   try {
-    const openai = new OpenAI({ apiKey: import.meta.env.OPENAI_API_KEY })
+    const { id, formData } = await request.json()
+
+    if (!id) {
+      console.error("Unauthorized access: User not logged in.")
+      return new Response(JSON.stringify("Morate biti prijavljeni"), {
+        status: 401,
+      })
+    }
+
+    if (!formData || Object.keys(formData).length === 0) {
+      console.error("Invalid request: formData is missing.")
+      return new Response(JSON.stringify("Podaci obrasca nisu ispravni"), {
+        status: 400,
+      })
+    }
+
+    const apiKey = import.meta.env.OPENAI_API_KEY
+    if (!apiKey) {
+      console.error("Server error: OpenAI API key is missing.")
+      return new Response(JSON.stringify("AI usluga nije dostupna."), {
+        status: 500,
+      })
+    }
+
+    const openai = new OpenAI({ apiKey })
 
     const completion = await openai.chat.completions.create(
-      openAiPromptData(prompt)
+      openAiPromptData(formData)
     )
-    if (!completion.choices[0].message.content) {
-      console.log("openai API error")
-      return new Response(
-        JSON.stringify([
-          "Usluga trenutno nedostupna, pokušajte ponovno kasnije.",
-        ])
-      )
-    }
-    const textPozivnice = completion.choices[0].message.content
 
-    return new Response(JSON.stringify(textPozivnice), {
+    const responseContent = completion?.choices?.[0]?.message?.content
+    if (!responseContent) {
+      console.error("OpenAI API error: No content received.")
+      return new Response(JSON.stringify("AI usluga trenutno nije dostupna."), {
+        status: 503,
+      })
+    }
+
+    return new Response(JSON.stringify(responseContent), {
       status: 200,
+      headers: { "Content-Type": "application/json" },
     })
   } catch (error) {
-    console.log(error)
+    console.error("Server Error:", error)
     return new Response(
-      JSON.stringify([
-        "Usluga je trenutno nedostupna, pokušajte ponovno kasnije.",
-      ])
+      JSON.stringify("Usluga trenutno nije dostupna, pokušajte kasnije."),
+      { status: 500 }
     )
   }
 }

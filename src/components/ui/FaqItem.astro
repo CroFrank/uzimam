@@ -4,7 +4,7 @@ type Props = {
   answer: string
   collapseId: string
   list?: string[]
-  link?: boolean
+  link?: string
   expended?: boolean
 }
 
@@ -45,7 +45,7 @@ const {
             list.map((li) => {
               return <span style="display: block;">-{li}</span>
             })
-        }{link && <a href="/register">Registracija</a>}
+        }{link && <a href={`/${link}`}>{link}</a>}
       </p>
     </div>
   </div>

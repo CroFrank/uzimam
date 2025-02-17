@@ -603,7 +603,7 @@ a.ui-button:active,
 
 .wpo-section-title,
 .wpo-section-title-s2 {
-  margin-bottom: 60px;
+  margin-bottom: 80px;
   text-align: center;
 }
 
@@ -643,11 +643,11 @@ a.ui-button:active,
 .wpo-section-title h2,
 .wpo-section-title-s2 h2 {
   font-weight: 400;
-  font-size: 40px;
+  font-size: 55px;
   line-height: 58px;
   margin: 0;
   position: relative;
-  font-family: "Mulish", sans-serif;
+  font-family: "Allura", cursive;
   color: #242424;
   display: inline-block;
   padding-bottom: 20px;
@@ -683,7 +683,7 @@ a.ui-button:active,
 @media (max-width: 767px) {
   .wpo-section-title h2,
   .wpo-section-title-s2 h2 {
-    font-size: 32px;
+    font-size: 40px;
     line-height: 40px;
   }
 }
@@ -691,7 +691,7 @@ a.ui-button:active,
 @media (max-width: 575px) {
   .wpo-section-title h2,
   .wpo-section-title-s2 h2 {
-    font-size: 25px;
+    font-size: 38px;
     margin-top: 0;
   }
 }

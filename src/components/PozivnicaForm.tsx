@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import NotificationBar from "./ui/NotificationBar"
 
 const PozivnicaForm: React.FC<PozivnicaFormProps> = ({ id }) => {
   const [formData, setFormData] = useState({
@@ -10,28 +11,42 @@ const PozivnicaForm: React.FC<PozivnicaFormProps> = ({ id }) => {
     prisnost: "",
     date: "",
     textLength: "srednji",
-  })
-  const [formDataText, setFormDataText] = useState({
-    text: "",
+    designe: "",
+    message: "",
   })
 
   const [link, setLink] = useState<string>("")
   const [copied, setCopied] = useState(false)
-  const [randomUrl, setRandomUrl] = useState<string>("")
-  const [apiResponse, setApiResponse] = useState<string>("")
   const [loading, setLoading] = useState<boolean>(false)
+  const [loadingFinal, setLoadingFinal] = useState<boolean>(false)
+  const [notification, setNotification] = useState<{
+    msg: string
+    type: "success" | "error"
+  } | null>(null)
+
+  const showSuccess = (msg: string) => {
+    setNotification({ msg, type: "success" })
+  }
+
+  const showError = (msg: string) => {
+    setNotification({ msg, type: "error" })
+  }
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleChangeText = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setFormDataText({ ...formDataText, [e.target.name]: e.target.value })
-  }
-
   const handleSubmit = async (e: React.FormEvent) => {
+    if (!id) {
+      e.preventDefault()
+
+      showError("Morate biti prijavljeni")
+      return
+    }
     e.preventDefault()
     setLoading(true)
     try {
@@ -40,18 +55,48 @@ const PozivnicaForm: React.FC<PozivnicaFormProps> = ({ id }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ formData, id }),
       })
       if (!response.ok) {
-        throw new Error("Greška pri slanju podataka")
+        showError("Response Error")
+      } else {
+        const data = await response.json()
+        setFormData({ ...formData, message: data })
+        showSuccess("Tekst generiran")
       }
-      const data = await response.json()
-      setApiResponse(data)
-      setRandomUrl(Math.random().toString(36).slice(2, 12))
     } catch (error) {
-      setApiResponse("Došlo je do greške pri generiranju pozivnice.")
+      showError("Pokušajte ponovno kasnije")
+    } finally {
+      setLoading(false)
     }
-    setLoading(false)
+  }
+
+  const handleSubmitFinal = async (e: React.FormEvent) => {
+    if (!id) {
+      showError("Morate biti prijavljeni")
+      return
+    }
+    e.preventDefault()
+    setLoadingFinal(true)
+    if (
+      formData.message.length > 1 &&
+      formData.mladenka.length > 1 &&
+      formData.mladozenja.length > 1 &&
+      formData.date.length > 1 &&
+      formData.designe.length > 1
+    ) {
+      setLink(
+        `uzimam.com/ai-pozivnice-za-vjencanje/${formData.designe}?mladenka=${
+          formData.mladenka
+        }&mladozenja=${formData.mladozenja}&date=${
+          formData.date
+        }&apiResponse=${encodeURIComponent(formData.message)}`
+      )
+      showSuccess("Pozivnica generirana")
+    } else {
+      showError("Nisu popunjena sva polja")
+    }
+    setLoadingFinal(false)
   }
 
   const fetchDataClient = async () => {
@@ -66,231 +111,234 @@ const PozivnicaForm: React.FC<PozivnicaFormProps> = ({ id }) => {
 
       const { success, data } = await response.json()
       if (success && data) {
-        console.log(data.hername)
         setFormData({
+          ...formData,
           mladenka: data.hername,
           mladozenja: data.hisname,
-          gosti: "sdfs",
-          oGostima: "",
-          ton: "",
-          prisnost: "",
           date: data.date,
-          textLength: "srednji",
         })
       } else {
-        // setClient(null)
+        setFormData({
+          ...formData,
+        })
       }
     } catch (error) {
-      // showError("Pokušajte ponovno kasnije.")
-      // setClient(null)
+      setFormData({
+        ...formData,
+      })
     }
   }
 
   useEffect(() => {
     fetchDataClient()
+  }, [])
 
-    if (apiResponse && randomUrl) {
-      setLink(
-        `uzimam.com/ai-pozivnice-za-vjencanje/${randomUrl}?mladenka=${
-          formData.mladenka
-        }&mladozenja=${formData.mladozenja}&date=${
-          formData.date
-        }&apiResponse=${encodeURIComponent(apiResponse)}`
-      )
-    }
-  }, [apiResponse])
-
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(link)
-      setCopied(true)
-    } catch (err) {
-      console.error("Failed to copy:", err)
-    }
-  }
+  // const handleCopy = async () => {
+  //   try {
+  //     await navigator.clipboard.writeText(link)
+  //     setCopied(true)
+  //   } catch (err) {
+  //     console.error("Failed to copy:", err)
+  //   }
+  // }
 
   return (
-    <div className="wpo-checkout-area section-padding" id="forma">
-      <div className="container">
-        <form onSubmit={handleSubmit}>
-          <div className="row">
-            <div className="caupon-wrap s2">
-              <div className="wpo-section-title">
-                <h2 className="poort-text poort-in-right">Detalji pozivnice</h2>
-              </div>
-              <div className="billing-adress" id="open2">
-                <div className="contact-form form-style">
-                  <div className="row">
-                    <div className="col-lg-6 col-md-12 col-12">
-                      <label htmlFor="mladenka">Upišite ime mladenke:</label>
-                      <input
-                        id="mladenka"
-                        type="text"
-                        name="mladenka"
-                        placeholder="Ime mladenke"
-                        value={formData.mladenka}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                    <div className="col-lg-6 col-md-12 col-12">
-                      <label htmlFor="mladozenja">
-                        Upišite ime mladoženje:
-                      </label>
-                      <input
-                        id="mladozenja"
-                        type="text"
-                        name="mladozenja"
-                        placeholder="Ime mladoženje"
-                        value={formData.mladozenja}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                    <div className="col-lg-6 col-md-12 col-12">
-                      <label htmlFor="date">Datum vjenčanja:</label>
-                      <input
-                        id="date"
-                        type="date"
-                        name="date"
-                        onChange={handleChange}
-                        value={formData.date}
-                        required
-                      />
-                    </div>
-                    <div className="col-lg-12 col-md-12 col-12">
-                      <label htmlFor="gosti">
-                        Upišite imena gostiju koje pozivate:
-                      </label>
-                      <input
-                        id="gosti"
-                        type="text"
-                        name="gosti"
-                        placeholder="npr. Ana i Luka"
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                    <div className="col-lg-12 col-md-12 col-12">
-                      <label htmlFor="prisnost">
-                        Koliko ste bliski sa gostima:
-                      </label>
-                      <input
-                        id="prisnost"
-                        type="text"
-                        name="prisnost"
-                        placeholder="npr. bliski prijatelji, samo poznanici..."
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                    <div className="col-lg-12 col-md-12 col-12">
-                      <label htmlFor="oGostima">
-                        Upišite nešto šte vežete uz njih:
-                      </label>
-                      <input
-                        id="oGostima"
-                        type="text"
-                        name="oGostima"
-                        placeholder="Ana je teta u vrtiću, Luka voli nogomet"
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                    <div className="col-lg-6 col-md-12 col-12">
-                      <label htmlFor="ton">
-                        Ton u kojem će biti pisana pozivnica:
-                      </label>
-                      <input
-                        id="ton"
-                        type="text"
-                        name="ton"
-                        placeholder="npr šaljiv, formalan..."
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                    <div className="col-lg-6 col-md-12 col-12">
-                      <label htmlFor="textLength">
-                        Odaberite duljinu teksta:
-                      </label>
-                      <select
-                        id="textLength"
-                        name="textLength"
-                        onChange={handleChange}
-                      >
-                        <option value="kratak">Kratak tekst</option>
-                        <option value="srednji">Srednji</option>
-                        <option value="opsiran">Opširan</option>
-                      </select>
-                    </div>
+    <div className="container mt-4">
+      <form onSubmit={handleSubmit} className="p-4 shadow-sm bg-white rounded">
+        <h2 className="text-center mb-4">Detalji pozivnice</h2>
+
+        <div className="row g-3">
+          <div className="col-md-6">
+            <label htmlFor="mladenka" className="form-label">
+              Ime mladenke:
+            </label>
+            <input
+              id="mladenka"
+              type="text"
+              name="mladenka"
+              placeholder="ime"
+              className="form-control"
+              value={formData.mladenka}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="col-md-6">
+            <label htmlFor="mladozenja" className="form-label">
+              Ime mladoženje:
+            </label>
+            <input
+              id="mladozenja"
+              type="text"
+              name="mladozenja"
+              placeholder="ime"
+              className="form-control"
+              value={formData.mladozenja}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="col-md-6">
+            <label htmlFor="date" className="form-label">
+              Datum vjenčanja:
+            </label>
+            <input
+              id="date"
+              type="date"
+              name="date"
+              className="form-control"
+              value={formData.date}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="col-12">
+            <label htmlFor="gosti" className="form-label">
+              Imena gostiju:
+            </label>
+            <input
+              id="gosti"
+              type="text"
+              name="gosti"
+              className="form-control"
+              placeholder="npr. Ana i Luka"
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="col-12">
+            <label htmlFor="prisnost" className="form-label">
+              Koliko ste bliski s gostima:
+            </label>
+            <input
+              id="prisnost"
+              type="text"
+              name="prisnost"
+              className="form-control"
+              placeholder="npr. bliski prijatelji, samo poznanici..."
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="col-12">
+            <label htmlFor="oGostima" className="form-label">
+              Nešto što vežete uz goste:
+            </label>
+            <input
+              id="oGostima"
+              type="text"
+              name="oGostima"
+              className="form-control"
+              placeholder="Ana je teta u vrtiću, Luka voli nogomet"
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="col-md-6">
+            <label htmlFor="ton" className="form-label">
+              Ton pozivnice:
+            </label>
+            <input
+              id="ton"
+              type="text"
+              name="ton"
+              className="form-control"
+              placeholder="npr. šaljiv, formalan..."
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="col-md-6">
+            <label htmlFor="textLength" className="form-label">
+              Duljina teksta:
+            </label>
+            <select
+              id="textLength"
+              name="textLength"
+              className="form-select"
+              value={formData.textLength}
+              onChange={handleChange}
+            >
+              <option value="kratak">Kratak tekst</option>
+              <option value="srednji">Srednji</option>
+              <option value="opsiran">Opširan</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" className="theme-btn mt-4">
+          {loading ? "Generiram..." : " Generiraj tekst"}
+        </button>
+      </form>
+
+      {formData.message && (
+        <div className="my-5">
+          <div className="mb-3">
+            <label htmlFor="message" className="form-label">
+              Uredite tekst pozivnice:
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              className="form-control"
+              rows={6}
+              value={formData.message}
+              onChange={handleChange}
+              required
+            ></textarea>
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Odaberite dizajn pozivnice:</label>
+            <div className="d-flex gap-3">
+              {["Option 1", "Option 2", "Option 3", "Option 4"].map(
+                (option, index) => (
+                  <div key={index} className="form-check">
+                    <input
+                      type="radio"
+                      id={`option${index + 1}`}
+                      name="designe"
+                      value={`option${index + 1}`}
+                      onChange={handleChange}
+                      className="form-check-input"
+                      required
+                    />
+                    <label
+                      htmlFor={`option${index + 1}`}
+                      className="form-check-label"
+                    >
+                      {option}
+                    </label>
                   </div>
-                </div>
-              </div>
+                )
+              )}
             </div>
           </div>
-          <button className="theme-btn" type="submit">
-            {loading ? "Generiram..." : "Generiraj pozivnicu"}
+          <button onClick={handleSubmitFinal} className="theme-btn mt-4">
+            {loadingFinal ? "Generiram..." : " Generiraj pozivnicu"}
           </button>
-        </form>
-        {loading ? (
-          <>
-            <section className="wpo-blog-pg-section section-padding">
-              <div className="container">
-                Ovo može potrajati nekoliko trenutaka...
-              </div>
-            </section>
-            <div className="container">
-              <img
-                src="/assets/images/fancybox/fancybox_loading@2x.gif"
-                alt=""
-              />
-            </div>
-          </>
-        ) : !apiResponse ? (
-          <section className="wpo-blog-pg-section section-padding">
-            <div className="container">
-              <div className="row">
-                <div className="col col-lg-10 offset-lg-1">
-                  <div className="wpo-blog-content">
-                    <div className="post format-standard-image">
-                      <div className="entry-details">
-                        <h3>Pozivnica je uspješno generirana</h3>
-                        <textarea
-                          name="text"
-                          value={apiResponse}
-                          onChange={handleChangeText}
-                        >
-                          nešta
-                        </textarea>
-                        <p>
-                          ovo je{" "}
-                          <a
-                            href={`/ai-pozivnice-za-vjencanje/${randomUrl}?mladenka=${
-                              formData.mladenka
-                            }&mladozenja=${formData.mladozenja}&date=${
-                              formData.date
-                            }&apiResponse=${encodeURIComponent(apiResponse)}`}
-                          >
-                            link
-                          </a>{" "}
-                          koji vodi na vašu pozivnicu
-                        </p>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button onClick={handleCopy} className="theme-btn-s4">
-                          {copied ? "Kopirano!" : "Kopiraj Link"}
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        ) : (
-          ""
-        )}
-      </div>
+        </div>
+      )}
+      {notification && (
+        <NotificationBar
+          msg={notification.msg}
+          type={notification.type}
+          onClose={() => setNotification(null)}
+        />
+      )}
+      {link && (
+        <div className="my-5">
+          <p>
+            Link koji vodi na vašu pozivnicu: <a href={link}>{link}</a>
+          </p>
+        </div>
+      )}
     </div>
   )
 }
