@@ -6,11 +6,12 @@ const { slug } = Astro.params
 const { data, error } = await supabase
   .from("short_links")
   .select("original_url")
-  .eq("slug", `https://www.uzimam.com/${slug}`)
+  .eq("slug", slug)
   .single()
 if (!data || error) {
   return Astro.redirect("/404")
 }
-console.log(data.original_url)
-return Astro.redirect(encodeURI(data.original_url))
+return Astro.redirect(
+  encodeURI(`/ai-pozivnice-za-vjencanje/${data.original_url}`)
+)
 ---

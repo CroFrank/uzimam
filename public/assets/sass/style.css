@@ -18594,6 +18594,16 @@ a.ui-button:active,
   color: #242424;
 }
 
+@media (max-width: 575px) {
+  .wpo-category-section-s3
+    .wpo-category-wrap
+    .wpo-category-item
+    .wpo-category-img {
+    max-width: 250px;
+    height: auto;
+  }
+}
+
 @media (max-width: 1399px) {
   .wpo-category-section-s3
     .wpo-category-wrap

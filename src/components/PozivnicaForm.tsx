@@ -85,7 +85,7 @@ const PozivnicaForm: React.FC<PozivnicaFormProps> = ({ id }) => {
       formData.date.length > 1 &&
       formData.designe.length > 1
     ) {
-      const longLink = `/ai-pozivnice-za-vjencanje/${formData.designe}?mladenka=${formData.mladenka}&mladozenja=${formData.mladozenja}&date=${formData.date}&apiResponse=${formData.message}`
+      const longLink = `${formData.designe}?mladenka=${formData.mladenka}&mladozenja=${formData.mladozenja}&date=${formData.date}&apiResponse=${formData.message}`
       try {
         const response = await fetch("/api/supabase/shorten", {
           method: "POST",
@@ -148,14 +148,14 @@ const PozivnicaForm: React.FC<PozivnicaFormProps> = ({ id }) => {
     fetchDataClient()
   }, [])
 
-  // const handleCopy = async () => {
-  //   try {
-  //     await navigator.clipboard.writeText(link)
-  //     setCopied(true)
-  //   } catch (err) {
-  //     console.error("Failed to copy:", err)
-  //   }
-  // }
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(link)
+      setCopied(true)
+    } catch (err) {
+      showError("Error")
+    }
+  }
 
   return (
     <div className="container mt-4">
@@ -293,53 +293,52 @@ const PozivnicaForm: React.FC<PozivnicaFormProps> = ({ id }) => {
         </button>
       </form>
 
-      {formData.message.length >= 0 && (
-        <div className="my-5">
-          <div className="mb-3">
-            <label htmlFor="message" className="form-label">
-              Uredite tekst pozivnice:
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              className="form-control"
-              rows={6}
-              value={formData.message}
-              onChange={handleChange}
-              required
-            ></textarea>
-          </div>
-          <div className="mb-3">
-            <label className="form-label">Odaberite dizajn pozivnice:</label>
-            <div className="d-flex gap-3">
-              {["Option 1", "Option 2", "Option 3", "Option 4"].map(
-                (option, index) => (
-                  <div key={index} className="form-check">
-                    <input
-                      type="radio"
-                      id={`option${index + 1}`}
-                      name="designe"
-                      value={`option${index + 1}`}
-                      onChange={handleChange}
-                      className="form-check-input"
-                      required
-                    />
-                    <label
-                      htmlFor={`option${index + 1}`}
-                      className="form-check-label"
-                    >
-                      {option}
-                    </label>
-                  </div>
-                )
-              )}
-            </div>
-          </div>
-          <button onClick={handleSubmitFinal} className="theme-btn mt-4">
-            {loadingFinal ? "Generiram..." : " Generiraj pozivnicu"}
-          </button>
+      <div className="my-5">
+        <div className="mb-3">
+          <label htmlFor="message" className="form-label">
+            Uredite tekst pozivnice:
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            className="form-control"
+            rows={6}
+            value={formData.message}
+            onChange={handleChange}
+            required
+          ></textarea>
         </div>
-      )}
+        <div className="mb-3">
+          <label className="form-label">Odaberite dizajn pozivnice:</label>
+          <div className="d-flex gap-3">
+            {["Option 1", "Option 2", "Option 3", "Option 4"].map(
+              (option, index) => (
+                <div key={index} className="form-check">
+                  <input
+                    type="radio"
+                    id={`option${index + 1}`}
+                    name="designe"
+                    value={`option${index + 1}`}
+                    onChange={handleChange}
+                    className="form-check-input"
+                    required
+                  />
+                  <label
+                    htmlFor={`option${index + 1}`}
+                    className="form-check-label"
+                  >
+                    {option}
+                  </label>
+                </div>
+              )
+            )}
+          </div>
+        </div>
+        <button onClick={handleSubmitFinal} className="theme-btn mt-4">
+          {loadingFinal ? "Generiram..." : " Generiraj pozivnicu"}
+        </button>
+      </div>
+
       {notification && (
         <NotificationBar
           msg={notification.msg}
@@ -348,11 +347,16 @@ const PozivnicaForm: React.FC<PozivnicaFormProps> = ({ id }) => {
         />
       )}
       {link && (
-        <div className="my-5">
-          <p>
-            Link koji vodi na vašu pozivnicu: <a href={link}>{link}</a>
-          </p>
-        </div>
+        <>
+          <div className="my-5">
+            <p>
+              Link koji vodi na vašu pozivnicu: <a href={link}>{link}</a>
+            </p>
+          </div>
+          <button className="theme-btn" onClick={handleCopy}>
+            {copied ? "Kopirano!" : "Kopiraj link"}
+          </button>
+        </>
       )}
     </div>
   )

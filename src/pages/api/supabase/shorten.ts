@@ -10,8 +10,7 @@ export const POST: APIRoute = async ({ request }) => {
       })
     }
 
-    const randomStr = Math.random().toString(36).substring(2, 8)
-    const slug = `https://www.uzimam.com/${randomStr}`
+    const slug = Math.random().toString(36).substring(2, 8)
 
     const { data, error } = await supabase
       .from("short_links")
@@ -26,10 +25,16 @@ export const POST: APIRoute = async ({ request }) => {
       })
     }
 
-    return new Response(JSON.stringify({ success: true, data: data.slug }), {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
-    })
+    return new Response(
+      JSON.stringify({
+        success: true,
+        data: `https://www.uzimam.com/${data.slug}`,
+      }),
+      {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      }
+    )
   } catch (err) {
     console.error("Server Error:", err)
     return new Response(JSON.stringify("Interna greška servera"), {
