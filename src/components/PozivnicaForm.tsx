@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import NotificationBar from "./ui/NotificationBar"
 
 const PozivnicaForm: React.FC<PozivnicaFormProps> = ({ id }) => {
+  console.log(id)
   const [formData, setFormData] = useState({
     mladenka: "",
     mladozenja: "",
