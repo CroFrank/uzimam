@@ -252,6 +252,7 @@ img {
   overflow: hidden;
 }
 
+
 @media (max-width: 575px) {
   .page-wrap {
     overflow: hidden;
@@ -18624,7 +18625,7 @@ a.ui-button:active,
 
 /*15.2 wpo-offer-banner-section*/
 .wpo-offer-banner-section {
-  background: url(../images/offer.jpg) no-repeat center center;
+  background: url(../images/reklama-banner.png) no-repeat center center;
   height: 600px;
   display: -webkit-box;
   display: -ms-flexbox;

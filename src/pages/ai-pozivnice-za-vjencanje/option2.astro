@@ -1,0 +1,270 @@
+---
+import PozivnicaLayout from "../../layouts/PozivnicaLayout.astro"
+
+const urlParams = new URLSearchParams(Astro.request.url.split("?")[1])
+
+const mladenka = urlParams.get("mladenka") || "Jane Doe"
+const mladozenja = urlParams.get("mladozenja") || "Joe Doe"
+const date = urlParams.get("date") || "12-05-2022"
+
+const [year, month, day] = date!.split("-")
+const fixedDate = `${day}.${month}.${year}`
+
+let apiResponse = urlParams.get("apiResponse") || ""
+if (!apiResponse) {
+  apiResponse =
+    "lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit."
+}
+---
+
+<PozivnicaLayout>
+  <!-- <div class="overlay">
+    <p class="text">
+      {apiResponse}
+      <a href="/" class="link">VIŠE INFORMACIJA</a>
+    </p>
+  </div> -->
+  <button id="toggle-overlay-btn">ROTIRAJ</button>
+  <img
+    src="/assets/images/pozivnice/option2/bg-bottom.webp"
+    alt=""
+    class="bg-bottom"
+  />
+  <img
+    src="/assets/images/pozivnice/option2/bg-top.webp"
+    alt=""
+    class="bg-top"
+  />
+  <div class="image-wrapper">
+    <img
+      src="/assets/images/pozivnice/option2/hero.webp"
+      alt="Central Image"
+      class="central-image"
+    />
+    <img
+      src="/assets/images/pozivnice/option2/left-flower.webp"
+      alt="Left Image"
+      class="side-image left-image"
+    />
+    <img
+      src="/assets/images/pozivnice/option2/right-flower.webp"
+      alt="Right Image"
+      class="side-image right-image"
+    />
+  </div>
+  <div class="text-container">
+    <div>{mladenka}</div>
+    <div>&</div>
+    <div>{mladozenja}</div>
+    <br />
+    <div>{fixedDate}</div>
+  </div>
+</PozivnicaLayout>
+
+<style>
+  @keyframes rise {
+    from {
+      transform: scale(0.6);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  @keyframes wave-left {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(4deg);
+    }
+  }
+  @keyframes wave-right {
+    0%,
+    100% {
+      transform: rotate(2deg);
+    }
+    50% {
+      transform: rotate(0deg);
+    }
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .bg-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+  }
+
+  .bg-top {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 0;
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 3;
+    opacity: 0;
+    animation: fadeIn 2s ease-in forwards;
+    animation-delay: 3.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8em;
+    letter-spacing: 1.8px;
+  }
+
+  .text {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-family: "Courier New", monospace;
+    white-space: pre-line;
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+
+  .link {
+    color: lightblue;
+    display: block;
+    margin-top: 8px;
+  }
+  .central-image {
+    height: 75vh;
+    object-fit: contain;
+    display: block;
+    position: relative;
+    animation: rise 2s ease-out forwards;
+  }
+  .side-image {
+    position: absolute;
+    width: 100%;
+    object-fit: contain;
+  }
+  .left-image {
+    left: -20%;
+    top: -21%;
+    opacity: 0;
+    animation:
+      wave-left 3s ease-in-out infinite alternate,
+      fadeIn 2s ease-in forwards;
+  }
+  .right-image {
+    right: -20%;
+    bottom: -30%;
+    opacity: 0;
+    animation:
+      wave-right 3s ease-in-out infinite alternate,
+      fadeIn 2s ease-in forwards;
+  }
+  .image-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .text-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    animation: fadeIn 2s ease-in forwards;
+    animation-delay: 1s;
+    font-size: 2em;
+  }
+  .text-container div {
+    margin: 5px 0;
+  }
+
+  #toggle-overlay-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 4;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(296deg, #bfa7ef, #87738f);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    outline: none;
+    overflow: hidden;
+    letter-spacing: 2px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    .central-image {
+      height: 100vh;
+    }
+  }
+  @media screen and (min-width: 1400px) {
+    .text-container {
+      font-size: 3em;
+    }
+  }
+  @media screen and (max-width: 1400px) {
+    .overlay {
+      font-size: 1.3em;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .overlay {
+      font-size: 1em;
+    }
+    .bg-bottom {
+      max-width: 150%;
+    }
+
+    .bg-top {
+      max-width: 100%;
+    }
+    .left-image {
+    left: -13%;
+    top: -21%;
+    }
+  .right-image {
+    right: -18%;
+    bottom: -30%;
+  
+  }
+</style>
+
+<script>
+  const overlay = document.querySelector(".overlay") as HTMLElement
+  const toggleButton = document.getElementById("toggle-overlay-btn")
+
+  function toggleOverlay() {
+    if (overlay!.style.opacity === "0" || overlay!.style.display === "none") {
+      overlay!.style.opacity = "1"
+      overlay!.style.display = "flex"
+    } else {
+      overlay!.style.opacity = "0"
+      overlay!.style.display = "none"
+    }
+  }
+
+  toggleButton!.addEventListener("click", toggleOverlay)
+</script>
