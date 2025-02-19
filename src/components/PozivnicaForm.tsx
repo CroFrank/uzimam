@@ -311,27 +311,25 @@ const PozivnicaForm: React.FC<PozivnicaFormProps> = ({ id }) => {
         <div className="mb-3">
           <label className="form-label">Odaberite dizajn pozivnice:</label>
           <div className="d-flex gap-3">
-            {["Option 1", "Option 2", "Option 3", "Option 4"].map(
-              (option, index) => (
-                <div key={index} className="form-check">
-                  <input
-                    type="radio"
-                    id={`option${index + 1}`}
-                    name="designe"
-                    value={`option${index + 1}`}
-                    onChange={handleChange}
-                    className="form-check-input"
-                    required
-                  />
-                  <label
-                    htmlFor={`option${index + 1}`}
-                    className="form-check-label"
-                  >
-                    {option}
-                  </label>
-                </div>
-              )
-            )}
+            {["Option 1", "Option 2"].map((option, index) => (
+              <div key={index} className="form-check">
+                <input
+                  type="radio"
+                  id={`option${index + 1}`}
+                  name="designe"
+                  value={`option${index + 1}`}
+                  onChange={handleChange}
+                  className="form-check-input"
+                  required
+                />
+                <label
+                  htmlFor={`option${index + 1}`}
+                  className="form-check-label"
+                >
+                  {option}
+                </label>
+              </div>
+            ))}
           </div>
         </div>
         <button onClick={handleSubmitFinal} className="theme-btn mt-4">

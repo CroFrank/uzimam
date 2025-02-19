@@ -5,7 +5,7 @@ const urlParams = new URLSearchParams(Astro.request.url.split("?")[1])
 
 const mladenka = urlParams.get("mladenka") || "Jane Doe"
 const mladozenja = urlParams.get("mladozenja") || "Joe Doe"
-const date = urlParams.get("date") || "12-05-2022"
+const date = urlParams.get("date") || "2022-02-12"
 
 const [year, month, day] = date!.split("-")
 const fixedDate = `${day}.${month}.${year}`
