@@ -5,7 +5,7 @@ const urlParams = new URLSearchParams(Astro.request.url.split("?")[1])
 
 const mladenka = urlParams.get("mladenka") || "Jane Doe"
 const mladozenja = urlParams.get("mladozenja") || "Joe Doe"
-const date = urlParams.get("date") || "12-05-2022"
+const date = urlParams.get("date") || "2022-02-12"
 
 const [year, month, day] = date!.split("-")
 const fixedDate = `${day}.${month}.${year}`
@@ -17,4 +17,268 @@ if (!apiResponse) {
 }
 ---
 
-<PozivnicaLayout />
+<PozivnicaLayout>
+  <div class="overlay">
+    <p class="text">
+      {apiResponse}
+      <a href="/" class="link">VIŠE INFORMACIJA</a>
+    </p>
+  </div>
+  <img
+    src="/assets/images/pozivnice/option2/strelica.svg"
+    class="strelica"
+    alt=""
+  />
+  <img src="/assets/images/pozivnice/option1/bg.webp" alt="" class="bg-left" />
+  <img src="/assets/images/pozivnice/option1/bg.webp" alt="" class="bg-right" />
+
+  <div class="image-wrapper">
+    <img
+      src="/assets/images/pozivnice/option1/hero.webp"
+      alt="Central Image"
+      class="central-image"
+    />
+    <img
+      src="/assets/images/pozivnice/option1/left-top.webp"
+      alt="Left Image"
+      class="side-image left-top"
+    />
+    <img
+      src="/assets/images/pozivnice/option1/left-middle.png"
+      alt="Right Image"
+      class="side-image left-middle"
+    />
+    <img
+      src="/assets/images/pozivnice/option1/left-bottom.png"
+      alt="Right Image"
+      class="side-image left-bottom"
+    />
+  </div>
+  <div class="text-container">
+    <div class="heading">{mladenka}</div>
+    <div class="heading">&</div>
+    <div class="heading">{mladozenja}</div>
+    <br />
+    <div class="heading">{fixedDate}</div>
+  </div>
+</PozivnicaLayout>
+
+<style>
+  @keyframes rise {
+    from {
+      transform: scale(0.6);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  @keyframes wave-left {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(1deg);
+    }
+  }
+  @keyframes wave-right {
+    0%,
+    100% {
+      transform: rotate(2deg);
+    }
+    50% {
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .image-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .central-image {
+    height: 75vh;
+    object-fit: contain;
+    display: block;
+    position: relative;
+    animation: rise 2s ease-out forwards;
+  }
+  .side-image {
+    position: absolute;
+    width: 100%;
+    object-fit: contain;
+  }
+  .left-top {
+    left: -10%;
+    top: -15%;
+    opacity: 0;
+    animation:
+      wave-left 3s ease-in-out infinite alternate,
+      fadeIn 2s ease-in forwards;
+  }
+  .left-middle {
+    left: -35%;
+    opacity: 0;
+    animation:
+      wave-right 3s ease-in-out infinite alternate,
+      fadeIn 2s ease-in forwards;
+  }
+  .left-bottom {
+    left: -30%;
+    bottom: -10%;
+    opacity: 0;
+    transform: rotate(-40deg);
+    animation:
+      fadeIn 2s ease-in forwards,
+      wave-right 3s ease-in-out infinite alternate;
+  }
+
+  .bg-left {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    z-index: 0;
+  }
+  .bg-right {
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+    z-index: 0;
+  }
+
+  .text-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: black;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    animation: fadeIn 2s ease-in forwards;
+    animation-delay: 1s;
+    font-size: 2.5em;
+    font-family: "Allura", cursive;
+    z-index: 2;
+  }
+  .text-container div {
+    margin: 5px 0;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 3;
+    opacity: 0;
+    animation: fadeIn 2s ease-in forwards;
+    animation-delay: 3.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8em;
+    letter-spacing: 1.8px;
+  }
+
+  .text {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-family: "Courier New", monospace;
+    white-space: pre-line;
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+
+  .link {
+    color: lightblue;
+    display: block;
+    margin-top: 8px;
+  }
+  .strelica {
+    width: 50px; /* Set width */
+    height: 50px; /* Set height */
+    position: absolute;
+    top: 7%;
+    right: 10px;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  @media screen and (min-width: 1200px) {
+    .central-image {
+      height: 100vh;
+    }
+    .text-container {
+      font-size: 3em;
+    }
+  }
+
+  @media screen and (min-width: 1600px) {
+    .text-container {
+      font-size: 4em;
+    }
+  }
+  @media screen and (max-width: 1400px) {
+    .overlay {
+      font-size: 1.3em;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .overlay {
+      font-size: 1em;
+    }
+    .text {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+
+    .left-image {
+      left: -13%;
+      top: -21%;
+    }
+    .right-image {
+      right: -18%;
+      bottom: -30%;
+    }
+    .left-bottom {
+      left: -25%;
+    }
+    .left-top {
+      left: -9%;
+    }
+  }
+</style>
+
+<script>
+  const overlay = document.querySelector(".overlay") as HTMLElement
+  const strelica = document.querySelector(".strelica")
+
+  function toggleOverlay() {
+    if (overlay!.style.opacity === "0" || overlay!.style.display === "none") {
+      overlay!.style.opacity = "1"
+      overlay!.style.display = "flex"
+    } else {
+      overlay!.style.opacity = "0"
+      overlay!.style.display = "none"
+    }
+  }
+
+  strelica!.addEventListener("click", toggleOverlay)
+</script>
