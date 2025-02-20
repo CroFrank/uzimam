@@ -72,6 +72,7 @@ const AddGuest: React.FC<AddClientProps> = ({
       } else {
         fetchDataClient()
         showSuccess("Podaci izbrisani")
+        window.location.reload()
       }
     } catch (error) {
       showError("Pokušajte ponovno kasnije")
@@ -87,7 +88,7 @@ const AddGuest: React.FC<AddClientProps> = ({
     }
   }
   return (
-    <div className="mb-5">
+    <div className="container mb-5">
       <h2 className="mb-5 text-center">O vama</h2>
       <form onSubmit={handleSubmit}>
         <table className="container text-center">
@@ -96,8 +97,6 @@ const AddGuest: React.FC<AddClientProps> = ({
               <th className="p-2 border">Ime mladenke</th>
               <th className="p-2 border">Ime mladoženje</th>
               <th className="p-2 border">Datum vjenčanja</th>
-              <th className="p-2 border">Spremi</th>
-              <th className="p-2 border">Obriši</th>
             </tr>
           </thead>
           <tbody>
@@ -147,31 +146,6 @@ const AddGuest: React.FC<AddClientProps> = ({
                   readOnly={client ? true : false}
                 />
               </td>
-              <td className="p-2 border">
-                <button
-                  className="bg-success text-white px-2 py-1 rounded"
-                  type="submit"
-                >
-                  {loadingSave ? (
-                    <img src="/assets/images/fancybox/fancybox_loading.gif" />
-                  ) : (
-                    <i className="fi flaticon-heart "></i>
-                  )}
-                </button>
-              </td>
-              <td className="p-2 border">
-                <button
-                  className="bg-danger text-black px-2 py-1 rounded"
-                  type="button"
-                  onClick={() => deleteClient(client!.id)}
-                >
-                  {loadingDelete ? (
-                    <img src="/assets/images/fancybox/fancybox_loading.gif" />
-                  ) : (
-                    <i className="fi flaticon-heart "></i>
-                  )}
-                </button>
-              </td>
             </tr>
           </tbody>
         </table>
@@ -182,6 +156,28 @@ const AddGuest: React.FC<AddClientProps> = ({
             onClose={() => setNotification(null)}
           />
         )}
+        <button
+          style={{ marginRight: "8px" }}
+          className="view-cart-btn s1 text-success d-inline"
+          type="submit"
+        >
+          {loadingSave ? (
+            <img src="/assets/images/fancybox/fancybox_loading.gif" />
+          ) : (
+            "Spremi"
+          )}
+        </button>
+        <button
+          className="view-cart-btn s1 text-danger d-inline"
+          type="button"
+          onClick={() => deleteClient(client!.id)}
+        >
+          {loadingDelete ? (
+            <img src="/assets/images/fancybox/fancybox_loading.gif" />
+          ) : (
+            "Obriši"
+          )}
+        </button>
       </form>
     </div>
   )

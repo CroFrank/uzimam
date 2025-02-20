@@ -2,8 +2,14 @@ import type { APIRoute } from "astro"
 import { supabase } from "../../../lib/supabase"
 
 export const POST: APIRoute = async ({ request }) => {
-  const { id } = await request.json()
   try {
+    const { id } = await request.json()
+
+    if (!id) {
+      return new Response(JSON.stringify("ID is required"), {
+        status: 400,
+      })
+    }
     const { data: mladenci, error } = await supabase
       .from("mladenci")
       .select("*")

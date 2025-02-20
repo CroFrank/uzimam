@@ -1,5 +1,4 @@
 import { useState } from "react"
-import type { GuestsListProps, Guest } from "../../env.d"
 import NotificationBar from "../ui/NotificationBar"
 
 const GuestsList: React.FC<GuestsListProps> = ({

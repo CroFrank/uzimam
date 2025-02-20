@@ -62,7 +62,7 @@ const AddGuest: React.FC<AddGuestProps> = ({ id, fetchDataGuests }) => {
     }
   }
   return (
-    <>
+    <div className="mb-5">
       <h2 className="mb-5 text-center">Dodaj gosta</h2>
       <form onSubmit={handleSubmit}>
         <table className="container text-center">
@@ -131,7 +131,7 @@ const AddGuest: React.FC<AddGuestProps> = ({ id, fetchDataGuests }) => {
           {loading ? "Šaljem..." : " Dodaj gosta"}
         </button>
       </form>
-    </>
+    </div>
   )
 }
 export default AddGuest

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import NotificationBar from "./ui/NotificationBar"
 
 const PozivnicaForm: React.FC<PozivnicaFormProps> = ({ id }) => {
-  console.log(id)
   const [formData, setFormData] = useState({
     mladenka: "",
     mladozenja: "",
@@ -99,10 +98,7 @@ const PozivnicaForm: React.FC<PozivnicaFormProps> = ({ id }) => {
           showError("Response Error")
         } else {
           const data = await response.json()
-          console.log(data.data)
           setLink(data.data)
-          console.log("kratki link")
-          console.log(link)
         }
       } catch (error) {
         showError("Pokušajte ponovno kasnije")
