@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro"
 import PozivnicaForm from "../../components/PozivnicaForm.tsx"
 import Header from "../../components/ui/Header.astro"
 import FaqItem from "../../components/ui/FaqItem.astro"
+import PozivnicaDesign from "../../components/PozivnicaDesign.astro"
 const { id } = Astro.locals
 const SEO = {
   title: "Uzimam | izrada online svadbenih pozivnica",
@@ -17,152 +18,92 @@ const SEO = {
     subtitle="Stvorite moderne i personalizirane pozivnice"
   />
 
-  <section class="wpo-blog-pg-section section-padding">
-    <!-- end wpo-faq-section -->
-
-    <section class="wpo-category-section-s3 section-padding">
+  <!-- end wpo-faq-section -->
+  <section class="wpo-product-section section-padding">
+    <div class="container">
       <div class="wpo-section-title">
         <h2 class="poort-text poort-in-right">Izbor dizajna pozivnice</h2>
       </div>
-      <div class="container">
-        <div class="wpo-category-wrap">
-          <div class="row">
-            <div class="col-xl-3 col-lg-6 col-md-6 col-12">
-              <div
-                class="wpo-category-item wow fadeInUp"
-                data-wow-duration="1000ms"
-              >
-                <div class="wpo-category-img">
-                  <div class="wpo-category-img-inner">
-                    <a href="/ai-pozivnice-za-vjencanje/option1">
-                      <img src="assets/images/dizajn/flora.png" alt="" /></a
-                    >
-                  </div>
-                </div>
-                <div class="wpo-category-text">
-                  <a href="/ai-pozivnice-za-vjencanje/option1">FLORA</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-12">
-              <div
-                class="wpo-category-item wow fadeInUp"
-                data-wow-duration="1200ms"
-              >
-                <div class="wpo-category-img">
-                  <div class="wpo-category-img-inner">
-                    <a href="/ai-pozivnice-za-vjencanje/option2">
-                      <img src="assets/images/dizajn/bella.png" alt="" /></a
-                    >
-                  </div>
-                </div>
-                <div class="wpo-category-text">
-                  <a href="/ai-pozivnice-za-vjencanje/option2">BELLA</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-12">
-              <div
-                class="wpo-category-item wow fadeInUp"
-                data-wow-duration="1400ms"
-              >
-                <div class="wpo-category-img">
-                  <div class="wpo-category-img-inner">
-                    <a href="/dolazi-uskoro">
-                      <img src="assets/images/dizajn/clara.png" alt="" /></a
-                    >
-                  </div>
-                </div>
-                <div class="wpo-category-text">
-                  <a href="/dolazi-uskoro">CLARA</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-12">
-              <div
-                class="wpo-category-item wow fadeInUp"
-                data-wow-duration="1600ms"
-              >
-                <div class="wpo-category-img">
-                  <div class="wpo-category-img-inner">
-                    <a href="/dolazi-uskoro">
-                      <img src="assets/images/dizajn/aurea.png" alt="" />
-                    </a>
-                  </div>
-                </div>
-                <div class="wpo-category-text">
-                  <a href="/dolazi-uskoro">AUREA</a>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="wpo-product-wrap">
+        <div class="row">
+          <PozivnicaDesign
+            text="Bojana"
+            link="/ai-pozivnice-za-vjencanje/bojana"
+            img="/assets/images/dizajn/pozivnice/Bojana.png"
+          />
+          <PozivnicaDesign
+            text="Belami"
+            link="/ai-pozivnice-za-vjencanje/belami"
+            img="/assets/images/dizajn/pozivnice/Belami.png"
+          />
         </div>
       </div>
-    </section>
-
-    <div class="bg-pozivnica section-padding" id="pozivnica">
-      <PozivnicaForm id={id} client:only="react" />
     </div>
-    <div class="container">
-      <div class="row">
-        <div class="col col-lg-10 offset-lg-1">
-          <div class="wpo-faq-section section-padding">
-            <h4>FAQ</h4>
-            <div class="row">
-              <div class="col-lg-12 col-md-12 col-12">
-                <div class="accordion" id="accordionExample">
-                  <FaqItem
-                    collapseId="#collapseOne"
-                    question="Što su AI pozivnice?"
-                    answer=`Umjetna inteligencija za izradu personaliziranih i kreativnih tekstova, omogućujući mladencima da lako stvaraju jedinstvene pozivnice.`
-                    expended
-                  />
-                  <FaqItem
-                    collapseId="#collapseTwo"
-                    question="Kako sve funkcionira?"
-                    answer=`Jednostavno popunite obrazac s podacima o gostima, a
+    <!-- end container -->
+  </section>
+
+  <div class="bg-pozivnica section-padding" id="pozivnica">
+    <PozivnicaForm id={id} client:only="react" />
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col col-lg-10 offset-lg-1">
+        <div class="wpo-faq-section section-padding">
+          <h4>FAQ</h4>
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-12">
+              <div class="accordion" id="accordionExample">
+                <FaqItem
+                  collapseId="#collapseOne"
+                  question="Što su AI pozivnice?"
+                  answer=`Umjetna inteligencija za izradu personaliziranih i kreativnih tekstova, omogućujući mladencima da lako stvaraju jedinstvene pozivnice.`
+                  expended
+                />
+                <FaqItem
+                  collapseId="#collapseTwo"
+                  question="Kako sve funkcionira?"
+                  answer=`Jednostavno popunite obrazac s podacima o gostima, a
                               umjetna inteligencija će generirati prijedlog teksta
                               pozivnice, koji možete dodatno prilagoditi prema
                               vlastitim željama. Nakon toga birate dizajn pozivnice
                               koji vam se najviše sviđa, a sustav vam generira
                               jedinstveni link. Taj link možete podijeliti s gostima
                               putem e-maila, WhatsAppa ili društvenih mreža.`
-                  />
-                  <FaqItem
-                    collapseId="#collapseThree"
-                    question="Što još dobivam uz ai pozivnice?"
-                    answer=`AI pozivnice su dio našeg Diamond paketa, koji također
+                />
+                <FaqItem
+                  collapseId="#collapseThree"
+                  question="Što još dobivam uz ai pozivnice?"
+                  answer=`AI pozivnice su dio našeg Diamond paketa, koji također
                         uključuje korisničko sučelje u kojem ćete moći:`
-                    list={[
-                      "popis svih gostiju",
-                      "označiti kome je pozivnica poslana",
-                      "označiti tko je potvrdio dolazak",
-                    ]}
-                  />
-                  <FaqItem
-                    collapseId="#collapseFour"
-                    question="Kako izgleda primjer AI pozivnice? "
-                    answer=` Možete izabrati jedan od ponuđenih dizajna, a kompletan proces izrade možete besplatno isprobati nakon registracije na sljedećem linku `
-                    link="register"
-                  />
-                  <FaqItem
-                    collapseId="#collapse5"
-                    question="Koliko traje izrada AI pozivnice?"
-                    answer=` Izrada AI pozivnice obično traje manje od minute, a izrađujete ih sami.`
-                  />
-                  <FaqItem
-                    collapseId="#collapse6"
-                    question="Kako mogu poslati AI pozivnicu gostima?"
-                    answer=`AI pozivnicu možete poslati gostima u obliku linka putem e-maila, društvenih mreža ili WhatsAppa.`
-                  />
-                </div>
+                  list={[
+                    "popis svih gostiju",
+                    "označiti kome je pozivnica poslana",
+                    "označiti tko je potvrdio dolazak",
+                  ]}
+                />
+                <FaqItem
+                  collapseId="#collapseFour"
+                  question="Kako izgleda primjer AI pozivnice? "
+                  answer=` Možete izabrati jedan od ponuđenih dizajna, a kompletan proces izrade možete besplatno isprobati nakon registracije na sljedećem linku `
+                  link="register"
+                />
+                <FaqItem
+                  collapseId="#collapse5"
+                  question="Koliko traje izrada AI pozivnice?"
+                  answer=` Izrada AI pozivnice obično traje manje od minute, a izrađujete ih sami.`
+                />
+                <FaqItem
+                  collapseId="#collapse6"
+                  question="Kako mogu poslati AI pozivnicu gostima?"
+                  answer=`AI pozivnicu možete poslati gostima u obliku linka putem e-maila, društvenih mreža ili WhatsAppa.`
+                />
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </Layout>
 <style>
   .wpo-contact-pg-section {
