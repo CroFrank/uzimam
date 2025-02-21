@@ -308,21 +308,18 @@ const PozivnicaForm: React.FC<PozivnicaFormProps> = ({ id }) => {
         <div className="mb-3">
           <label className="form-label">Odaberite dizajn pozivnice:</label>
           <div className="d-flex gap-3">
-            {["Bojana", "Belami"].map((option, index) => (
+            {["bojana", "belami"].map((option, index) => (
               <div key={index} className="form-check">
                 <input
                   type="radio"
-                  id={`option${index + 1}`}
+                  id={option}
                   name="designe"
-                  value={`option${index + 1}`}
+                  value={option}
                   onChange={handleChange}
                   className="form-check-input"
                   required
                 />
-                <label
-                  htmlFor={`option${index + 1}`}
-                  className="form-check-label"
-                >
+                <label htmlFor={option} className="form-check-label">
                   {option}
                 </label>
               </div>
