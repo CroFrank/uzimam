@@ -50,7 +50,7 @@ const AiIzborPjesamaForm: React.FC = () => {
                   </p>
                   <p>
                     <small>
-                      Funkcionalnosti su u beta fazi, moguće su nepravilnosti u
+                      *Funkcionalnosti su u beta fazi, moguće su nepravilnosti u
                       radu. Usluga ima dnevni limit zbog API ograničenja, molimo
                       koristite umjereno. Zahvaljujemo na razumijevanju i
                       strpljenju dok radimo na unapređenju usluge!

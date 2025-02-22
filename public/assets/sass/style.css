@@ -127,15 +127,8 @@ Version:        1.0.0
 	Fonts
 ----------------------------*/
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap");
-@font-face {
-  font-family: "monallesia";
-  src: url("../fonts/monallesiascript.woff2") format("woff2"),
-    url("../fonts/monallesiascript.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
+
 @font-face {
   font-family: "Cormorant Garamond";
   src: url("../fonts/CormorantGaramond-Regular.woff2") format("woff2");
@@ -251,7 +244,6 @@ img {
   position: relative;
   overflow: hidden;
 }
-
 
 @media (max-width: 575px) {
   .page-wrap {
@@ -1574,7 +1566,7 @@ a.ui-button:active,
 }
 
 .blog-sidebar .about-widget a {
-  font-family: "monallesia";
+  font-family: "Allura", cursive;
   font-size: 14px;
   font-size: 0.93333rem;
   color: #242424;
@@ -2451,7 +2443,7 @@ a.ui-button:active,
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  font-family: "monallesia";
+  font-family: "Allura", cursive;
   color: #b5a2bd;
 }
 
@@ -6004,7 +5996,7 @@ a.ui-button:active,
 }
 
 .rtl-static-hero #clock2 .time {
-  font-family: "monallesia";
+  font-family: "Allura", cursive;
   font-size: 60px;
   font-size: 4rem;
   line-height: 1em;
@@ -6623,12 +6615,12 @@ a.ui-button:active,
 .wpo-site-footer-s4 .widget-title h3,
 .wpo-site-footer-s5 .widget-title h3 {
   font-weight: 400;
-  font-size: 40px;
+  font-size: 50px;
   line-height: 50px;
   color: #fff;
   margin: 0;
   position: relative;
-  font-family: "monallesia";
+  font-family: "Allura";
 }
 
 @media (max-width: 991px) {
@@ -6655,7 +6647,7 @@ a.ui-button:active,
 .wpo-site-footer-s4 .about-widget .logo,
 .wpo-site-footer-s5 .about-widget .logo {
   font-size: 35px;
-  font-family: "monallesia";
+  font-family: "Allura", cursive;
   color: #fff;
   line-height: 40px;
   margin-bottom: 0;
@@ -7213,7 +7205,7 @@ a.ui-button:active,
 .wpo-wedding-date-s2 .wedding-date-wrap #clock .time,
 .wpo-wedding-date-s3 .wedding-date-wrap #clock .time,
 .wpo-wedding-date-s4 .wedding-date-wrap #clock .time {
-  font-family: "monallesia";
+  font-family: "Allura", cursive;
   font-size: 80px;
   font-style: normal;
   font-weight: 400;
@@ -8737,10 +8729,10 @@ a.ui-button:active,
 .wpo-contact-section-s6 .wpo-contact-section-wrapper .wpo-section-title h2,
 .wpo-contact-section-s7 .wpo-contact-section-wrapper .wpo-section-title h2,
 .wpo-contact-section-s8 .wpo-contact-section-wrapper .wpo-section-title h2 {
-  font-size: 30px;
+  font-size: 50px;
   font-style: normal;
   font-weight: 400;
-  font-family: "monallesia";
+  font-family: "Allura", cursive;
   color: #fff;
 }
 
@@ -8753,7 +8745,7 @@ a.ui-button:active,
   .wpo-contact-section-s6 .wpo-contact-section-wrapper .wpo-section-title h2,
   .wpo-contact-section-s7 .wpo-contact-section-wrapper .wpo-section-title h2,
   .wpo-contact-section-s8 .wpo-contact-section-wrapper .wpo-section-title h2 {
-    font-size: 20px;
+    font-size: 35px;
     padding-bottom: 0;
   }
 }
@@ -14582,7 +14574,7 @@ a.ui-button:active,
 }
 
 .wpo-wedding-date-s4 .wedding-date-wrap #clock .time {
-  font-family: "monallesia";
+  font-family: "Allura", cursive;
   font-size: 80px;
   font-style: normal;
   font-weight: 400;
@@ -15642,7 +15634,7 @@ a.ui-button:active,
   font-style: normal;
   font-weight: 400;
   color: #c8a898;
-  font-family: "monallesia";
+  font-family: "Allura", cursive;
 }
 
 @media (max-width: 1199px) {
@@ -15909,7 +15901,7 @@ a.ui-button:active,
   font-weight: 400;
   color: #657150;
   margin: 0 0 0.1em;
-  font-family: "monallesia";
+  font-family: "Allura", cursive;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -15922,7 +15914,7 @@ a.ui-button:active,
 }
 
 .wpo-fun-fact-section .grid h3 span {
-  font-family: "monallesia";
+  font-family: "Allura", cursive;
   line-height: 75px;
 }
 
@@ -20167,7 +20159,7 @@ a.ui-button:active,
 
 .wpo-coming-soon-area .coming-soon-section .wpo-wedding-date #clock .time,
 .wpo-coming-soon-area .coming-soon-section .wpo-wedding-date #clock3 .time {
-  font-family: "monallesia";
+  font-family: "Allura", cursive;
   font-size: 60px;
   font-size: 4rem;
   line-height: 1em;
@@ -20772,7 +20764,7 @@ a.ui-button:active,
 }
 
 .wpo-shop-single-section .product-info .nav-tabs {
-  font-family: "monallesia";
+  font-family: "Allura", cursive;
   border: 0;
 }
 
@@ -23659,7 +23651,7 @@ a.ui-button:active,
 }
 
 .wpo-blog-single-section .comments-area .comment-reply-link {
-  font-family: "monallesia";
+  font-family: "Allura", cursive;
   font-size: 14px;
   font-size: 0.93333rem;
   font-weight: 600;

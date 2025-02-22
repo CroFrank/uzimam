@@ -308,7 +308,7 @@ const PozivnicaForm: React.FC<PozivnicaFormProps> = ({ id }) => {
         <div className="mb-3">
           <label className="form-label">Odaberite dizajn pozivnice:</label>
           <div className="d-flex gap-3">
-            {["bojana", "belami"].map((option, index) => (
+            {["amelie", "belami"].map((option, index) => (
               <div key={index} className="form-check">
                 <input
                   type="radio"

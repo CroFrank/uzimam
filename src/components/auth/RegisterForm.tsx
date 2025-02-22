@@ -57,12 +57,9 @@ const RegisterForm = () => {
         return
       } else {
         setDataFromServer(result)
-        console.log("Registration failed")
-        console.log(result)
       }
     } catch (error) {
       setDataFromServer("Ups, negdje je zapelo, pokušajte ponovno kasnije.")
-      console.error("Error:", error)
     } finally {
       setIsSubmitting(false)
     }
