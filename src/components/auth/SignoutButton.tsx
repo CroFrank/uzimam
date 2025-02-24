@@ -1,5 +1,10 @@
+import { useEffect } from "react"
+
 const SignoutButton = () => {
-  const handleLogout = async (e: React.FormEvent) => {
+  useEffect(() => {
+    console.log("SignoutButton mounted in production")
+  }, [])
+  const handleLogout = async () => {
     console.log("clicked")
     try {
       const response = await fetch("/api/auth/signout", {
@@ -10,17 +15,15 @@ const SignoutButton = () => {
 
       if (response.ok && result.redirect) {
         window.location.href = result.redirect
-        return
       } else {
-        console.log("Registration failed")
-        console.log(result)
+        console.log("Signout failed:", result)
       }
     } catch (error) {
       console.error("Error:", error)
     }
   }
   return (
-    <button onClick={handleLogout} className="view-cart-btn">
+    <button onClick={() => handleLogout} className="view-cart-btn">
       Odjava
     </button>
   )
