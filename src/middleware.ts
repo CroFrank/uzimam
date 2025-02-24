@@ -5,7 +5,8 @@ export const onRequest = defineMiddleware(async ({ locals, request }, next) => {
   try {
     const cookies = request.headers.get("cookie")
     console.log("Cookies in request:", cookies)
-    const {
+
+    let {
       data: { session },
       error,
     } = await supabase.auth.getSession()
@@ -25,7 +26,7 @@ export const onRequest = defineMiddleware(async ({ locals, request }, next) => {
       console.log("Session expired, refreshing...")
       await supabase.auth.refreshSession()
     }
-    console.log("middelware goes first")
+
     locals.name = session?.user.user_metadata.name ?? null
     locals.email = session?.user.email ?? null
     locals.id = session?.user.id ?? null
