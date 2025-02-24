@@ -5,8 +5,15 @@ export const onRequest = defineMiddleware(async ({ locals }, next) => {
   try {
     const {
       data: { session },
+      error,
     } = await supabase.auth.getSession()
-
+    if (error) {
+      console.log(`session error : ${error}`)
+    }
+    if (!session) {
+      console.log(`no session : ${session}`)
+    }
+    console.log("middelware goes first")
     locals.name = session?.user.user_metadata.name ?? null
     locals.email = session?.user.email ?? null
     locals.id = session?.user.id ?? null

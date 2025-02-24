@@ -342,7 +342,10 @@ const PozivnicaForm: React.FC<PozivnicaFormProps> = ({ id }) => {
         <>
           <div className="my-5">
             <p>
-              Link koji vodi na vašu pozivnicu: <a href={link}>{link}</a>
+              Link koji vodi na vašu pozivnicu:{" "}
+              <a href={link} target="_blank">
+                {link}
+              </a>
             </p>
           </div>
           <button className="theme-btn" onClick={handleCopy}>
