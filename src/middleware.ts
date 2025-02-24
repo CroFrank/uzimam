@@ -3,23 +3,14 @@ import { supabase } from "./lib/supabase"
 
 export const onRequest = defineMiddleware(async ({ locals, request }, next) => {
   try {
-    const cookies = request.headers.get("cookie")
-    console.log("Cookies in request:", cookies)
-
     const { data, error } = await supabase.auth.getSession()
     const { session } = data
-    if (error) {
-      console.log(`session error : ${error}`)
-    }
+
     if (!session) {
       console.log(`no session : ${data}`)
+      console.log("Session data:", JSON.stringify(data, null, 2))
     }
-    if (!session?.user.id) {
-      console.log(`no session id : ${session?.user.id}`)
-    }
-    if (!session?.user.user_metadata.name) {
-      console.log(`no session name : ${session?.user.user_metadata.name}`)
-    }
+
     if (error || !session) {
       console.log("Session expired, refreshing...")
       await supabase.auth.refreshSession()
