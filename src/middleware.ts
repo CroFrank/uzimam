@@ -13,6 +13,12 @@ export const onRequest = defineMiddleware(async ({ locals }, next) => {
     if (!session) {
       console.log(`no session : ${session}`)
     }
+    if (!session?.user.id) {
+      console.log(`no session id : ${session?.user.id}`)
+    }
+    if (!session?.user.user_metadata.name) {
+      console.log(`no session name : ${session?.user.user_metadata.name}`)
+    }
     console.log("middelware goes first")
     locals.name = session?.user.user_metadata.name ?? null
     locals.email = session?.user.email ?? null
