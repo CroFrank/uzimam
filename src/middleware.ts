@@ -5,11 +5,11 @@ export const onRequest = defineMiddleware(async ({ locals }, next) => {
   console.log("middelware hit")
   try {
     const {
-      data: { user },
-    } = await supabase.auth.getUser()
-    locals.name = user?.user_metadata.name ?? null
-    locals.email = user?.user_metadata.email ?? null
-    locals.id = user?.id ?? null
+      data: { session },
+    } = await supabase.auth.getSession()
+    locals.name = session?.user.user_metadata.name ?? null
+    locals.email = session?.user.email ?? null
+    locals.id = session?.user.id ?? null
   } catch (error) {
     console.error("Error fetching user:", error)
     locals.name = null
