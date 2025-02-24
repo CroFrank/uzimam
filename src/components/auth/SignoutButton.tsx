@@ -1,9 +1,4 @@
-import { useEffect } from "react"
-
 const SignoutButton = () => {
-  useEffect(() => {
-    console.log("SignoutButton mounted in production")
-  }, [])
   const handleLogout = async () => {
     console.log("clicked")
     try {
@@ -23,7 +18,7 @@ const SignoutButton = () => {
     }
   }
   return (
-    <button onClick={() => handleLogout} className="view-cart-btn">
+    <button onClick={handleLogout} className="view-cart-btn">
       Odjava
     </button>
   )
