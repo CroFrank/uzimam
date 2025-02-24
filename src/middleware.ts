@@ -1,8 +1,10 @@
 import { defineMiddleware } from "astro:middleware"
 import { supabase } from "./lib/supabase"
 
-export const onRequest = defineMiddleware(async ({ locals }, next) => {
+export const onRequest = defineMiddleware(async ({ locals, request }, next) => {
   try {
+    const cookies = request.headers.get("cookie")
+    console.log("Cookies in request:", cookies)
     const {
       data: { session },
       error,
@@ -18,6 +20,10 @@ export const onRequest = defineMiddleware(async ({ locals }, next) => {
     }
     if (!session?.user.user_metadata.name) {
       console.log(`no session name : ${session?.user.user_metadata.name}`)
+    }
+    if (error || !session) {
+      console.log("Session expired, refreshing...")
+      await supabase.auth.refreshSession()
     }
     console.log("middelware goes first")
     locals.name = session?.user.user_metadata.name ?? null

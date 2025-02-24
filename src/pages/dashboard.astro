@@ -5,7 +5,9 @@ import Layout from "../layouts/Layout.astro"
 
 console.log("Dashboard goes second")
 const { name, id } = Astro.locals
-console.log(name)
+console.log(`astro locals name ${name}`)
+console.log(`astro locals name ${id}`)
+
 if (!name || !id) {
   return Astro.redirect("/signin")
 }
