@@ -1,7 +1,7 @@
 import type { APIRoute } from "astro"
 import { supabase } from "../../../lib/supabase"
 
-export const POST: APIRoute = async ({ cookies }) => {
+export const POST: APIRoute = async ({ cookies, redirect }) => {
   cookies.delete("sb-access-token", {
     path: "/",
   })
@@ -10,7 +10,5 @@ export const POST: APIRoute = async ({ cookies }) => {
   })
   await supabase.auth.signOut()
 
-  return new Response(JSON.stringify({ success: true, redirect: "/signin" }), {
-    headers: { "Content-Type": "application/json" },
-  })
+  return redirect("/signin")
 }

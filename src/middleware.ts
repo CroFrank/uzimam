@@ -6,6 +6,7 @@ export const onRequest = defineMiddleware(async ({ locals }, next) => {
     const {
       data: { session },
     } = await supabase.auth.getSession()
+
     locals.name = session?.user.user_metadata.name ?? null
     locals.email = session?.user.email ?? null
     locals.id = session?.user.id ?? null

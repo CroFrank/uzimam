@@ -1,5 +1,4 @@
 ---
-import SignoutButton from "../components/auth/SignoutButton"
 import Header from "../components/ui/Header.astro"
 import UserInterface from "../components/UserInterface"
 import Layout from "../layouts/Layout.astro"
@@ -16,8 +15,10 @@ if (!name || !id) {
   <div class="container section-padding">
     <UserInterface client:load id={id} />
     <div class="d-flex">
-      <div class="ms-auto">
-        <SignoutButton client:load />
+      <div class="ms-auto mt-4">
+        <form action="/api/auth/signout" method="POST">
+          <button class="view-cart-btn" type="submit"> Odjava </button>
+        </form>
       </div>
     </div>
   </div>

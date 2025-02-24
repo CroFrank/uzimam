@@ -1,6 +1,4 @@
 ---
-import SignoutButton from "./SignoutButton"
-
 const { name } = Astro.locals
 ---
 
@@ -47,7 +45,11 @@ const { name } = Astro.locals
               >
                 Pozivnice
               </a>
-              <SignoutButton client:idle />
+              <form action="/api/auth/signout" method="POST">
+                <button class="view-cart-btn" type="submit">
+                  Odjava
+                </button>
+              </form>
             </div>
           </div>
         </div>
