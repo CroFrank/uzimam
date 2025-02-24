@@ -19,17 +19,14 @@ const SigninForm = () => {
       const result = await response.json()
 
       setDataFromServer(result)
-      console.log(dataFromServer)
       if (response.ok && result.redirect) {
         window.location.href = result.redirect
         return
       } else {
         setDataFromServer(result)
-        console.log("Registration failed")
       }
     } catch (error) {
-      setDataFromServer("Ups, negdje je zapelo, pokušajte ponovno kasnije.")
-      console.error("Error:", error)
+      setDataFromServer("Ups, negdje je zapelo, pokušajte ponovno.")
     } finally {
       setIsSubmitting(false)
     }

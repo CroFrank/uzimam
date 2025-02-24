@@ -153,7 +153,17 @@ const RegisterForm = () => {
                         onChange={handleChange}
                         required
                       />
-                      {dataFromServer}
+                      {dataFromServer && (
+                        <p
+                          style={{
+                            color: "red",
+                            fontSize: "14px",
+                            marginTop: "5px",
+                          }}
+                        >
+                          {dataFromServer}
+                        </p>
+                      )}
                       {!passwordsMatch && (
                         <p
                           style={{

@@ -45,7 +45,7 @@ export const POST: APIRoute = async ({ request }) => {
   if (error) {
     console.log(error.message)
     return new Response(
-      JSON.stringify("Ups, negdje je zapelo, pokušajte ponovno kasnije."),
+      JSON.stringify("Ups, negdje je zapelo, pokušajte ponovno."),
       {
         status: 500,
       }

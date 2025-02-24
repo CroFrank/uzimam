@@ -5,6 +5,7 @@ import UserInterface from "../components/UserInterface"
 import Layout from "../layouts/Layout.astro"
 
 const { name, id } = Astro.locals
+console.log(`dashboard lookung for name ${name} and id ${id}`)
 
 if (!name || !id) {
   return Astro.redirect("/signin")
@@ -15,7 +16,6 @@ if (!name || !id) {
   <Header title={`Dobrodošli ${name}`} />
   <div class="container section-padding">
     <UserInterface client:load id={id} />
-
     <div class="d-flex">
       <div class="ms-auto">
         <SignoutButton client:load />
