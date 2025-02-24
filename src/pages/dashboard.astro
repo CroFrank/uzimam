@@ -5,7 +5,6 @@ import UserInterface from "../components/UserInterface"
 import Layout from "../layouts/Layout.astro"
 
 const { name, id } = Astro.locals
-console.log(`dashboard lookung for name ${name} and id ${id}`)
 
 if (!name || !id) {
   return Astro.redirect("/signin")

@@ -2,7 +2,6 @@ import { defineMiddleware } from "astro:middleware"
 import { supabase } from "./lib/supabase"
 
 export const onRequest = defineMiddleware(async ({ locals }, next) => {
-  console.log("middelware hit")
   try {
     const {
       data: { session },

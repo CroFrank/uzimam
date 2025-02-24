@@ -1,5 +1,6 @@
 const SignoutButton = () => {
   const handleLogout = async (e: React.FormEvent) => {
+    console.log("clicked")
     try {
       const response = await fetch("/api/auth/signout", {
         method: "POST",

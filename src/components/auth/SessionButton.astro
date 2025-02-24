@@ -4,6 +4,7 @@ import SignoutButton from "./SignoutButton"
 const { name } = Astro.locals
 ---
 
+<SignoutButton client:load />
 {
   !name ? (
     <a href="/signin" class="theme-btn-s4">
