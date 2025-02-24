@@ -19,6 +19,7 @@ export const POST: APIRoute = async ({ request }) => {
         hisname: hisName,
         date,
       },
+      { returning: "minimal" },
     ])
 
     if (error) {
