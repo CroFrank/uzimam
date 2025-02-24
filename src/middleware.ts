@@ -6,15 +6,13 @@ export const onRequest = defineMiddleware(async ({ locals, request }, next) => {
     const cookies = request.headers.get("cookie")
     console.log("Cookies in request:", cookies)
 
-    let {
-      data: { session },
-      error,
-    } = await supabase.auth.getSession()
+    const { data, error } = await supabase.auth.getSession()
+    const { session } = data
     if (error) {
       console.log(`session error : ${error}`)
     }
     if (!session) {
-      console.log(`no session : ${session}`)
+      console.log(`no session : ${data}`)
     }
     if (!session?.user.id) {
       console.log(`no session id : ${session?.user.id}`)
