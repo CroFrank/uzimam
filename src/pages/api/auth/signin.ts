@@ -14,7 +14,6 @@ export const POST: APIRoute = async ({ request, cookies }) => {
       email,
       password,
     })
-    console.log(data)
     if (error) {
       console.log(error)
       return new Response(JSON.stringify("Neispravan unos."), { status: 401 })
