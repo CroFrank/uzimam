@@ -21,14 +21,8 @@ export const onRequest = defineMiddleware(async ({ locals, request }, next) => {
     })
     const { session } = data
 
-    if (!session) {
-      console.log(`no session : ${data}`)
-      console.log("Session data:", JSON.stringify(data, null, 2))
-    }
-
     if (error || !session) {
-      console.log("Session expired, refreshing...")
-      await supabase.auth.refreshSession()
+      console.log("Session expired")
     }
     locals.name = session?.user.user_metadata.name ?? null
     locals.email = session?.user.email ?? null
