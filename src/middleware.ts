@@ -3,7 +3,22 @@ import { supabase } from "./lib/supabase"
 
 export const onRequest = defineMiddleware(async ({ locals, request }, next) => {
   try {
-    const { data, error } = await supabase.auth.getSession()
+    const cookies = request.headers.get("cookie") || ""
+    const accessToken = cookies
+      .split(";")
+      .map((str) => str.trim())
+      .find((row) => row.startsWith("sb-access-token="))
+      ?.split("=")[1]
+    const refreshToken = cookies
+      .split(";")
+      .map((str) => str.trim())
+      .find((row) => row.startsWith("sb-refresh-token="))
+      ?.split("=")[1]
+
+    const { data, error } = await supabase.auth.setSession({
+      access_token: accessToken || "",
+      refresh_token: refreshToken || "",
+    })
     const { session } = data
 
     if (!session) {
@@ -15,7 +30,6 @@ export const onRequest = defineMiddleware(async ({ locals, request }, next) => {
       console.log("Session expired, refreshing...")
       await supabase.auth.refreshSession()
     }
-
     locals.name = session?.user.user_metadata.name ?? null
     locals.email = session?.user.email ?? null
     locals.id = session?.user.id ?? null

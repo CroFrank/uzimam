@@ -14,7 +14,7 @@ export const POST: APIRoute = async ({ request, cookies }) => {
       email,
       password,
     })
-
+    console.log(data)
     if (error) {
       console.log(error)
       return new Response(JSON.stringify("Neispravan unos."), { status: 401 })
@@ -23,14 +23,10 @@ export const POST: APIRoute = async ({ request, cookies }) => {
     const { access_token, refresh_token } = data.session
     cookies.set("sb-access-token", access_token, {
       path: "/",
-      secure: true,
-      sameSite: "strict",
     })
 
     cookies.set("sb-refresh-token", refresh_token, {
       path: "/",
-      secure: true,
-      sameSite: "strict",
     })
     return new Response(
       JSON.stringify({ success: true, redirect: "/dashboard" }),
